@@ -568,6 +568,26 @@ canvas#particle-canvas {
     background: #F1EAD3;
 }
 
+/* Antique Compass Rose & Sailing Ship dynamic animations */
+.compass-rose {
+    transform-origin: 100px 360px;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.svg-world-map:hover .compass-rose {
+    transform: translate(100px, 360px) rotate(15deg);
+}
+
+.vintage-ship {
+    transform-origin: 325px 230px;
+    animation: shipRock 6s ease-in-out infinite;
+}
+
+@keyframes shipRock {
+    0% { transform: translate(325px, 230px) scale(0.65) rotate(0deg); }
+    50% { transform: translate(325px, 231px) scale(0.65) rotate(-3deg); }
+    100% { transform: translate(325px, 230px) scale(0.65) rotate(0deg); }
+}
+
 /* SVG Map Continents & lines */
 .grid-lines line {
     stroke: var(--accent-gold);
@@ -668,6 +688,28 @@ canvas#particle-canvas {
     width: 100%;
     height: 4px;
     background: var(--accent-red);
+}
+.map-info-card::after {
+    content: 'TỐI MẬT';
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 2px dashed rgba(169, 50, 38, 0.4);
+    color: rgba(169, 50, 38, 0.4);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    transform: rotate(12deg);
+    letter-spacing: 2px;
+    border-radius: 4px;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+.map-info-card:hover::after {
+    color: rgba(169, 50, 38, 0.75);
+    border-color: rgba(169, 50, 38, 0.75);
+    transform: rotate(8deg) scale(1.05);
 }
 .milestone-badge {
     display: inline-block;
