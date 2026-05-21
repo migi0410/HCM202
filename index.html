@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hành Trình Vạn Dặm Tìm Đường Cứu Nước - Bác Hồ kính yêu</title>
-    <meta name="description" content="Website sáng tạo tương tác tái hiện hành trình 30 năm bôn ba tìm đường cứu nước của người thanh niên Nguyễn Tất Thành - Bác Hồ kính yêu từ 1911 đến 1941.">
+    <title>Bản Đồ Nhân Tâm: Những Dấu Chân Song Hành - Hành trình cứu nước của Bác Hồ</title>
+    <meta name="description" content="Website tương tác lịch sử tư liệu tái hiện câu chuyện về những người Thầy, người Bạn và Đồng chí đồng hành cùng Bác Hồ kính yêu suốt hành trình 30 năm bôn ba thế giới (1911 - 1941).">
     
     <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Hành Trình Vạn Dặm Tìm Đường Cứu Nước">
-    <meta property="og:description" content="Trải nghiệm tương tác bản đồ động, dòng thời gian lịch sử và thử thách trắc nghiệm nhận chứng chỉ vàng vinh danh.">
+    <meta property="og:title" content="Bản Đồ Nhân Tâm: Những Dấu Chân Song Hành">
+    <meta property="og:description" content="Khám phá hồ sơ tư liệu lịch sử về 10 nhân vật vĩ đại đã đồng hành và ảnh hưởng lớn đến cuộc đời hoạt động cách mạng của Chủ tịch Hồ Chí Minh.">
     <meta property="og:type" content="website">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom Style -->
@@ -25,9 +25,9 @@
     <!-- Loading Screen -->
     <div id="loader">
         <div class="loader-content">
-            <h1 class="loader-title">HÀNH TRÌNH VẠN DẶM</h1>
+            <h1 class="loader-title">BẢN ĐỒ NHÂN TÂM</h1>
             <div class="loader-bar"><div class="progress"></div></div>
-            <p class="loader-text">Đang tái hiện lịch sử hào hùng...</p>
+            <p class="loader-text">Đang mở tệp tin lưu trữ lịch sử...</p>
         </div>
     </div>
 
@@ -35,82 +35,77 @@
     <header class="main-header">
         <div class="header-container">
             <a href="#" class="logo">
-                <span class="logo-gold">HÀNH TRÌNH</span>
-                <span class="logo-white">1911 - 1941</span>
+                <span class="logo-gold">BẢN ĐỒ NHÂN TÂM</span>
+                <span class="logo-white">NHỮNG DẤU CHÂN SONG HÀNH</span>
             </a>
             <button class="nav-toggle" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#hero" class="nav-link active"><i class="fas fa-home"></i> Khởi Hành</a></li>
+                    <li><a href="#hero" class="nav-link active"><i class="fas fa-compass"></i> Khởi Hành</a></li>
                     <li><a href="#map-section" class="nav-link"><i class="fas fa-map-marked-alt"></i> Bản Đồ</a></li>
-                    <li><a href="#timeline-section" class="nav-link"><i class="fas fa-clock"></i> Dòng Thời Gian</a></li>
-                    <li><a href="#quiz-section" class="nav-link"><i class="fas fa-award"></i> Thử Thách</a></li>
-                    <li><a href="#media-section" class="nav-link"><i class="fas fa-music"></i> Không Gian Nhạc</a></li>
+                    <li><a href="#timeline-section" class="nav-link"><i class="fas fa-history"></i> Những Người Đồng Hành</a></li>
+                    <li><a href="#quiz-section" class="nav-link"><i class="fas fa-scroll"></i> Thử Thách</a></li>
+                    <li><a href="#media-section" class="nav-link"><i class="fas fa-gramophone"></i> Không Gian Nhạc</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Floating Background Particles Canvas -->
+    <!-- Floating Gold Dust Particles Canvas -->
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (The Departure) -->
     <section id="hero" class="hero-section">
         <div class="hero-bg-overlay"></div>
         <div class="hero-content">
-            <h3 class="hero-subtitle">KỶ NIỆM HÀNH TRÌNH LỊCH SỬ</h3>
-            <h1 class="hero-title">ĐI TÌM ĐƯỜNG CỨU NƯỚC</h1>
-            <h2 class="hero-author">NGUYỄN TẤT THÀNH • NGUYỄN ÁI QUỐC • HỒ CHÍ MINH</h2>
+            <h3 class="hero-subtitle">Dự án Website tư liệu lịch sử tương tác</h3>
+            <h1 class="hero-title">BẢN ĐỒ NHÂN TÂM<br>NHỮNG DẤU CHÂN SONG HÀNH</h1>
+            <h2 class="hero-author">HÀNH TRÌNH TÌM ĐƯỜNG CỨU NƯỚC (1911 - 1941)</h2>
             <div class="divider">
-                <span class="star-gold"><i class="fas fa-star"></i></span>
+                <span class="star-gold"><i class="fas fa-feather-alt"></i></span>
             </div>
             <p class="hero-desc">
-                "Đời bồi tàu bể đón buồm khơi<br>
-                Đi tìm hình của Nước mỗi người đi...<br>
-                Bản đồ Tổ quốc vẽ bằng máu đỏ<br>
-                Mỗi tấc đất thiêng nâng bước chân Người..."
+                "Học thuyết cách mạng không sinh ra trong phòng kín,<br>
+                Nó được đúc kết trên vạn dặm bôn ba,<br>
+                Từ những cuộc gặp gỡ thay đổi vận mệnh,<br>
+                Với những người Thầy, người Bạn, và Đồng chí song hành..."
             </p>
             <div class="hero-actions">
-                <a href="#map-section" class="btn btn-gold btn-glow">Bắt Đầu Hành Trình <i class="fas fa-arrow-right"></i></a>
-                <a href="#quiz-section" class="btn btn-outline">Thử Thách Lịch Sử <i class="fas fa-trophy"></i></a>
+                <a href="#map-section" class="btn btn-red">Khám phá hành trình <i class="fas fa-arrow-down"></i></a>
+                <a href="#quiz-section" class="btn btn-gold-outline">Thi học giả lịch sử <i class="fas fa-award"></i></a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span class="mouse-icon"><span class="wheel"></span></span>
-            <span class="scroll-text">Cuộn xuống để khám phá</span>
         </div>
     </section>
 
-    <!-- Map Section -->
+    <!-- Interactive World Map Section -->
     <section id="map-section" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">BẢN ĐỒ TƯƠNG TÁC</h2>
+                <h2 class="section-title">BẢN ĐỒ NHÂN TÂM TƯƠNG TÁC</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Dõi theo lộ trình vạn dặm xuyên lục địa của Người thanh niên yêu nước (1911 - 1941)</p>
+                <p class="section-subtitle">Dõi theo các vùng lãnh thổ Bác đã đặt chân tới và vị trí của các nhân vật tầm cỡ gắn liền với hành trình của Người</p>
             </div>
 
             <div class="map-layout">
-                <!-- Interactive SVG Map Wrapper -->
+                <!-- Interactive SVG Map Wrapper in Parchment/Cream Style -->
                 <div class="map-wrapper">
                     <svg viewBox="0 0 1000 500" class="svg-world-map" id="interactive-svg-map">
-                        <!-- Subtle coordinate grid lines -->
-                        <g class="grid-lines" opacity="0.1">
-                            <line x1="0" y1="100" x2="1000" y2="100" stroke="#fff" />
-                            <line x1="0" y1="200" x2="1000" y2="200" stroke="#fff" />
-                            <line x1="0" y1="300" x2="1000" y2="300" stroke="#fff" />
-                            <line x1="0" y1="400" x2="1000" y2="400" stroke="#fff" />
-                            <line x1="200" y1="0" x2="200" y2="500" stroke="#fff" />
-                            <line x1="400" y1="0" x2="400" y2="500" stroke="#fff" />
-                            <line x1="600" y1="0" x2="600" y2="500" stroke="#fff" />
-                            <line x1="800" y1="0" x2="800" y2="500" stroke="#fff" />
+                        <!-- coord lines -->
+                        <g class="grid-lines" opacity="0.2">
+                            <line x1="0" y1="100" x2="1000" y2="100" stroke="#D4AF37" />
+                            <line x1="0" y1="200" x2="1000" y2="200" stroke="#D4AF37" />
+                            <line x1="0" y1="300" x2="1000" y2="300" stroke="#D4AF37" />
+                            <line x1="0" y1="400" x2="1000" y2="400" stroke="#D4AF37" />
+                            <line x1="200" y1="0" x2="200" y2="500" stroke="#D4AF37" />
+                            <line x1="400" y1="0" x2="400" y2="500" stroke="#D4AF37" />
+                            <line x1="600" y1="0" x2="600" y2="500" stroke="#D4AF37" />
+                            <line x1="800" y1="0" x2="800" y2="500" stroke="#D4AF37" />
                         </g>
 
                         <!-- Stylized Minimalist World Outline Paths -->
-                        <!-- Designed to be artistic & premium, serving as an interactive board -->
-                        <g class="map-continents" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(212, 175, 55, 0.15)" stroke-width="1.5">
+                        <g class="map-continents">
                             <!-- North America representation -->
                             <path d="M50 80 Q100 50 200 60 T300 120 T220 220 T100 150 Z" />
                             <!-- South America representation -->
@@ -129,70 +124,39 @@
                             <path d="M820 380 Q920 390 940 440 T840 460 Z" />
                         </g>
 
-                        <!-- Glowing Journey Route Path (SVG Path Animation) -->
-                        <path id="journey-path" d="M 750 320 Q 560 300 480 180 T 220 160 T 450 130 T 465 150 T 560 120 T 770 260 T 745 295" fill="none" stroke="url(#gold-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- Glowing Journey Route Path (SVG Path Animation) in Red Wax style -->
+                        <path id="journey-path" d="M 750 320 Q 560 300 480 180 T 220 160 T 450 130 T 465 150 T 560 120 T 770 260 T 745 295" fill="none" stroke="#A93226" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                         
                         <!-- Pulse effects around active nodes -->
                         <g id="pulse-group"></g>
 
-                        <!-- Gradients definition -->
-                        <defs>
-                            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#D4AF37" />
-                                <stop offset="50%" stop-color="#FFDF73" />
-                                <stop offset="100%" stop-color="#9A7B1C" />
-                            </linearGradient>
-                            <filter id="glow-effect" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="5" result="blur" />
-                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                            </filter>
-                        </defs>
-
                         <!-- Interactive Milestones Node Group -->
-                        <!-- Saigon -->
+                        <!-- Ch1: Vietnam - Sai Gon -->
                         <g class="map-node active" data-id="1" transform="translate(750, 320)">
                             <circle r="14" class="node-glow" />
                             <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">Sài Gòn</text>
+                            <text y="-18" class="node-label">Việt Nam</text>
                         </g>
-                        <!-- Bôn ba -->
-                        <g class="map-node" data-id="2" transform="translate(480, 180)">
+                        <!-- Ch2: France - Paris -->
+                        <g class="map-node" data-id="2" transform="translate(465, 150)">
                             <circle r="14" class="node-glow" />
                             <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">Marseille</text>
+                            <text y="-18" class="node-label">Tây Âu</text>
                         </g>
-                        <!-- Boston/New York -->
-                        <g class="map-node" data-id="3" transform="translate(220, 160)">
+                        <!-- Ch3: USSR - Moscow -->
+                        <g class="map-node" data-id="3" transform="translate(560, 120)">
                             <circle r="14" class="node-glow" />
                             <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">New York</text>
+                            <text y="-18" class="node-label">Liên Xô</text>
                         </g>
-                        <!-- London -->
-                        <g class="map-node" data-id="4" transform="translate(450, 130)">
+                        <!-- Ch4: China - Quang Chau -->
+                        <g class="map-node" data-id="4" transform="translate(770, 260)">
                             <circle r="14" class="node-glow" />
                             <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">London</text>
+                            <text y="-18" class="node-label">Trung Quốc</text>
                         </g>
-                        <!-- Paris -->
-                        <g class="map-node" data-id="5" transform="translate(465, 150)">
-                            <circle r="14" class="node-glow" />
-                            <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">Paris</text>
-                        </g>
-                        <!-- Moscow -->
-                        <g class="map-node" data-id="6" transform="translate(560, 120)">
-                            <circle r="14" class="node-glow" />
-                            <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">Moscow</text>
-                        </g>
-                        <!-- Guangzhou -->
-                        <g class="map-node" data-id="7" transform="translate(770, 260)">
-                            <circle r="14" class="node-glow" />
-                            <circle r="7" class="node-core" />
-                            <text y="-18" class="node-label">Quảng Châu</text>
-                        </g>
-                        <!-- Pac Bo -->
-                        <g class="map-node" data-id="8" transform="translate(745, 295)">
+                        <!-- Ch5: Vietnam - Pac Bo -->
+                        <g class="map-node" data-id="5" transform="translate(745, 295)">
                             <circle r="14" class="node-glow" />
                             <circle r="7" class="node-core" />
                             <text y="-18" class="node-label">Pác Bó</text>
@@ -200,20 +164,20 @@
                     </svg>
                 </div>
 
-                <!-- Info Display Card on Map -->
-                <div class="map-info-card glass-panel" id="map-info-box">
+                <!-- Info Display Card on Map (Parchment Styled) -->
+                <div class="map-info-card" id="map-info-box">
                     <div class="card-inner">
-                        <span class="milestone-badge">MỐC 1 • 1911</span>
-                        <h3 class="milestone-title">Khởi Hành Tìm Đường Cứu Nước</h3>
-                        <p class="milestone-place"><i class="fas fa-map-marker-alt text-gold"></i> Bến Cảng Nhà Rồng, Sài Gòn</p>
+                        <span class="milestone-badge">CHƯƠNG 1 • TRƯỚC 1911</span>
+                        <h3 class="milestone-title">Khởi Hành & Những người Thầy</h3>
+                        <p class="milestone-place"><i class="fas fa-map-marker-alt text-red"></i> Việt Nam (Nghệ An - Huế - Sài Gòn)</p>
                         <p class="milestone-desc">
-                            Với khát vọng độc lập cháy bỏng, người thanh niên Nguyễn Tất Thành quyết chí rời quê hương. Lấy tên Văn Ba, Người xin làm phụ bếp trên con tàu Đô đốc Latouche-Tréville để đi sang các nước phương Tây, xem họ làm thế nào rồi trở về giúp đồng bào mình.
+                            Trước khi ra đi tìm đường cứu nước, người thanh niên Nguyễn Tất Thành lớn lên trong gia đình nho học yêu nước, sớm tiếp thu chí khí bất khuất từ cha mình cùng những bậc thầy yêu nước lỗi lạc khắp miền Trung và Nam Kỳ.
                         </p>
                         <div class="milestone-media">
                             <img src="assets/images/nha_rong_1911.png" alt="Bến Cảng Nhà Rồng 1911" class="milestone-img" id="map-info-img">
                         </div>
                         <div class="card-footer">
-                            <span class="tip-text"><i class="fas fa-info-circle"></i> Bấm các nút trên bản đồ hoặc cuộn xuống để khám phá</span>
+                            <span class="tip-text"><i class="fas fa-info-circle"></i> Bấm các điểm mốc đỏ trên bản đồ để vẽ lộ trình hoặc cuộn xuống để khám phá các nhân vật đồng hành.</span>
                         </div>
                     </div>
                 </div>
@@ -221,168 +185,246 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section id="timeline-section" class="section-padding bg-darker">
+    <!-- Timeline & Chapters Section -->
+    <section id="timeline-section" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">HÀNH TRÌNH 30 NĂM CỨU NƯỚC</h2>
+                <h2 class="section-title">HỒ SƠ NHÂN VẬT ĐỒNG HÀNH</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Chi tiết dòng lịch sử hào hùng, những quyết định thay đổi số phận cả dân tộc Việt Nam</p>
+                <p class="section-subtitle">Tư liệu lịch sử chi tiết về những người Thầy truyền lửa, những người Bạn nâng đỡ và những người Đồng chí keo sơn của Chủ tịch Hồ Chí Minh</p>
             </div>
 
             <!-- Vertical Timeline Component -->
             <div class="timeline-container">
                 <div class="timeline-line"></div>
                 
-                <!-- Event 1 (1911) -->
-                <div class="timeline-item left scroll-reveal" data-id="1">
-                    <div class="timeline-dot"><i class="fas fa-anchor"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">05/06/1911</div>
-                        <h3 class="event-title">Bến Cảng Nhà Rồng - Đi Tìm Hình Của Nước</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Sài Gòn, Việt Nam</p>
-                        <div class="event-image-container">
-                            <img src="assets/images/ship_latouche.png" alt="Tàu Admiral Latouche-Tréville" class="event-img">
+                <!-- CHAPTER 1: Vietnam (Before 1911) -->
+                <div class="timeline-item scroll-reveal" data-id="1">
+                    <div class="chapter-header">
+                        <div class="chapter-year">TRƯỚC NĂM 1911</div>
+                        <h3 class="chapter-title">Chương I: Việt Nam - Khởi hành & Những người Thầy</h3>
+                    </div>
+                    
+                    <!-- Polaroid Cards Grid (2 cards) -->
+                    <div class="character-grid grid-2">
+                        <!-- Phan Bội Châu -->
+                        <div class="polaroid-card" data-character="phan_boi_chau">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/phan_boi_chau.jpg" alt="Phan Bội Châu" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Phan Bội Châu</h4>
+                                <span class="polaroid-role">Sĩ phu yêu nước tiên phong</span>
+                            </div>
                         </div>
-                        <p class="event-description">
-                            Quyết định vĩ đại của người thanh niên 21 tuổi Nguyễn Tất Thành. Trực tiếp chứng kiến cảnh lầm than của đồng bào dưới ách đô hộ của thực dân Pháp, Người chối từ lời đề nghị đi du học của những nhà yêu nước đương thời, chọn dấn thân vào biển cả bao la, lướt qua sóng gió thế giới để tự tìm con đường giải phóng cho dân tộc.
-                        </p>
-                        <blockquote class="event-quote">
-                            "Tôi muốn đi ra nước ngoài, xem nước Pháp và các nước khác. Sau khi xem xét họ làm như thế nào, tôi sẽ trở về giúp đồng bào chúng ta."
-                        </blockquote>
-                    </div>
-                </div>
 
-                <!-- Event 2 (1911-1917) -->
-                <div class="timeline-item right scroll-reveal" data-id="2">
-                    <div class="timeline-dot"><i class="fas fa-globe"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">1911 - 1917</div>
-                        <h3 class="event-title">Bôn Ba Khắp Năm Châu Bốn Biển</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Toàn cầu (Pháp, Anh, Mỹ, Phi...)</p>
-                        <p class="event-description">
-                            Để tồn tại và nghiên cứu, Người phải làm đủ mọi công việc nặng nhọc: đốt lò, quét tuyết, chạy bàn, bồi tàu. Người đặt chân tới nước Mỹ, nước Anh, nước Pháp và nhiều thuộc địa tại châu Phi. Từ thực tế lao động, Người rút ra chân lý bất hủ: Ở đâu bọn đế quốc thực dân cũng tàn bạo, ở đâu những người lao động nghèo khổ cũng là bạn của nhau.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Event 3 (1919) -->
-                <div class="timeline-item left scroll-reveal" data-id="3">
-                    <div class="timeline-dot"><i class="fas fa-feather-alt"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">18/06/1919</div>
-                        <h3 class="event-title">Nguyễn Ái Quốc và Bản Yêu Sách 8 Điểm</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Versailles, Paris, Pháp</p>
-                        <p class="event-description">
-                            Tại Hội nghị hòa bình Versailles, thay mặt những người Việt Nam yêu nước, Nguyễn Tất Thành chính thức sử dụng tên gọi **Nguyễn Ái Quốc** (Nguyễn Người Yêu Nước) gửi bản *Yêu sách của nhân dân An Nam* đòi các quyền tự do tối thiểu, dân chủ và bình đẳng. Bản yêu sách làm chấn động dư luận Pháp và thức tỉnh phong trào yêu nước Việt Nam.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Event 4 (1920) -->
-                <div class="timeline-item right scroll-reveal" data-id="4">
-                    <div class="timeline-dot"><i class="fas fa-book-open"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">Tháng 07/1920</div>
-                        <h3 class="event-title">Tìm Thấy Con Đường - Ánh Sáng Luận Cương</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Paris, Pháp</p>
-                        <p class="event-description">
-                            Nguyễn Ái Quốc đọc bản *Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa* của V.I. Lenin đăng trên báo L'Humanité. Bản luận cương trả lời trực tiếp câu hỏi cứu nước đã trăn trở bấy lâu của Người: Chỉ có con đường cách mạng vô sản mới giải phóng triệt để dân tộc khỏi xiềng xích thực dân.
-                        </p>
-                        <blockquote class="event-quote">
-                            "Luận cương của Lenin làm cho tôi rất cảm động, phấn khởi, sáng tỏ, tin tưởng biết bao! Tôi vui mừng đến phát khóc lên. Ngồi một mình trong buồng mà tôi nói to lên như đang nói trước quần chúng đông đảo: Hỡi đồng bào bị đọa đày đau khổ! Đây là cái cần thiết cho chúng ta, đây là con đường giải phóng chúng ta!"
-                        </blockquote>
-                    </div>
-                </div>
-
-                <!-- Event 5 (1920) -->
-                <div class="timeline-item left scroll-reveal" data-id="5">
-                    <div class="timeline-dot"><i class="fas fa-bullhorn"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">25 - 30/12/1920</div>
-                        <h3 class="event-title">Đại Hội Tours - Người Cộng Sản Đầu Tiên</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Tours, Pháp</p>
-                        <div class="event-image-container">
-                            <img src="assets/images/dai_hoi_tours.png" alt="Nguyễn Ái Quốc tại Đại hội Tours" class="event-img">
+                        <!-- Trương Công Định -->
+                        <div class="polaroid-card" data-character="truong_cong_dinh">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/truong_cong_dinh.jpg" alt="Trương Công Định" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Trương Công Định</h4>
+                                <span class="polaroid-role">Ngọn cờ ái quốc Nam Kỳ</span>
+                            </div>
                         </div>
-                        <p class="event-description">
-                            Tại Đại hội lần thứ 18 của Đảng Xã hội Pháp ở thành phố Tours, Nguyễn Ái Quốc đã bỏ phiếu tán thành gia nhập Quốc tế thứ ba (Quốc tế Cộng sản) và tham gia sáng lập Đảng Cộng sản Pháp. Sự kiện này đánh dấu bước chuyển biến lịch sử: từ một người yêu nước chân chính trở thành một chiến sĩ cộng sản lỗi lạc.
-                        </p>
                     </div>
                 </div>
 
-                <!-- Event 6 (1923-1924) -->
-                <div class="timeline-item right scroll-reveal" data-id="6">
-                    <div class="timeline-dot"><i class="fas fa-landmark"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">1923 - 1924</div>
-                        <h3 class="event-title">Đến Liên Xô - Đất Nước Của Lenin vĩ đại</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Moscow, Liên Xô</p>
-                        <p class="event-description">
-                            Người sang Liên Xô, học tập tại Trường Đại học Lao động Cộng sản phương Đông, nghiên cứu về lý luận chủ nghĩa Mác-Lenin và thực tiễn xây dựng chủ nghĩa xã hội. Tại đây Người tham gia viết bài cho nhiều tờ báo lớn, tham dự các Đại hội của Quốc tế Cộng sản và chuẩn bị lực lượng cán bộ cách mạng cho Việt Nam.
-                        </p>
+                <!-- CHAPTER 2: France, UK, USA (1911 - 1923) -->
+                <div class="timeline-item scroll-reveal" data-id="2">
+                    <div class="chapter-header">
+                        <div class="chapter-year">NĂM 1911 - 1923</div>
+                        <h3 class="chapter-title">Chương II: Pháp, Anh, Mỹ - Ánh sáng phương Tây</h3>
                     </div>
-                </div>
-
-                <!-- Event 7 (1924-1930) -->
-                <div class="timeline-item left scroll-reveal" data-id="7">
-                    <div class="timeline-dot"><i class="fas fa-users"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">1924 - 1930</div>
-                        <h3 class="event-title">Thành Lập Đảng Cộng Sản Việt Nam</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Quảng Châu, Trung Quốc / Hong Kong</p>
-                        <p class="event-description">
-                            Người chuyển đến Quảng Châu, sáng lập *Hội Việt Nam Cách mạng Thanh niên*, xuất bản báo *Thanh niên* và cuốn sách *Đường Kách mệnh* để truyền bá lý luận cách mạng vào trong nước. Ngày **03/02/1930**, Người chủ trì hội nghị hợp nhất các tổ chức cộng sản tại Hong Kong, chính thức thành lập Đảng Cộng sản Việt Nam độc nhất lãnh đạo cách mạng.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Event 8 (1941) -->
-                <div class="timeline-item right scroll-reveal" data-id="8">
-                    <div class="timeline-dot"><i class="fas fa-flag"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <div class="time-stamp">28/01/1941</div>
-                        <h3 class="event-title">Pác Bó - Trở Về Tổ Quốc Thân Yêu</h3>
-                        <p class="event-subtitle"><i class="fas fa-map-marker-alt text-gold"></i> Mốc 108, Hà Quảng, Cao Bằng</p>
-                        <div class="event-image-container">
-                            <img src="assets/images/pac_bo_1941.png" alt="Pác Bó Cao Bằng" class="event-img">
+                    
+                    <!-- Polaroid Cards Grid (2 cards) -->
+                    <div class="character-grid grid-2">
+                        <!-- Phan Văn Trường -->
+                        <div class="polaroid-card" data-character="phan_van_truong">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/phan_van_truong.jpg" alt="Phan Văn Trường" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Phan Văn Trường</h4>
+                                <span class="polaroid-role">Luật sư yêu nước tại Paris</span>
+                            </div>
                         </div>
-                        <p class="event-description">
-                            Người đặt chân trở về đất mẹ yêu thương tại Cột mốc 108 biên giới Việt - Trung. Ba mươi năm bôn ba khắp góc bể chân trời cuối cùng cũng hoàn thành mục tiêu ban đầu: Tìm ra con đường độc lập giải phóng dân tộc. Người trở về hang Pác Bó, tự tay lập bản doanh, viết nên trang sử chói lọi của Cách mạng tháng Tám, khai sinh ra nước Việt Nam Dân chủ Cộng hòa vào ngày 2/9/1945.
-                        </p>
-                        <blockquote class="event-quote">
-                            "Kìa bóng Bác đang hôn lên hòn đất<br>
-                            Lắng nghe trong đất nóng trăm loài hoa...<br>
-                            Mỗi bước chân đi đất ấm tình Người"
-                        </blockquote>
+
+                        <!-- O.Mandenxtam -->
+                        <div class="polaroid-card" data-character="o_mandenxtam">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/o_mandenxtam.jpg" alt="O.Mandenxtam" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">O. Mandenxtam</h4>
+                                <span class="polaroid-role">Nhà thơ & Nhà báo quốc tế</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- CHAPTER 3: USSR (1923 - 1924) -->
+                <div class="timeline-item scroll-reveal" data-id="3">
+                    <div class="chapter-header">
+                        <div class="chapter-year">NĂM 1923 - 1924</div>
+                        <h3 class="chapter-title">Chương III: Liên Xô - Cội nguồn Ánh sáng</h3>
+                    </div>
+                    
+                    <!-- Polaroid Cards Grid (2 cards) -->
+                    <div class="character-grid grid-2">
+                        <!-- V.I. Lenin -->
+                        <div class="polaroid-card" data-character="vi_lenin">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/vi_lenin.jpg" alt="V.I. Lenin" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">V.I. Lenin</h4>
+                                <span class="polaroid-role">Lãnh tụ Cách mạng Vô sản</span>
+                            </div>
+                        </div>
+
+                        <!-- Manuilsky -->
+                        <div class="polaroid-card" data-character="manuilsky">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/manuilsky.jpg" alt="Dmitry Manuilsky" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">D. Manuilsky</h4>
+                                <span class="polaroid-role">Ủy viên Quốc tế Cộng sản</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 4: China & Thailand (1924 - 1941) -->
+                <div class="timeline-item scroll-reveal" data-id="4">
+                    <div class="chapter-header">
+                        <div class="chapter-year">NĂM 1924 - 1941</div>
+                        <h3 class="chapter-title">Chương IV: Trung Quốc & Thái Lan - Gieo hạt giống Cách mạng</h3>
+                    </div>
+                    
+                    <!-- Polaroid Cards Grid (2 cards) -->
+                    <div class="character-grid grid-2">
+                        <!-- Borodin -->
+                        <div class="polaroid-card" data-character="borodin">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/borodin.jpg" alt="Mikhail Borodin" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Mikhail Borodin</h4>
+                                <span class="polaroid-role">Cố vấn chính trị Liên Xô</span>
+                            </div>
+                        </div>
+
+                        <!-- Tống Khánh Linh -->
+                        <div class="polaroid-card" data-character="tong_khanh_linh">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/tong_khanh_linh.jpg" alt="Tống Khánh Linh" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Tống Khánh Linh</h4>
+                                <span class="polaroid-role">Biểu tượng nhân đạo Trung Hoa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 5: Vietnam (1941) -->
+                <div class="timeline-item scroll-reveal" data-id="5">
+                    <div class="chapter-header">
+                        <div class="chapter-year">NĂM 1941</div>
+                        <h3 class="chapter-title">Chương V: Việt Nam - Trở về & Khởi nghĩa</h3>
+                    </div>
+                    
+                    <!-- Polaroid Cards Grid (2 cards) -->
+                    <div class="character-grid grid-2">
+                        <!-- Võ Nguyên Giáp -->
+                        <div class="polaroid-card" data-character="vo_nguyen_giap">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/vo_nguyen_giap.jpg" alt="Võ Nguyên Giáp" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Võ Nguyên Giáp</h4>
+                                <span class="polaroid-role">Đại tướng của Nhân dân</span>
+                            </div>
+                        </div>
+
+                        <!-- Nhân dân Cao Bằng -->
+                        <div class="polaroid-card" data-character="nhan_dan_cao_bang">
+                            <div class="polaroid-img-wrapper">
+                                <img src="assets/images/nhan_dan_cao_bang.jpg" alt="Nhân dân Cao Bằng" class="polaroid-img">
+                            </div>
+                            <div class="polaroid-info">
+                                <h4 class="polaroid-name">Nhân dân Cao Bằng</h4>
+                                <span class="polaroid-role">Lòng dân che chở cách mạng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Quiz Section -->
+    <!-- Vintage Dossier Detail Modal (Hidden by default) -->
+    <div class="modal-overlay" id="character-modal">
+        <div class="dossier-modal">
+            <button class="close-modal" id="btn-close-modal" aria-label="Close Dossier"><i class="fas fa-times"></i></button>
+            <div class="dossier-layout">
+                <!-- Left: Photo Frame -->
+                <div class="dossier-photo-card">
+                    <div class="dossier-photo-wrapper">
+                        <img src="" alt="" class="dossier-photo" id="modal-photo">
+                    </div>
+                    <div class="dossier-lifespan" id="modal-lifespan">1867 - 1940</div>
+                </div>
+                
+                <!-- Right: Information file sheet -->
+                <div class="dossier-info-file">
+                    <span class="dossier-tag">HỒ SƠ TƯ LIỆU QUỐC GIA</span>
+                    <h3 class="dossier-name" id="modal-name">Phan Bội Châu</h3>
+                    <h4 class="dossier-role" id="modal-role">Nhà cách mạng tiên phong</h4>
+                    
+                    <div class="dossier-quote-box">
+                        <p class="dossier-quote" id="modal-quote">"Tôi muốn làm việc cách mạng ở nước ngoài..."</p>
+                        <span class="dossier-quote-author" id="modal-quote-author">— Phan Bội Châu nói về Bác</span>
+                    </div>
+                    
+                    <div class="dossier-content-area">
+                        <h5 class="dossier-header-section">Quan hệ & Ảnh hưởng lịch sử</h5>
+                        <p class="dossier-bio" id="modal-bio">
+                            Đang tải thông tin chi tiết về mối liên kết lịch sử vĩ đại này...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heritage Corner: Quiz & Music Player -->
     <section id="quiz-section" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">THỬ THÁCH HỌC GIẢ LỊCH SỬ</h2>
+                <h2 class="section-title">THỬ THÁCH HỌC GIẢ TƯ TƯỞNG</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Kiểm tra kiến thức lịch sử của bạn về hành trình cứu nước của Bác Hồ và nhận Giấy chứng nhận Vinh dự</p>
+                <p class="section-subtitle">Kiểm tra vốn hiểu biết lịch sử của bạn về hành trình bôn ba thế giới và những người đồng hành cùng Chủ tịch Hồ Chí Minh</p>
             </div>
 
-            <div class="quiz-wrapper glass-panel">
-                <!-- Name input state -->
+            <!-- Quiz Main wrapper in parchment parchment style -->
+            <div class="quiz-wrapper">
+                <!-- Welcome/Registration state -->
                 <div id="quiz-welcome" class="quiz-state-panel active">
-                    <div class="quiz-icon-large"><i class="fas fa-scroll text-gold"></i></div>
-                    <h3>Bắt đầu thử thách của bạn</h3>
-                    <p class="quiz-intro">Đăng ký họ tên của bạn để hệ thống cấp Bằng khen Học giả Lịch sử vinh danh sau khi hoàn thành 5 câu hỏi xuất sắc.</p>
+                    <div class="quiz-icon-large"><i class="fas fa-scroll"></i></div>
+                    <h3>Bắt đầu sát hạch lịch sử</h3>
+                    <p class="quiz-intro">Nhập đầy đủ Họ tên của bạn để Hội đồng Sáng tạo Lịch sử kiểm tra kiến thức và cấp Bằng khen Học giả Danh dự khi đạt điểm tuyệt đối 5/5.</p>
                     <div class="form-group">
                         <input type="text" id="user-name-input" placeholder="Nhập họ và tên của bạn..." required autocomplete="off">
                     </div>
-                    <button id="btn-start-quiz" class="btn btn-gold btn-glow">Bắt Đầu Câu Hỏi <i class="fas fa-play"></i></button>
+                    <button id="btn-start-quiz" class="btn btn-red">Bắt đầu sát hạch <i class="fas fa-feather-alt"></i></button>
                 </div>
 
-                <!-- Questions state -->
+                <!-- Questions gameplay state -->
                 <div id="quiz-game" class="quiz-state-panel">
                     <div class="quiz-progress-bar">
                         <div class="quiz-progress-fill" style="width: 20%;"></div>
@@ -397,40 +439,40 @@
                     </div>
                 </div>
 
-                <!-- Results State -->
+                <!-- Results state -->
                 <div id="quiz-result" class="quiz-state-panel">
-                    <div class="quiz-icon-large" id="result-icon"><i class="fas fa-trophy text-gold"></i></div>
-                    <h3 id="result-greeting">Chúc mừng bạn!</h3>
+                    <div class="quiz-icon-large" id="result-icon"><i class="fas fa-award"></i></div>
+                    <h3 id="result-greeting">Kết quả kỳ sát hạch</h3>
                     <p id="result-score-text" class="result-score">Bạn đã trả lời đúng 5/5 câu hỏi.</p>
-                    <p id="result-summary-text">Bạn đã chứng minh mình là một người con đất Việt am hiểu lịch sử nước nhà một cách sâu sắc.</p>
+                    <p id="result-summary-text">Chúc mừng bạn đã xuất sắc vượt qua kỳ thi học giả lịch sử!</p>
                     
-                    <!-- Golden Certificate Component (Printable) -->
+                    <!-- Printable Golden Merit Certificate (landscape diploma style) -->
                     <div class="certificate-wrapper" id="golden-certificate">
                         <div class="cert-border">
                             <div class="cert-inner-border">
                                 <div class="cert-header">
-                                    <div class="cert-nation">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                                    <div class="cert-nation">BỘ GIÁO DỤC VÀ ĐÀO TẠO - DỰ ÁN TƯ TƯỞNG HỒ CHÍ MINH</div>
                                     <div class="cert-motto">Độc lập - Tự do - Hạnh phúc</div>
-                                    <div class="cert-star">★ ★ ★ ★ ★</div>
+                                    <div class="cert-star">✦ ✦ ✦ ✦ ✦</div>
                                 </div>
-                                <div class="cert-title">GIẤY CHỨNG NHẬN</div>
+                                <div class="cert-title">BẰNG KHEN DANH DỰ</div>
                                 <div class="cert-subtitle">HỌC GIẢ LỊCH SỬ XUẤT SẮC</div>
-                                <div class="cert-award">Vinh danh Học viên yêu nước:</div>
+                                <div class="cert-award">Quyết định vinh danh Học viên ưu tú:</div>
                                 <div class="cert-name" id="cert-recipient-name">NGUYỄN VĂN A</div>
                                 <div class="cert-body">
-                                    Đã hoàn thành xuất sắc Thử thách tìm hiểu Lịch sử chuyên đề:<br>
-                                    <strong>"HÀNH TRÌNH VẠN DẶM TÌM ĐƯỜNG CỨU NƯỚC CỦA BÁC HỒ (1911 - 1941)"</strong><br>
-                                    Đạt số điểm tuyệt đối khoa bảng và thể hiện tấm lòng tôn kính sâu sắc đối với vị lãnh tụ vĩ đại của dân tộc.
+                                    Đã hoàn thành xuất sắc Thử thách trắc nghiệm tương tác chuyên đề:<br>
+                                    <strong>"BẢN ĐỒ NHÂN TÂM: NHỮNG DẤU CHÂN SONG HÀNH (1911 - 1941)"</strong><br>
+                                    Trả lời đúng tuyệt đối mọi câu hỏi sát hạch lịch sử, am tường tư tưởng và cuộc đời hoạt động cách mạng vĩ đại của Chủ tịch Hồ Chí Minh cùng những người đồng chí của Người.
                                 </div>
                                 <div class="cert-footer">
                                     <div class="cert-date">Ngày 21 tháng 05 năm 2026</div>
                                     <div class="cert-sign">
-                                        <div class="sign-title">BAN TỔ CHỨC DỰ ÁN</div>
+                                        <div class="sign-title">HỘI ĐỒNG KHOA HỌC DỰ ÁN</div>
                                         <div class="sign-stamp">
                                             <span class="stamp-circle">HCM202</span>
                                             <span class="stamp-text">ĐÃ XÁC THỰC</span>
                                         </div>
-                                        <div class="sign-name">Hành trình vạn dặm</div>
+                                        <div class="sign-name">Bản Đồ Nhân Tâm</div>
                                     </div>
                                 </div>
                             </div>
@@ -438,44 +480,46 @@
                     </div>
 
                     <div class="result-actions">
-                        <button id="btn-print-cert" class="btn btn-gold btn-glow"><i class="fas fa-print"></i> In/Tải Giấy Chứng Nhận</button>
-                        <button id="btn-restart-quiz" class="btn btn-outline"><i class="fas fa-redo"></i> Thử Thách Lại</button>
+                        <button id="btn-print-cert" class="btn btn-red"><i class="fas fa-print"></i> In/Tải Bằng khen danh dự</button>
+                        <button id="btn-restart-quiz" class="btn btn-gold-outline"><i class="fas fa-redo"></i> Thi thử thách lại</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Music & Quote Space (Media Section) -->
-    <section id="media-section" class="section-padding bg-darker">
+    <!-- Gramophone Turntable Player & Quotes space (Heritage Corner) -->
+    <section id="media-section" class="section-padding bg-vintage-card">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">KHÔNG GIAN DI SẢN</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Lắng nghe những ca từ và ngẫm nghĩ những tư tưởng vĩ đại của Người</p>
+                <p class="section-subtitle">Nghe nhạc hòa tấu cụ dân tộc mộc mạc và chiêm nghiệm những tư tưởng lớn để đời của Người</p>
             </div>
 
             <div class="media-grid">
-                <!-- Vintage Audio Player -->
-                <div class="audio-player-card glass-panel">
-                    <h3 class="card-title"><i class="fas fa-compact-disc text-gold"></i> Trạm Phát Nhạc Lịch Sử</h3>
-                    <p class="card-subtitle">Âm nhạc khơi nguồn cảm hứng</p>
+                <!-- Vintage Audio Gramophone Player -->
+                <div class="audio-player-card">
+                    <h3 class="card-title"><i class="fas fa-compact-disc"></i> Máy Hát Đĩa Than Cổ Điển</h3>
+                    <p class="card-subtitle">Mộc mạc giai điệu tự hào</p>
                     <div class="vinyl-wrapper">
+                        <!-- Turntable rotating disc -->
                         <div class="vinyl-disc" id="vinyl-record">
                             <div class="vinyl-label">
                                 <div class="vinyl-center"></div>
                             </div>
                         </div>
+                        <!-- Swivelling metal tonearm arm -->
                         <div class="player-arm" id="player-arm"></div>
                     </div>
                     <div class="track-info">
                         <h4 id="audio-track-title">Dấu Chân Phía Trước</h4>
-                        <p id="audio-track-artist">Hòa tấu nhạc cụ dân tộc Việt Nam</p>
+                        <p id="audio-track-artist">Hòa tấu sáo trúc & đàn bầu truyền thống</p>
                     </div>
                     <div class="audio-controls">
-                        <button id="btn-prev-song" class="control-btn" aria-label="Previous Track"><i class="fas fa-step-backward"></i></button>
-                        <button id="btn-play-pause" class="control-btn play-btn" aria-label="Play or Pause Track"><i class="fas fa-play"></i></button>
-                        <button id="btn-next-song" class="control-btn" aria-label="Next Track"><i class="fas fa-step-forward"></i></button>
+                        <button id="btn-prev-song" class="control-btn" aria-label="Previous Song"><i class="fas fa-step-backward"></i></button>
+                        <button id="btn-play-pause" class="control-btn play-btn" aria-label="Play or Pause Song"><i class="fas fa-play"></i></button>
+                        <button id="btn-next-song" class="control-btn" aria-label="Next Song"><i class="fas fa-step-forward"></i></button>
                     </div>
                     <div class="progress-container" id="audio-progress-container">
                         <div class="progress-bar-bg">
@@ -486,28 +530,29 @@
                             <span id="audio-duration">03:45</span>
                         </div>
                     </div>
-                    <!-- Audio elements -->
-                    <!-- We use high quality royalty free traditional instrumental music for the demonstration -->
+                    <!-- Audio player stream element -->
                     <audio id="main-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
                 </div>
 
-                <!-- Interactive Quote Carousel -->
-                <div class="quote-card glass-panel">
-                    <h3 class="card-title"><i class="fas fa-quote-left text-gold"></i> Tư Tưởng Hồ Chí Minh</h3>
-                    <p class="card-subtitle">Những câu nói bất hủ truyền lửa ngàn đời</p>
+                <!-- Quotes Carousel -->
+                <div class="quote-card">
+                    <div>
+                        <h3 class="card-title"><i class="fas fa-quote-left"></i> Tư Tưởng Để Đời</h3>
+                        <p class="card-subtitle">Lời ngọc vàng ngời sáng tinh thần thời đại</p>
+                    </div>
                     <div class="quote-carousel-wrapper">
                         <div class="quote-slider" id="quote-slider">
                             <div class="quote-slide active">
-                                <p class="quote-text">"Tự do cho đồng bào tôi, độc lập cho Tổ quốc tôi, đấy là tất cả những gì tôi muốn, đấy là tất cả những gì tôi hiểu."</p>
-                                <span class="quote-author">— Báo Nhân đạo (L'Humanité) Pháp, 1920</span>
+                                <p class="quote-text">"Tôi chỉ có một sự ham muốn, ham muốn tột bậc, là làm sao cho nước ta được hoàn toàn độc lập, dân ta được hoàn toàn tự do..."</p>
+                                <span class="quote-author">— Hồ Chí Minh, 1946</span>
                             </div>
                             <div class="quote-slide">
-                                <p class="quote-text">"Không có gì quý hơn độc lập, tự do!"</p>
-                                <span class="quote-author">— Lời kêu gọi đồng bào chiến sĩ cả nước</span>
+                                <p class="quote-text">"Nguyễn Ái Quốc không phải người châu Âu chúng ta, đồng chí ấy toát ra một thứ văn hóa sâu xa của tương lai..."</p>
+                                <span class="quote-author">— O. Mandenxtam, 1923</span>
                             </div>
                             <div class="quote-slide">
-                                <p class="quote-text">"Nước Việt Nam là một, dân tộc Việt Nam là một. Sông có thể cạn, núi có thể mòn, song chân lý ấy không bao giờ thay đổi."</p>
-                                <span class="quote-author">— Tuyên bố trước quốc dân đồng bào, 1946</span>
+                                <p class="quote-text">"Chỉ có con đường giải phóng giai cấp vô sản và dân tộc thuộc địa mới cứu nước được triệt để khỏi ách thống trị thực dân."</p>
+                                <span class="quote-author">— Nguyễn Ái Quốc tự rút ra từ Lenin</span>
                             </div>
                         </div>
                         <div class="carousel-dots" id="carousel-dots">
@@ -517,30 +562,29 @@
                         </div>
                     </div>
                     <div class="quote-decor">
-                        <i class="fas fa-ribbon text-gold"></i>
+                        <i class="fas fa-award"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Footer -->
+    <!-- Main Footer (Dark ink contrast) -->
     <footer class="site-footer">
         <div class="container text-center">
             <div class="footer-logo">
-                <h3 class="logo-gold">HÀNH TRÌNH VẠN DẶM</h3>
-                <p>Kỷ niệm 115 năm ngày Bác Hồ ra đi tìm đường cứu nước (05/06/1911 - 05/06/2026)</p>
+                <h3 class="logo-gold">BẢN ĐỒ NHÂN TÂM</h3>
+                <p>Website Sáng Tạo Lịch Sử - Kỷ niệm hành trình cứu nước của Chủ tịch Hồ Chí Minh</p>
             </div>
             <div class="footer-links">
                 <a href="#hero">Khởi Hành</a>
                 <a href="#map-section">Bản Đồ</a>
-                <a href="#timeline-section">Dòng Thời Gian</a>
-                <a href="#quiz-section">Thử Thách</a>
-                <a href="#media-section">Không Gian Nhạc</a>
+                <a href="#timeline-section">Hồ Sơ Đồng Hành</a>
+                <a href="#quiz-section">Thi Học Giả</a>
+                <a href="#media-section">Không Gian Di Sản</a>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 Dự Án Sáng Tạo Lịch Sử - Mã Môn Học HCM202. Phát triển với <i class="fas fa-heart text-red"></i> bởi Antigravity.</p>
-                <p class="credits">Tư liệu lịch sử được tổng hợp từ Bảo tàng Hồ Chí Minh và các nguồn sử liệu chính thống.</p>
+                <p>&copy; 2026 Dự Án Website Môn học Tư tưởng Hồ Chí Minh - Nhóm Sáng Tạo HCM202</p>
             </div>
         </div>
     </footer>
