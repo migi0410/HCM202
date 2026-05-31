@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Màn 1: Giải Mã Tín Hiệu — HCM Universe</title>
+    <meta name="description" content="Thử thách trắc nghiệm lịch sử giải mã tín hiệu lý luận Đại đoàn kết.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="style.css?v=5.2">
+</head>
+<body class="console-open">
+
+    <!-- Twinkling Stars Background Canvas -->
+    <canvas id="starfield-canvas"></canvas>
+
+    <!-- Ambient Nebula Glowing Clouds -->
+    <div class="nebula-glow glow-1"></div>
+    <div class="nebula-glow glow-2"></div>
+    <div class="nebula-glow glow-3"></div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-white">HCM</span><span class="logo-neon">UNIVERSE</span>
+            </a>
+            <!-- Mute HUD Sound Toggle -->
+            <button class="hud-sound-toggle" aria-label="Mute/Unmute SFX" id="btn-mute-hud">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle Navigation" id="btn-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="ontap.html" class="nav-link">1. Ôn Tập</a></li>
+                    <li><a href="tracnghiem.html" class="nav-link active">2. Thi Đấu</a></li>
+                    <li><a href="lixi.html" class="nav-link">3. Lì Xì Vũ Trụ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HUD Indicators -->
+    <div class="hud-coordinates">
+        <div class="coordinate-item"><span class="hud-label">TELEMETRY //</span> <span>SIGNAL STACK</span></div>
+        <div class="coordinate-item"><span class="hud-label">COORDINATE //</span> <span>QUIZ SECTION</span></div>
+        <div class="coordinate-item"><span class="hud-label">GLOW CORE //</span> <span>ACTIVE</span></div>
+    </div>
+
+    <!-- Main Content Frame -->
+    <main>
+        
+        <section class="game-section" style="min-height: 100vh; padding: 120px 0 80px;">
+            <div class="game-section-header">
+                <div class="game-badge"><span class="badge-dot animate-pulse"></span> [ MÀN 1: GIẢI MÃ TÍN HIỆU ]</div>
+                <h2 class="game-title">TRẠM GIẢI MÃ TÍN HIỆU LÝ LUẬN</h2>
+                <div class="divider">
+                    <span class="star-gold">✦</span>
+                </div>
+                <div class="hud-log-console">
+                    <span class="hud-log-label">STATUS //</span>
+                    <span id="game-hud-sys-msg" class="hud-system-log success">// HỆ THỐNG GIẢI MÃ ĐÃ ỔN ĐỊNH. CHỌN 1 Ô ĐỂ GIẢI CÂU HỎI!</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Cockpit Tabs Toggle -->
+            <div class="game-tab-toggle-container">
+                <a href="ontap.html" class="game-tab-btn" style="text-decoration: none;">
+                    <i class="fas fa-book-open"></i> PHẦN ÔN TẬP
+                </a>
+                <a href="tracnghiem.html" class="game-tab-btn active" style="text-decoration: none;">
+                    <i class="fas fa-satellite-dish"></i> MÀN 1: GIẢI MÃ TÍN HIỆU
+                </a>
+                <a href="lixi.html" class="game-tab-btn" style="text-decoration: none;">
+                    <i class="fas fa-gift"></i> MÀN 2: LÌ XÌ VŨ TRỤ
+                </a>
+            </div>
+
+            <div class="game-main-layout">
+                <!-- Left Column: Active Game Panel (Tab Switch) -->
+                <div class="game-active-panel">
+                    
+                    <div class="game-panel active">
+                        <div class="panel-header-desc">
+                            <h4><i class="fas fa-satellite-dish"></i> HỆ THỐNG 9 TÍN HIỆU LÝ LUẬN ĐẠI ĐOÀN KẾT</h4>
+                            <p>Nhấp vào bất kỳ ô tín hiệu số nào dưới đây để mở câu hỏi trắc nghiệm lịch sử. Trả lời đúng để nhận ngay 1 Token mở bao lì xì. Mỗi câu chỉ được làm 1 lần duy nhất!</p>
+                        </div>
+                        <div class="grid-quiz" id="grid-quiz">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Status HUD & Claimed Prizes Inventory -->
+                <div class="game-hud-sidebar">
+                    <div class="hud-sidebar-card">
+                        <div class="hud-card-header">
+                            <span class="hud-card-badge">[ TELEMETRY // STATS ]</span>
+                            <h3>BẢNG HUD PHI HÀNH GIA</h3>
+                        </div>
+                        
+                        <!-- Mini statistics boxes -->
+                        <div class="hud-stats-grid">
+                            <div class="hud-stat-box score-stat">
+                                <span class="stat-label">CÂU ĐÚNG</span>
+                                <span class="stat-value" id="hud-score-value">0/9</span>
+                            </div>
+                            <div class="hud-stat-box tokens-stat">
+                                <span class="stat-label">TOKEN LÌ XÌ</span>
+                                <span class="stat-value" id="hud-tokens-value">0</span>
+                            </div>
+                            <div class="hud-stat-box claims-stat">
+                                <span class="stat-label">ĐÃ MỞ</span>
+                                <span class="stat-value" id="hud-lixi-claimed-value">0/9</span>
+                            </div>
+                        </div>
+
+                        <!-- Inventory Box -->
+                        <div class="astronaut-inventory">
+                            <h4><i class="fas fa-briefcase"></i> TÚI ĐỒ LÌ XÌ VŨ TRỤ</h4>
+                            <ul class="inventory-list" id="inventory-list">
+                                <li class="empty-inv">// Rỗng. Trả lời đúng để tích lũy lì xì.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Reset / Action Center -->
+                        <div class="hud-actions-center">
+                            <p class="hud-note"><i class="fas fa-info-circle"></i> Trả lời đúng nhận lượt bốc bao lì xì ngẫu nhiên. Mỗi câu chỉ được trả lời 1 lần duy nhất!</p>
+                            <button class="btn btn-outline btn-reset" id="btn-reset-game">
+                                <i class="fas fa-sync-alt"></i> RESET HỆ THỐNG
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full-Screen Glassmorphic Question Modal (Holographic Pane) -->
+            <div class="modal-question" id="modal-question">
+                <div class="modal-question-content">
+                    <button class="modal-question-close" id="modal-question-close" aria-label="Đóng"><i class="fas fa-times"></i></button>
+                    <div class="modal-question-body" id="modal-question-body">
+                        <!-- Injected dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" style="background: rgba(2, 2, 6, 0.9);">
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright-text">&copy; 2026 HCM UNIVERSE — Dự án Sáng tạo học thuật HCM202.</p>
+                <div class="footer-bottom-hud-details">
+                    <span>COORDINATE CORE // VER. 5.2</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="game_shared.js"></script>
+    <script src="tracnghiem.js"></script>
+</body>
+</html>

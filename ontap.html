@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Kiến Thức — HCM Universe</title>
+    <meta name="description" content="Thư viện học liệu ôn tập Lý luận Hồ Chí Minh về Đại đoàn kết toàn dân tộc.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="style.css?v=5.2">
+</head>
+<body class="console-open">
+
+    <!-- Twinkling Stars Background Canvas -->
+    <canvas id="starfield-canvas"></canvas>
+
+    <!-- Ambient Nebula Glowing Clouds -->
+    <div class="nebula-glow glow-1"></div>
+    <div class="nebula-glow glow-2"></div>
+    <div class="nebula-glow glow-3"></div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-white">HCM</span><span class="logo-neon">UNIVERSE</span>
+            </a>
+            <!-- Mute HUD Sound Toggle -->
+            <button class="hud-sound-toggle" aria-label="Mute/Unmute SFX" id="btn-mute-hud">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle Navigation" id="btn-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="ontap.html" class="nav-link active">1. Ôn Tập</a></li>
+                    <li><a href="tracnghiem.html" class="nav-link">2. Thi Đấu</a></li>
+                    <li><a href="lixi.html" class="nav-link">3. Lì Xì Vũ Trụ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HUD Indicators -->
+    <div class="hud-coordinates">
+        <div class="coordinate-item"><span class="hud-label">TELEMETRY //</span> <span>STUDY DECK</span></div>
+        <div class="coordinate-item"><span class="hud-label">COORDINATE //</span> <span>HCM202 REVIEW</span></div>
+        <div class="coordinate-item"><span class="hud-label">GLOW CORE //</span> <span>ONLINE</span></div>
+    </div>
+
+    <!-- Main Content Frame -->
+    <main>
+        
+        <section class="game-section" style="min-height: 100vh; padding: 120px 0 80px;">
+            <div class="game-section-header">
+                <div class="game-badge"><span class="badge-dot animate-pulse"></span> [ THƯ VIỆN ÔN TẬP LÝ LUẬN ]</div>
+                <h2 class="game-title">ÔN TẬP KIẾN THỨC ĐẠI ĐOÀN KẾT</h2>
+                <div class="divider">
+                    <span class="star-gold">✦</span>
+                </div>
+                <div class="hud-log-console">
+                    <span class="hud-log-label">STATUS //</span>
+                    <span id="game-hud-sys-msg" class="hud-system-log success">// ĐÃ TẢI NGÂN HÀNG HỌC LIỆU. HÃY ĐỌC KỸ TRƯỚC KHI THI ĐẤU!</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Cockpit Tabs (Navigation tabs styled as links) -->
+            <div class="game-tab-toggle-container">
+                <a href="ontap.html" class="game-tab-btn active" style="text-decoration: none;">
+                    <i class="fas fa-book-open"></i> PHẦN ÔN TẬP
+                </a>
+                <a href="tracnghiem.html" class="game-tab-btn" style="text-decoration: none;">
+                    <i class="fas fa-satellite-dish"></i> MÀN 1: GIẢI MÃ TÍN HIỆU
+                </a>
+                <a href="lixi.html" class="game-tab-btn" style="text-decoration: none;">
+                    <i class="fas fa-gift"></i> MÀN 2: LÌ XÌ VŨ TRỤ
+                </a>
+            </div>
+
+            <div class="game-main-layout" style="grid-template-columns: 1fr;">
+                <div class="game-active-panel" style="min-height: auto;">
+                    
+                    <div class="game-panel active">
+                        <div class="panel-header-desc">
+                            <h4><i class="fas fa-book-open"></i> HỆ THỐNG LÝ LUẬN TƯ TƯỞNG HỒ CHÍ MINH</h4>
+                            <p>Toàn bộ 9 câu hỏi trắc nghiệm dưới đây đã được tô đậm đáp án đúng cùng giải thích chi tiết, giúp các bạn nắm chắc kiến thức Đại đoàn kết dân tộc.</p>
+                        </div>
+                        
+                        <div class="ontap-deck" id="ontap-deck">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" style="background: rgba(2, 2, 6, 0.9);">
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright-text">&copy; 2026 HCM UNIVERSE — Dự án Sáng tạo học thuật HCM202.</p>
+                <div class="footer-bottom-hud-details">
+                    <span>COORDINATE CORE // VER. 5.2</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="game_shared.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ontapDeck = document.getElementById('ontap-deck');
+            if (ontapDeck) {
+                ontapDeck.innerHTML = '';
+                QUESTIONS_DATA.forEach((qData, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'ontap-item';
+                    
+                    const optionsHTML = qData.options.map(opt => `
+                        <div class="ontap-option-bubble ${opt.key === qData.correct ? 'correct' : ''}">
+                            <span class="bubble-key">${opt.key}</span>
+                            <span class="bubble-text">${opt.text}</span>
+                        </div>
+                    `).join('');
+                    
+                    item.innerHTML = `
+                        <div class="ontap-q-header">
+                            <span class="ontap-num">// CÂU HỎI SỐ ${idx + 1} // NGÂN HÀNG HỌC LIỆU</span>
+                            <h4 class="ontap-title">${qData.question}</h4>
+                        </div>
+                        <div class="ontap-options-summary">
+                            ${optionsHTML}
+                        </div>
+                        <div class="ontap-explanation">
+                            <div class="ontap-exp-title"><i class="fas fa-history"></i> Bối Cảnh Lịch Sử & Giải Thích</div>
+                            <div class="ontap-exp-text">${qData.explanation}</div>
+                        </div>
+                    `;
+                    
+                    ontapDeck.appendChild(item);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
