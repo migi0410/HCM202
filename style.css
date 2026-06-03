@@ -4126,6 +4126,7 @@ main {
     line-height: 1.5;
     border-radius: 4px;
     word-break: break-word;
+    white-space: pre-wrap;
 }
 
 .user-message .message-text {
