@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateHUD();
         renderQuizGrid();
         logSystemHUD("Hệ thống thi đấu đã sẵn sàng. Hãy nhấp chọn 1 Ô Tín Hiệu!", "success");
+        checkCompletion();
     }
 
     function updateHUD() {
@@ -282,6 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
         saveGameState(state);
         renderQuizGrid();
         updateHUD();
+        
+        const isFinished = state.answered.every(a => a !== null);
+        if (isFinished) {
+            setTimeout(() => {
+                closeQuestionModal();
+                checkCompletion();
+            }, 2500);
+        }
     }
 
     function closeQuestionModal() {
@@ -303,6 +312,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Completion Modal Controls
+    const modalCompletion = document.getElementById('modal-completion');
+    const modalCompletionClose = document.getElementById('modal-completion-close');
+    const completionTokensVal = document.getElementById('completion-tokens-val');
+
+    function checkCompletion() {
+        const isFinished = state.answered && state.answered.every(a => a !== null);
+        if (isFinished) {
+            if (modalCompletion) {
+                if (completionTokensVal) {
+                    completionTokensVal.textContent = state.tokens;
+                }
+                modalCompletion.classList.add('active');
+                document.documentElement.classList.add('console-open');
+                document.body.classList.add('console-open');
+            }
+        }
+    }
+
+    function closeCompletionModal() {
+        if (!modalCompletion) return;
+        modalCompletion.classList.remove('active');
+        document.documentElement.classList.remove('console-open');
+        document.body.classList.remove('console-open');
+    }
+
+    if (modalCompletionClose) {
+        modalCompletionClose.addEventListener('click', closeCompletionModal);
+    }
+
+    if (modalCompletion) {
+        modalCompletion.addEventListener('click', (e) => {
+            if (e.target === modalCompletion) {
+                closeCompletionModal();
+            }
+        });
+    }
+
     // 5. RESET GAME
     if (btnResetGame) {
         btnResetGame.addEventListener('click', () => {
@@ -312,6 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     state = resetGameState();
                     updateHUD();
                     renderQuizGrid();
+                    closeCompletionModal();
                     logSystemHUD("Hệ thống đã reset. Hãy chọn lại Ô Tín Hiệu!", "success");
                 });
             } else {
@@ -320,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     state = resetGameState();
                     updateHUD();
                     renderQuizGrid();
+                    closeCompletionModal();
                     logSystemHUD("Hệ thống đã reset. Hãy chọn lại Ô Tín Hiệu!", "success");
                 }
             }

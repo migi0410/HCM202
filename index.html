@@ -28,7 +28,6 @@
             <h1 class="loader-title">HCM UNIVERSE</h1>
             <div class="loader-scanner"></div>
             <div class="loader-bar"><div class="progress"></div></div>
-            <p class="loader-text">Loading stellar coordinates...</p>
         </div>
     </div>
 
@@ -68,6 +67,12 @@
         <div class="coordinate-item"><span class="hud-label">TELEMETRY //</span> <span id="hud-sector">SYSTEM READY</span></div>
         <div class="coordinate-item"><span class="hud-label">COORDINATE //</span> <span id="hud-system">1911 - 1941</span></div>
         <div class="coordinate-item"><span class="hud-label">GLOW CORE //</span> <span id="hud-warp">STABLE</span></div>
+        <div class="coordinate-item progress-tracker-hud" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 6px; width: 140px;">
+            <span class="hud-label">DISCOVERY //</span> <span id="hud-progress-text" style="color: var(--neon-gold); text-shadow: 0 0 5px var(--neon-gold-glow); font-weight: bold;">ĐÃ KHÁM PHÁ: 0/5</span>
+            <div class="hud-progress-bar" style="width: 100%; height: 3px; background: rgba(255,255,255,0.08); margin-top: 4px; border-radius: 1px; overflow: hidden;">
+                <div id="hud-progress-fill" style="width: 0%; height: 100%; background: var(--neon-gold); box-shadow: 0 0 8px var(--neon-gold); transition: width 0.5s ease-in-out;"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Main Content Frame -->
@@ -212,7 +217,7 @@
                         <div class="document-reader">
                             <div class="doc-header">
                                 <span class="doc-badge">[ CHUYÊN ĐỀ HỌC THUẬT SỐ ]</span>
-                                <h3 class="doc-title" id="doc-active-title">Tiêu Đề Phân Mục</h3>
+                                <h3 class="doc-title" id="doc-active-title">Cơ sở hình thành Tư tưởng Hồ Chí Minh</h3>
                             </div>
                             
                             <div class="doc-body" id="doc-active-content">
@@ -220,7 +225,7 @@
                             </div>
 
                             <div class="doc-footer">
-                                <span class="tip-msg"><i class="fas fa-info-circle"></i> Sử dụng các tab bên trái để đọc các phần nội dung tiếp theo.</span>
+                                <span class="tip-msg"><i class="fas fa-info-circle"></i> <span id="doc-active-tip">Sử dụng các phân mục bên trái để chuyển đổi giữa các chuyên đề nghiên cứu.</span></span>
                             </div>
                         </div>
                     </div>

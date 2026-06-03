@@ -11,9 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         1: {
             title: "Cơ Sở Hình Thành",
             sector: "SECTOR // 01 // FOUNDATIONS",
-            coords: "18.90° N // 19.11° E",
+            coords: "1890 - 1920 // BẢN ĐỊA & PHƯƠNG ĐÔNG",
             colorClass: "preview-p1",
             hudClass: "hud-p1",
+            academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Cơ sở hình thành khối Đại đoàn kết dân tộc.",
             moons: {
                 1: {
                     title: "Truyền thống yêu nước và đoàn kết dân tộc",
@@ -78,9 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         2: {
             title: "Vai Trò Chiến Lược",
             sector: "SECTOR // 02 // STRATEGIC ROLE",
-            coords: "19.30° N // 19.45° E",
+            coords: "1930 - 1945 // CHIẾN LƯỢC CÁCH MẠNG",
             colorClass: "preview-p2",
             hudClass: "hud-p2",
+            academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Vai trò chiến lược của Đại đoàn kết dân tộc.",
             moons: {
                 1: {
                     title: "Ý nghĩa chiến lược sống còn",
@@ -116,9 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
         3: {
             title: "Lực Lượng Quy Tụ",
             sector: "SECTOR // 03 // FORCES & FRONT",
-            coords: "19.41° N // 19.76° E",
+            coords: "1941 - 1954 // MẶT TRẬN TOÀN DÂN",
             colorClass: "preview-p3",
             hudClass: "hud-p3",
+            academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Lực lượng và hình thức tổ chức Mặt trận.",
             moons: {
                 1: {
                     title: "Chủ thể của khối đại đoàn kết",
@@ -203,9 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
         4: {
             title: "Phương Pháp Củng Cố",
             sector: "SECTOR // 04 // METHODS OF UNITY",
-            coords: "20.12° N // 20.25° E",
+            coords: "1954 - 1975 // ĐOÀN THỂ & HIỆP THƯƠNG",
             colorClass: "preview-p4",
             hudClass: "hud-p4",
+            academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Phương pháp củng cố và xây dựng Mặt trận.",
             moons: {
                 1: {
                     title: "Ba phương pháp chính",
@@ -255,9 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
         5: {
             title: "Kết Nối Thời Đại",
             sector: "SECTOR // 05 // CONNECTIONS & TODAY",
-            coords: "20.45° N // 20.88° E",
+            coords: "1975 - NAY // ĐOÀN KẾT QUỐC TẾ",
             colorClass: "preview-p5",
             hudClass: "hud-p5",
+            academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Đoàn kết dân tộc kết hợp đoàn kết quốc tế.",
             moons: {
                 1: {
                     title: "Quan hệ với đoàn kết quốc tế",
@@ -900,7 +905,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
+    function trackPlanetDiscovery(planetId) {
+        let explored = JSON.parse(localStorage.getItem('hcm_explored_planets') || '[]');
+        if (!explored.includes(planetId)) {
+            explored.push(planetId);
+            localStorage.setItem('hcm_explored_planets', JSON.stringify(explored));
+        }
+        updateProgressUI(explored.length);
+    }
+    
+    function updateProgressUI(count) {
+        const textEl = document.getElementById('hud-progress-text');
+        const fillEl = document.getElementById('hud-progress-fill');
+        if (textEl) {
+            textEl.textContent = `ĐÃ KHÁM PHÁ: ${count}/5 HÀNH TINH`;
+        }
+        if (fillEl) {
+            fillEl.style.width = `${(count / 5) * 100}%`;
+        }
+    }
+
+    // Initialize progress on load
+    updateProgressUI(JSON.parse(localStorage.getItem('hcm_explored_planets') || '[]').length);
+
     function openSpaceConsole(planetId, moonId) {
+        trackPlanetDiscovery(planetId);
         activePlanet = planetId;
         activeMoon = moonId;
         
@@ -958,6 +987,11 @@ document.addEventListener('DOMContentLoaded', () => {
             docActiveContent.classList.remove('scanning');
             void docActiveContent.offsetWidth; // Trigger reflow
             docActiveContent.classList.add('scanning');
+        }
+        
+        const docActiveTip = document.getElementById('doc-active-tip');
+        if (docActiveTip) {
+            decryptText(docActiveTip, data.academicFooter || "Sử dụng các tab bên trái để đọc các phần nội dung tiếp theo.");
         }
         
         if (spaceConsole) {
