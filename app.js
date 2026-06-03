@@ -74,7 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `
                 }
-            }
+            },
+            transmissions: [
+                {
+                    quote: "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.",
+                    source: "Hồ Chí Minh, Báo cáo tại Đại hội II của Đảng, 1951"
+                },
+                {
+                    quote: "Dân ta có một lòng nồng nàn yêu nước. Đó là một truyền thống quý báu của ta.",
+                    source: "Hồ Chí Minh, Tinh thần yêu nước của nhân dân ta, 1951"
+                },
+                {
+                    quote: "Non sông Việt Nam có trở nên tươi đẹp hay không... chính là nhờ một phần lớn ở công học tập của các em.",
+                    source: "Hồ Chí Minh, Thư gửi học sinh, 1945"
+                }
+            ]
         },
         2: {
             title: "Vai Trò Chiến Lược",
@@ -113,7 +127,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     `
                 }
-            }
+            },
+            transmissions: [
+                {
+                    quote: "Đoàn kết là sức mạnh, là then chốt của thành công.",
+                    source: "Hồ Chí Minh, Lời kêu gọi toàn quốc kháng chiến, 1946"
+                },
+                {
+                    quote: "Đoàn kết là điểm mẹ. Điểm này mà thực hiện tốt thì đẻ ra con cháu đều tốt.",
+                    source: "Hồ Chí Minh, Bài nói chuyện tại Hội nghị cán bộ, 1962"
+                },
+                {
+                    quote: "Nước lấy dân làm gốc... Gốc có vững cây mới bền, xây lầu thắng lợi trên nền nhân dân.",
+                    source: "Hồ Chí Minh, Rễ của dân chủ, 1945"
+                }
+            ]
         },
         3: {
             title: "Lực Lượng Quy Tụ",
@@ -201,7 +229,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     `
                 }
-            }
+            },
+            transmissions: [
+                {
+                    quote: "Trong bầu trời không gì quý bằng nhân dân. Trong thế giới không gì mạnh bằng lực lượng đoàn kết của nhân dân.",
+                    source: "Hồ Chí Minh, Tuyên ngôn Độc lập, 1945"
+                },
+                {
+                    quote: "Công nông là gốc cách mệnh; còn học trò, nhà buôn nhỏ, điền chủ nhỏ... là bầu bạn cách mệnh của công nông.",
+                    source: "Hồ Chí Minh, Đường Kách mệnh, 1927"
+                },
+                {
+                    quote: "Đồng bào Kinh hay Tày, Mường hay Mán... đều là con Rồng cháu Tiên, đều là anh em ruột thịt.",
+                    source: "Hồ Chí Minh, Thư gửi Đại hội các dân tộc thiểu số, 1946"
+                }
+            ]
         },
         4: {
             title: "Phương Pháp Củng Cố",
@@ -254,7 +296,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     `
                 }
-            }
+            },
+            transmissions: [
+                {
+                    quote: "Phải đặt lợi ích của Đảng, của Tổ quốc, của nhân dân lên trên hết, trước hết.",
+                    source: "Hồ Chí Minh, Di chúc, 1969"
+                },
+                {
+                    quote: "Muốn đoàn kết thực sự phải có lòng thương yêu nhau, giúp đỡ nhau như anh em trong một nhà.",
+                    source: "Hồ Chí Minh, Bài nói tại Đại hội Mặt trận, 1955"
+                },
+                {
+                    quote: "Cán bộ là cái gốc của mọi công việc... Muôn việc thành công hoặc thất bại, đều do cán bộ tốt hoặc kém.",
+                    source: "Hồ Chí Minh, Sửa đổi lối làm việc, 1947"
+                }
+            ]
         },
         5: {
             title: "Kết Nối Thời Đại",
@@ -305,7 +361,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `
                 }
-            }
+            },
+            transmissions: [
+                {
+                    quote: "Việt Nam muốn làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai.",
+                    source: "Hồ Chí Minh, Tuyên bố với báo chí, 1946"
+                },
+                {
+                    quote: "Giúp bạn là tự giúp mình.",
+                    source: "Hồ Chí Minh, Bài phát biểu tại Hội nghị Bandung, 1955"
+                },
+                {
+                    quote: "Bốn phương vô sản đều là anh em.",
+                    source: "Hồ Chí Minh, Thơ chúc Tết, 1960"
+                }
+            ]
         }
     };
 
@@ -693,6 +763,90 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.start();
                 osc.stop(this.ctx.currentTime + 0.45);
             } catch (e) {}
+        },
+        
+        radioNoiseNode: null,
+        radioNoiseBuffer: null,
+        
+        createRadioNoiseBuffer() {
+            if (!this.ctx) return null;
+            if (this.radioNoiseBuffer) return this.radioNoiseBuffer;
+            
+            try {
+                const bufferSize = this.ctx.sampleRate * 2;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    let val = Math.random() * 2 - 1;
+                    
+                    if (Math.random() < 0.00015) {
+                        val += (Math.random() > 0.5 ? 0.6 : -0.6);
+                    }
+                    
+                    data[i] = val;
+                }
+                
+                this.radioNoiseBuffer = buffer;
+                return buffer;
+            } catch (e) {
+                return null;
+            }
+        },
+
+        startRadioStatic() {
+            if (this.muted) return;
+            this.init();
+            if (!this.ctx) return;
+            
+            try {
+                this.stopRadioStatic();
+                
+                const buffer = this.createRadioNoiseBuffer();
+                if (!buffer) return;
+                
+                const source = this.ctx.createBufferSource();
+                source.buffer = buffer;
+                source.loop = true;
+                
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(1000, this.ctx.currentTime);
+                filter.Q.setValueAtTime(1.5, this.ctx.currentTime);
+                
+                const staticGain = this.ctx.createGain();
+                staticGain.gain.setValueAtTime(0.03, this.ctx.currentTime); // Subtle background static
+                
+                source.connect(filter);
+                filter.connect(staticGain);
+                staticGain.connect(this.ctx.destination);
+                
+                source.start();
+                
+                this.radioNoiseNode = {
+                    source: source,
+                    gain: staticGain
+                };
+            } catch (e) {
+                console.error("Error starting radio static", e);
+            }
+        },
+        
+        stopRadioStatic() {
+            if (this.radioNoiseNode) {
+                try {
+                    const node = this.radioNoiseNode;
+                    this.radioNoiseNode = null;
+                    
+                    const curTime = this.ctx.currentTime;
+                    node.gain.gain.exponentialRampToValueAtTime(0.001, curTime + 0.3);
+                    setTimeout(() => {
+                        try {
+                            node.source.stop();
+                        } catch (err) {}
+                    }, 350);
+                } catch (e) {}
+            }
         }
     };
 
@@ -927,6 +1081,136 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize progress on load
     updateProgressUI(JSON.parse(localStorage.getItem('hcm_explored_planets') || '[]').length);
+    // --------------------------------------------------------------------------
+    // TRANSMISSION RECEIVED FEATURE & VOICES SYNTHESIS
+    // --------------------------------------------------------------------------
+    let currentUtterance = null;
+    
+    function getTransmissionsHTML(planetId) {
+        const transmissions = UNIVERSE_DATA[planetId].transmissions;
+        if (!transmissions || transmissions.length === 0) return '';
+
+        let html = `
+            <div class="transmission-divider">// TRANSMISSION RECEIVED //</div>
+            <div class="transmission-container">
+        `;
+
+        transmissions.forEach((t, index) => {
+            html += `
+                <div class="transmission-box">
+                    <div class="transmission-header-row">
+                        <span class="transmission-signal-tag">DEEP SPACE SIGNAL #[0${planetId}-${index + 1}]</span>
+                        <button class="transmission-audio-btn" data-quote="${encodeURIComponent(t.quote)}" title="Giải mã âm thanh">
+                            <i class="fas fa-satellite-dish"></i>
+                        </button>
+                    </div>
+                    <div class="transmission-quote">"${t.quote}"</div>
+                    <div class="transmission-source">— ${t.source}</div>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+        return html;
+    }
+
+    function playTransmissionVoice(text, btnElement) {
+        if (window.speechSynthesis) {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                StellarAudio.stopRadioStatic();
+                
+                document.querySelectorAll('.transmission-audio-btn').forEach(btn => {
+                    btn.classList.remove('playing');
+                    btn.innerHTML = '<i class="fas fa-satellite-dish"></i>';
+                });
+                
+                if (btnElement && btnElement.dataset.playing === 'true') {
+                    btnElement.dataset.playing = 'false';
+                    return;
+                }
+            }
+        }
+        
+        document.querySelectorAll('.transmission-audio-btn').forEach(btn => {
+            btn.dataset.playing = 'false';
+        });
+
+        if (btnElement) {
+            btnElement.dataset.playing = 'true';
+            btnElement.classList.add('playing');
+            btnElement.innerHTML = '<i class="fas fa-broadcast-tower"></i>';
+        }
+        
+        StellarAudio.playBeep();
+        
+        setTimeout(() => {
+            StellarAudio.startRadioStatic();
+            
+            if (window.speechSynthesis) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'vi-VN';
+                utterance.rate = 0.82;
+                utterance.pitch = 0.95;
+                
+                let voices = window.speechSynthesis.getVoices();
+                let viVoice = voices.find(v => v.lang.includes('vi') || v.lang.includes('VI'));
+                if (viVoice) {
+                    utterance.voice = viVoice;
+                }
+                
+                utterance.onend = () => {
+                    StellarAudio.stopRadioStatic();
+                    if (btnElement) {
+                        btnElement.classList.remove('playing');
+                        btnElement.innerHTML = '<i class="fas fa-satellite-dish"></i>';
+                        btnElement.dataset.playing = 'false';
+                    }
+                };
+                
+                utterance.onerror = () => {
+                    StellarAudio.stopRadioStatic();
+                    if (btnElement) {
+                        btnElement.classList.remove('playing');
+                        btnElement.innerHTML = '<i class="fas fa-satellite-dish"></i>';
+                        btnElement.dataset.playing = 'false';
+                    }
+                };
+                
+                currentUtterance = utterance;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                setTimeout(() => {
+                    StellarAudio.stopRadioStatic();
+                    if (btnElement) {
+                        btnElement.classList.remove('playing');
+                        btnElement.innerHTML = '<i class="fas fa-satellite-dish"></i>';
+                        btnElement.dataset.playing = 'false';
+                    }
+                }, 3000);
+            }
+        }, 150);
+    }
+
+    function bindTransmissionAudioAndAnimate(planetId) {
+        if (!docActiveContent) return;
+        
+        const audioBtns = docActiveContent.querySelectorAll('.transmission-audio-btn');
+        audioBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const quoteText = decodeURIComponent(btn.dataset.quote);
+                playTransmissionVoice(quoteText, btn);
+            });
+        });
+
+        const transBoxes = docActiveContent.querySelectorAll('.transmission-box');
+        setTimeout(() => {
+            transBoxes.forEach(box => {
+                box.classList.add('animate-show');
+            });
+        }, 50);
+    }
 
     function openSpaceConsole(planetId, moonId) {
         trackPlanetDiscovery(planetId);
@@ -966,11 +1250,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 tab.addEventListener('click', () => {
                     StellarAudio.playBeep();
+                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    StellarAudio.stopRadioStatic();
                     satelliteTabs.querySelectorAll('.satellite-tab').forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
                     if (docActiveTitle) decryptText(docActiveTitle, mData.title);
                     if (docActiveContent) {
-                        docActiveContent.innerHTML = mData.content;
+                        docActiveContent.innerHTML = mData.content + getTransmissionsHTML(planetId);
+                        bindTransmissionAudioAndAnimate(planetId);
                         docActiveContent.classList.remove('scanning');
                         void docActiveContent.offsetWidth; // Trigger reflow
                         docActiveContent.classList.add('scanning');
@@ -983,7 +1270,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (docActiveTitle) decryptText(docActiveTitle, moon.title);
         if (docActiveContent) {
-            docActiveContent.innerHTML = moon.content;
+            docActiveContent.innerHTML = moon.content + getTransmissionsHTML(planetId);
+            bindTransmissionAudioAndAnimate(planetId);
             docActiveContent.classList.remove('scanning');
             void docActiveContent.offsetWidth; // Trigger reflow
             docActiveContent.classList.add('scanning');
@@ -1007,6 +1295,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetCamera() {
         StellarAudio.playClose();
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        StellarAudio.stopRadioStatic();
         activePlanet = null;
         activeMoon = null;
         
