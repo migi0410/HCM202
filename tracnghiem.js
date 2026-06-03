@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state = loadGameState();
         updateHUD();
         renderQuizGrid();
-        logSystemHUD("Hệ thống thi đấu đã sẵn sàng. Hãy nhấp chọn 1 Ô Tín Hiệu!", "success");
+        logSystemHUD("Hệ thống giải mã đã sẵn sàng. Hãy nhấp chọn 1 Ô Tín Hiệu!", "success");
         checkCompletion();
     }
 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         modalBody.innerHTML = `
             <div class="modal-question-header">
-                <span class="q-badge">// TÍN HIỆU SỐ ${idx + 1} // CHẾ ĐỘ THI ĐẤU (1 LƯỢT DUY NHẤT)</span>
+                <span class="q-badge">// TÍN HIỆU SỐ ${idx + 1} // CHẾ ĐỘ GIẢI MÃ (1 LƯỢT DUY NHẤT)</span>
                 <h3 class="q-title">${qData.question}</h3>
             </div>
             <div class="modal-options-list">
