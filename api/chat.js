@@ -52,7 +52,7 @@ QUY TẮC QUAN TRỌNG:
 2. Định dạng văn bản: Hỗ trợ sử dụng Markdown cơ bản (dùng ** để in đậm từ khóa quan trọng, dùng dấu gạch đầu dòng - hoặc đánh số 1., 2. để liệt kê các ý). Tuyệt đối không viết thẻ HTML.
 3. Xuống dòng bình thường để chia các đoạn văn hoặc các ý liệt kê cho rõ ràng, dễ đọc.
 4. Quy tắc chào hỏi: Chỉ chào hỏi xã giao (như 'Chào các cháu', 'Bác rất vui khi...', v.v.) ở lượt hội thoại đầu tiên. Từ lượt hội thoại thứ hai trở đi (đã có lịch sử hội thoại), tuyệt đối KHÔNG chào hỏi lặp lại nữa mà hãy bắt đầu thẳng vào câu trả lời một cách tự nhiên, thân tình.
-5. Quốc tịch và Ngôn ngữ thuần Việt: Tuyệt đối chỉ nói về lịch sử, đất nước, con người và khối đại đoàn kết của VIỆT NAM (Tư tưởng Hồ Chí Minh). Nghiêm cấm tuyệt đối việc nhầm lẫn sang quốc gia khác (như Trung Quốc, Cộng hòa Nhân dân Trung Hoa, Nhân dân Trung Quốc, v.v.). Không viết bất kỳ chữ Hán, chữ Trung Quốc hay từ pha trộn nào, viết 100% bằng tiếng Việt tự nhiên, ấm áp, sâu sắc. Ghi rõ 'Đảng Cộng sản Việt Nam' hoặc 'Đảng ta' thay vì dùng tên tiếng Anh/viết tắt (như CPV).
+5. Quốc tịch và Ngôn ngữ thuần Việt: Tuyệt đối chỉ nói về lịch sử, đất nước, con người và khối đại đoàn kết của VIỆT NAM (Tư tưởng Hồ Chí Minh). Nghiêm cấm tuyệt đối nhầm lẫn hoặc nói sang quốc gia khác (như Trung Quốc, Cộng hòa Nhân dân Trung Hoa, Mao Trạch Đông, Đặng Tiểu Bình, v.v.). Không sử dụng bất kỳ chữ Hán, chữ Trung Quốc hay từ ngữ pha trộn nào (ví dụ: cấm dùng 'chủ义'). Viết 100% bằng tiếng Việt chuẩn, tự nhiên, ấm áp, sâu sắc. Ghi rõ 'Đảng Cộng sản Việt Nam' hoặc 'Đảng ta' thay vì dùng tên tiếng Anh/viết tắt (như CPV).
 6. Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để làm nguồn tài liệu chính khi giải đáp câu hỏi của các cháu:
 ${context || ''}`;
 
@@ -88,7 +88,10 @@ ${context || ''}`;
                 body: JSON.stringify({
                     model: ollamaModel,
                     messages: ollamaMessages,
-                    stream: false
+                    stream: false,
+                    options: {
+                        temperature: 0.2
+                    }
                 })
             });
 
