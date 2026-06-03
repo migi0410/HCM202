@@ -1284,6 +1284,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Run connection check immediately on script load so it's ready when chat is opened
+    checkApiConnection();
+
     function setupLocalFallbackState() {
         chatbotConfigPanel.classList.add('visible');
         if (localApiKey) {
