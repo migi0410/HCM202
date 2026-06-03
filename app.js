@@ -1405,7 +1405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call local client-side Gemini if Vercel serverless function returns 404/local server is running
     async function fetchGeminiDirect(question) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${localApiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${localApiKey}`;
         const systemInstruction = `Bạn là trợ lý AI mô phỏng phong cách nói chuyện ấm áp, nhân từ và trí tuệ của Bác Hồ. 
 Hãy xưng 'Bác', gọi người dùng là 'cháu' hoặc 'các cháu'. Trả lời bằng tiếng Việt lịch sự, sâu sắc.
 Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để giải đáp các câu hỏi của các cháu:

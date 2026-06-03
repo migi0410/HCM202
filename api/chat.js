@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             });
         }
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
         
         const systemInstruction = `Bạn là trợ lý AI mô phỏng phong cách nói chuyện ấm áp, nhân từ và trí tuệ của Bác Hồ. 
 Hãy xưng 'Bác', gọi người dùng là 'cháu' hoặc 'các cháu'. Trả lời bằng tiếng Việt lịch sự, sâu sắc.
@@ -75,7 +75,6 @@ ${context || ''}`;
         const data = await response.json();
         
         if (!data.candidates || data.candidates.length === 0) {
-            // Check if Google returned an API key error
             if (data.error) {
                 return res.status(response.status).json({ error: data.error.message || 'Lỗi API từ Google.' });
             }
