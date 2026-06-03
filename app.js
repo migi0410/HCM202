@@ -1346,12 +1346,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let i = 0;
         textContainer.textContent = "";
         const speed = 10;
-        const charsPerTick = 3;
         const interval = setInterval(() => {
             if (i < text.length) {
-                textContainer.textContent += text.substring(i, i + charsPerTick);
-                i += charsPerTick;
-                if (i % 15 === 0) scrollToBottom();
+                textContainer.textContent += text[i];
+                i++;
+                if (i % 5 === 0) scrollToBottom();
             } else {
                 clearInterval(interval);
                 // Parse markdown to HTML after typing finishes
