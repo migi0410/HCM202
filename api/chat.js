@@ -19,20 +19,31 @@ export default async function handler(req, res) {
 
     try {
         const { question, history, context } = req.body;
-        const apiKey = process.env.GEMINI_API_KEY;
+        const provider = process.env.AI_PROVIDER || 'gemini';
 
-        if (!apiKey) {
-            return res.status(500).json({ 
-                error: 'Gemini API Key is not configured in Vercel environment variables. Please set GEMINI_API_KEY on your Vercel Dashboard.' 
-            });
-        }
+        // Read Ollama configs
+        const ollamaUrl = process.env.OLLAMA_URL || 'http://localhost:11434';
+        const ollamaModel = process.env.OLLAMA_MODEL || 'llama3';
 
+        // Check connection ping
         if (question === 'ping_test_connection') {
-            return res.status(200).json({ reply: 'pong' });
+            if (provider === 'ollama') {
+                try {
+                    const pingRes = await fetch(`${ollamaUrl}/api/tags`);
+                    if (pingRes.ok) {
+                        return res.status(200).json({ reply: 'pong' });
+                    } else {
+                        return res.status(500).json({ error: 'Ollama is running but returned error state.' });
+                    }
+                } catch (e) {
+                    return res.status(500).json({ error: `Không thể kết nối đến Ollama tại ${ollamaUrl}. Đảm bảo Ollama đã chạy.` });
+                }
+            } else {
+                // Gemini is cloud based, if ping is requested we just return pong assuming internet is up
+                return res.status(200).json({ reply: 'pong' });
+            }
         }
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-        
         const systemInstruction = `Bạn là trợ lý AI mô phỏng phong cách nói chuyện ấm áp, nhân từ và trí tuệ của Bác Hồ. 
 Hãy xưng 'Bác', gọi người dùng là 'cháu' hoặc 'các cháu'. Trả lời bằng tiếng Việt lịch sự, sâu sắc.
 
@@ -44,6 +55,68 @@ QUY TẮC QUAN TRỌNG:
 5. Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để làm nguồn tài liệu chính khi giải đáp câu hỏi của các cháu:
 ${context || ''}`;
 
+        // ----------------------------------------------------
+        // PROVIDER: OLLAMA
+        // ----------------------------------------------------
+        if (provider === 'ollama') {
+            const ollamaMessages = [];
+            ollamaMessages.push({
+                role: 'system',
+                content: systemInstruction
+            });
+
+            if (history && Array.isArray(history)) {
+                history.forEach(item => {
+                    ollamaMessages.push({
+                        role: item.role === 'user' ? 'user' : 'assistant',
+                        content: item.text
+                    });
+                });
+            }
+
+            ollamaMessages.push({
+                role: 'user',
+                content: question
+            });
+
+            const response = await fetch(`${ollamaUrl}/api/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: ollamaModel,
+                    messages: ollamaMessages,
+                    stream: false
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                return res.status(response.status).json({ error: errData.error || `Lỗi từ Ollama (Model: ${ollamaModel})` });
+            }
+
+            const data = await response.json();
+            if (!data.message || !data.message.content) {
+                return res.status(500).json({ error: 'Mô hình Ollama không phản hồi kết quả hợp lệ.' });
+            }
+
+            const reply = data.message.content;
+            return res.status(200).json({ reply });
+        }
+
+        // ----------------------------------------------------
+        // PROVIDER: GEMINI
+        // ----------------------------------------------------
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (!apiKey) {
+            return res.status(500).json({ 
+                error: 'Gemini API Key is not configured in Vercel environment variables. Please set GEMINI_API_KEY on your Vercel Dashboard.' 
+            });
+        }
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        
         // Format history for Gemini API
         const contents = [];
         if (history && Array.isArray(history)) {

@@ -4047,54 +4047,6 @@ main {
     color: #fff;
 }
 
-/* Config panel */
-.chatbot-config {
-    background: rgba(223, 186, 107, 0.03);
-    border-bottom: 1px dashed rgba(223, 186, 107, 0.15);
-    padding: 8px 15px;
-    display: none; /* Only show when needed */
-}
-
-.chatbot-config.visible {
-    display: block;
-}
-
-.config-inputs {
-    display: flex;
-    gap: 8px;
-}
-
-.chatbot-config input {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-glass);
-    border-radius: 2px;
-    padding: 6px 10px;
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-}
-
-.chatbot-config input:focus {
-    border-color: var(--neon-gold);
-    outline: none;
-}
-
-.chatbot-config button {
-    background: rgba(223, 186, 107, 0.1);
-    border: 1px solid rgba(223, 186, 107, 0.25);
-    color: var(--neon-gold);
-    padding: 0 10px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    border-radius: 2px;
-    transition: all 0.2s ease;
-}
-
-.chatbot-config button:hover {
-    background: var(--neon-gold);
-    color: #000;
-}
 
 /* Messages area */
 .chatbot-messages {

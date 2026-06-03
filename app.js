@@ -1218,14 +1218,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotInput = document.getElementById('chatbot-input');
     const chatbotMessagesContainer = document.getElementById('chatbot-messages-container');
     const chatbotStatusIndicator = document.getElementById('chatbot-status-indicator');
-    const chatbotConfigPanel = document.getElementById('chatbot-config-panel');
-    const chatbotApiKeyInput = document.getElementById('chatbot-api-key-input');
-    const btnSaveChatbotKey = document.getElementById('btn-save-chatbot-key');
 
     let chatHistory = [];
     let isWaitingForAI = false;
-    let localApiKey = localStorage.getItem('hcm_gemini_api_key') || '';
-    let isVercelApiAvailable = false; // Will check dynamically
 
     // Compile UNIVERSE_DATA into a context string for Gemini
     function compileUniverseContext() {
@@ -1259,45 +1254,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check backend Vercel API availability
     async function checkApiConnection() {
         try {
-            // Test POST with empty body or metadata to check if /api/chat is 404
+            // Test POST with empty body or metadata to check if /api/chat is 404 or offline
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question: 'ping_test_connection' })
             });
             
-            // If it returns 404, we are running locally (static server)
-            if (response.status === 404) {
-                isVercelApiAvailable = false;
-                setupLocalFallbackState();
-            } else {
-                // It is deployed and running
-                isVercelApiAvailable = true;
+            if (response.ok) {
                 chatbotStatusIndicator.textContent = "[ TRANSMISSION ONLINE ]";
                 chatbotStatusIndicator.classList.add('online');
-                chatbotConfigPanel.classList.remove('visible');
+            } else {
+                chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE ]";
+                chatbotStatusIndicator.classList.remove('online');
             }
         } catch (e) {
-            // Offline or network error
-            isVercelApiAvailable = false;
-            setupLocalFallbackState();
+            chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE ]";
+            chatbotStatusIndicator.classList.remove('online');
         }
     }
 
     // Run connection check immediately on script load so it's ready when chat is opened
     checkApiConnection();
-
-    function setupLocalFallbackState() {
-        chatbotConfigPanel.classList.add('visible');
-        if (localApiKey) {
-            chatbotStatusIndicator.textContent = "[ TRANSMISSION ONLINE // LOCAL KEY ]";
-            chatbotStatusIndicator.classList.add('online');
-            chatbotApiKeyInput.value = "••••••••••••••••••••";
-        } else {
-            chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE // CẦN KEY ]";
-            chatbotStatusIndicator.classList.remove('online');
-        }
-    }
 
     // Toggle Chatbot panel
     if (chatbotBubble) {
@@ -1316,27 +1294,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCloseChatbot.addEventListener('click', () => {
             StellarAudio.playClose();
             chatbotPanel.classList.remove('active');
-        });
-    }
-
-    // Save local API key fallback
-    if (btnSaveChatbotKey && chatbotApiKeyInput) {
-        btnSaveChatbotKey.addEventListener('click', () => {
-            const key = chatbotApiKeyInput.value.trim();
-            if (key) {
-                if (key !== "••••••••••••••••••••") {
-                    localApiKey = key;
-                    localStorage.setItem('hcm_gemini_api_key', key);
-                }
-                StellarAudio.playBeep();
-                setupLocalFallbackState();
-                appendSystemMessage("Đã cấu hình API Key thành công. Cổng kết nối sẵn sàng!");
-            } else {
-                localApiKey = '';
-                localStorage.removeItem('hcm_gemini_api_key');
-                setupLocalFallbackState();
-                appendSystemMessage("Đã xóa API Key. Vui lòng cấu hình khóa để tiếp tục.");
-            }
         });
     }
 
@@ -1406,56 +1363,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chatbotMessagesContainer.scrollTop = chatbotMessagesContainer.scrollHeight;
     }
 
-    // Call local client-side Gemini if Vercel serverless function returns 404/local server is running
-    async function fetchGeminiDirect(question) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${localApiKey}`;
-        const systemInstruction = `Bạn là trợ lý AI mô phỏng phong cách nói chuyện ấm áp, nhân từ và trí tuệ của Bác Hồ. 
-Hãy xưng 'Bác', gọi người dùng là 'cháu' hoặc 'các cháu'. Trả lời bằng tiếng Việt lịch sự, sâu sắc.
-
-QUY TẮC QUAN TRỌNG:
-1. Độ dài câu trả lời: Ở mức vừa phải và đầy đủ ý nghĩa (khoảng 150 đến 220 từ), chia làm 3 đoạn văn ngắn rõ ràng. Tránh viết quá ngắn cụt lủn và cũng không viết dài dòng lê thê.
-2. Định dạng văn bản: Tuyệt đối KHÔNG sử dụng các ký tự định dạng Markdown (như dấu sao **, *, dấu gạch ngang -, danh sách số 1., 2., dấu thăng #, v.v.). Hãy viết câu chữ tự nhiên bằng văn bản thuần túy (plain text).
-3. Xuống dòng bằng phím Enter bình thường để ngăn cách các đoạn văn để dễ đọc.
-4. Quy tắc chào hỏi: Chỉ chào hỏi xã giao (như 'Chào các cháu', 'Bác rất vui khi...', v.v.) ở lượt hội thoại đầu tiên. Từ lượt hội thoại thứ hai trở đi (đã có lịch sử hội thoại), tuyệt đối KHÔNG chào hỏi lặp lại nữa mà hãy bắt đầu thẳng vào câu trả lời một cách tự nhiên, thân tình.
-5. Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để giải đáp các câu hỏi của các cháu:
-${universeContextText}`;
-
-        const contents = [];
-        chatHistory.forEach(item => {
-            contents.push({
-                role: item.role === 'user' ? 'user' : 'model',
-                parts: [{ text: item.text }]
-            });
-        });
-        contents.push({
-            role: 'user',
-            parts: [{ text: question }]
-        });
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents,
-                systemInstruction: { parts: [{ text: systemInstruction }] },
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 2048
-                }
-            })
-        });
-
-        if (response.status === 429) {
-            throw new Error("Băng thông quá tải. Vui lòng chờ 30 giây.");
-        }
-
-        const data = await response.json();
-        if (data.error) {
-            throw new Error(data.error.message || "Lỗi API");
-        }
-        return data.candidates[0].content.parts[0].text;
-    }
-
     // Handle form submit
     if (chatbotForm) {
         chatbotForm.addEventListener('submit', async (e) => {
@@ -1475,30 +1382,22 @@ ${universeContextText}`;
             try {
                 let aiReply = "";
 
-                if (isVercelApiAvailable) {
-                    // Fetch via secure Vercel Serverless Function
-                    const response = await fetch('/api/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            question: text,
-                            history: chatHistory,
-                            context: universeContextText
-                        })
-                    });
+                // Fetch via Vercel Serverless Function / API
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question: text,
+                        history: chatHistory,
+                        context: universeContextText
+                    })
+                });
 
-                    const data = await response.json();
-                    if (!response.ok) {
-                        throw new Error(data.error || "Lỗi kết nối.");
-                    }
-                    aiReply = data.reply;
-                } else {
-                    // Local fallback: call Gemini directly
-                    if (!localApiKey) {
-                        throw new Error("Bạn chưa nhập Gemini API Key ở trạm cấu hình cục bộ.");
-                    }
-                    aiReply = await fetchGeminiDirect(text);
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || "Lỗi kết nối.");
                 }
+                aiReply = data.reply;
 
                 removeTypingIndicator();
                 appendAiMessage(aiReply);
@@ -1519,6 +1418,7 @@ ${universeContextText}`;
             }
         });
     }
+
 
     // ==========================================================================
     // 6. INITIAL LOADING SCREEN PROGRESS SIMULATOR
