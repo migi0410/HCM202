@@ -63,7 +63,7 @@ ${context || ''}`;
                 },
                 generationConfig: {
                     temperature: 0.7,
-                    maxOutputTokens: 500
+                    maxOutputTokens: 2048
                 }
             })
         });
