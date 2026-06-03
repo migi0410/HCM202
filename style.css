@@ -1730,6 +1730,105 @@ main {
     text-shadow: 0 0 5px var(--neon-gold-glow);
 }
 
+/* Footer Info Panel - Authors, AI & Sources */
+.footer-info-panel {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-top: 40px;
+    clear: both;
+}
+
+.footer-info-panel .info-block {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-glass);
+    padding: 20px;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.footer-info-panel .info-block:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(223, 186, 107, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.footer-info-panel .info-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--neon-gold);
+    box-shadow: 0 0 8px var(--neon-gold);
+}
+
+.footer-info-panel .info-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.footer-info-panel .info-header i {
+    color: var(--neon-gold);
+    font-size: 0.95rem;
+    text-shadow: 0 0 8px var(--neon-gold-glow);
+}
+
+.footer-info-panel .info-header span {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-white);
+}
+
+.footer-info-panel .info-content .highlight-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    font-family: var(--font-heading);
+}
+
+.footer-info-panel .info-content .sub-text {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.footer-info-panel .info-content .source-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-info-panel .info-content .source-list li {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.footer-info-panel .info-content .source-list li i {
+    color: var(--neon-gold);
+    font-size: 0.75rem;
+    width: 12px;
+    text-align: center;
+}
+
 /* Bottom Copyright section */
 .footer-bottom {
     margin-top: 60px;
@@ -1763,6 +1862,19 @@ main {
     .footer-grid-container {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
+    }
+    .footer-info-panel {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-info-panel {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 30px;
+        padding-top: 30px;
     }
 }
 
