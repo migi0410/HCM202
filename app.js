@@ -1222,34 +1222,84 @@ document.addEventListener('DOMContentLoaded', () => {
     let chatHistory = [];
     let isWaitingForAI = false;
 
-    // Compile UNIVERSE_DATA into a context string for Gemini
-    function compileUniverseContext() {
-        let text = "CƠ SỞ DỮ LIỆU HỌC TẬP (HCM202):\n\n";
-        Object.keys(UNIVERSE_DATA).forEach(planetId => {
-            const planet = UNIVERSE_DATA[planetId];
-            text += `HÀNH TINH ${planetId}: ${planet.title}\n`;
-            text += `Chủ đề chính: ${planet.sector} (${planet.coords})\n`;
-            text += `Nội dung học thuật:\n`;
-            
-            Object.keys(planet.moons).forEach(moonId => {
-                const moon = planet.moons[moonId];
-                // Strip HTML tags for cleaner context
-                const cleanContent = moon.content.replace(/<\/?[^>]+(>|$)/g, "").replace(/\s+/g, " ").trim();
-                text += `- Phân mục "${moon.title}": ${cleanContent}\n`;
-            });
-            
-            if (planet.transmissions) {
-                text += `Trích dẫn lịch sử gốc:\n`;
-                planet.transmissions.forEach((t, i) => {
-                    text += `  * Trích dẫn #${i+1}: "${t.quote}" (${t.source})\n`;
-                });
-            }
-            text += "\n";
-        });
-        return text;
+    // Helper function to tokenize and clean text
+    function tokenize(text) {
+        if (!text) return [];
+        return text
+            .toLowerCase()
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"']/g, " ")
+            .split(/\s+/)
+            .filter(w => w.length > 1);
     }
 
-    const universeContextText = compileUniverseContext();
+    // Client-side RAG: Search and retrieve top N most relevant context chunks
+    function findRelevantContext(question, limit = 2) {
+        const docs = [];
+        
+        // Chunk UNIVERSE_DATA into separate documents (each moon and transmission is a document)
+        Object.keys(UNIVERSE_DATA).forEach(planetId => {
+            const planet = UNIVERSE_DATA[planetId];
+            
+            // 1. Moons content
+            Object.keys(planet.moons).forEach(moonId => {
+                const moon = planet.moons[moonId];
+                // Strip HTML tags for clean text comparison
+                const cleanContent = moon.content.replace(/<\/?[^>]+(>|$)/g, " ").replace(/\s+/g, " ").trim();
+                docs.push({
+                    title: `Hành tinh ${planetId} (${planet.title}) - Phân mục "${moon.title}"`,
+                    content: cleanContent,
+                    keywords: `hành tinh ${planetId} ${planet.title} ${moon.title} ${cleanContent}`
+                });
+            });
+            
+            // 2. Transmissions content
+            if (planet.transmissions) {
+                planet.transmissions.forEach((t, i) => {
+                    docs.push({
+                        title: `Hành tinh ${planetId} (${planet.title}) - Trích dẫn gốc #${i+1}`,
+                        content: `"${t.quote}" (${t.source})`,
+                        keywords: `hành tinh ${planetId} ${planet.title} trích dẫn ${t.quote} ${t.source}`
+                    });
+                });
+            }
+        });
+
+        // Simple token matching similarity score
+        const queryTokens = tokenize(question);
+        if (queryTokens.length === 0) {
+            // Default context if question has no meaningful words
+            return "CƠ SỞ DỮ LIỆU HỌC TẬP (HCM202):\n\n" + docs.slice(0, limit).map(d => `[NGUỒN: ${d.title}]\n${d.content}`).join("\n\n");
+        }
+
+        const scoredDocs = docs.map(doc => {
+            const docTokens = tokenize(doc.keywords);
+            let score = 0;
+            queryTokens.forEach(token => {
+                // Count overlap
+                if (docTokens.includes(token)) {
+                    score += 1;
+                }
+            });
+            return { doc, score };
+        });
+
+        // Sort by score descending
+        scoredDocs.sort((a, b) => b.score - a.score);
+
+        // Take top N documents that have at least some match, or fallback to the top 1 if all are 0
+        let relevant = scoredDocs.filter(item => item.score > 0).slice(0, limit).map(item => item.doc);
+        if (relevant.length === 0) {
+            relevant = [scoredDocs[0].doc];
+        }
+
+        // Format selected documents into context string
+        let contextText = "CƠ SỞ DỮ LIỆU HỌC TẬP HCM202 (TRÍCH XUẤT PHÙ HỢP):\n\n";
+        relevant.forEach(doc => {
+            contextText += `[NGUỒN: ${doc.title}]\nNội dung: ${doc.content}\n\n`;
+        });
+
+        return contextText;
+    }
 
     // Check backend Vercel API availability
     async function checkApiConnection() {
@@ -1408,7 +1458,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         question: text,
                         history: chatHistory,
-                        context: universeContextText
+                        context: findRelevantContext(text, 2)
                     })
                 });
 
