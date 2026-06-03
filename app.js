@@ -1209,6 +1209,309 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
+    // 7. CHATBOT TRANSMITTER PORTAL ("HỎI BÁC HỒ AI" WIDGET)
+    // ==========================================================================
+    const chatbotBubble = document.getElementById('chatbot-bubble');
+    const chatbotPanel = document.getElementById('chatbot-panel');
+    const btnCloseChatbot = document.getElementById('btn-close-chatbot');
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotMessagesContainer = document.getElementById('chatbot-messages-container');
+    const chatbotStatusIndicator = document.getElementById('chatbot-status-indicator');
+    const chatbotConfigPanel = document.getElementById('chatbot-config-panel');
+    const chatbotApiKeyInput = document.getElementById('chatbot-api-key-input');
+    const btnSaveChatbotKey = document.getElementById('btn-save-chatbot-key');
+
+    let chatHistory = [];
+    let isWaitingForAI = false;
+    let localApiKey = localStorage.getItem('hcm_gemini_api_key') || '';
+    let isVercelApiAvailable = false; // Will check dynamically
+
+    // Compile UNIVERSE_DATA into a context string for Gemini
+    function compileUniverseContext() {
+        let text = "CƠ SỞ DỮ LIỆU HỌC TẬP (HCM202):\n\n";
+        Object.keys(UNIVERSE_DATA).forEach(planetId => {
+            const planet = UNIVERSE_DATA[planetId];
+            text += `HÀNH TINH ${planetId}: ${planet.title}\n`;
+            text += `Chủ đề chính: ${planet.sector} (${planet.coords})\n`;
+            text += `Nội dung học thuật:\n`;
+            
+            Object.keys(planet.moons).forEach(moonId => {
+                const moon = planet.moons[moonId];
+                // Strip HTML tags for cleaner context
+                const cleanContent = moon.content.replace(/<\/?[^>]+(>|$)/g, "").replace(/\s+/g, " ").trim();
+                text += `- Phân mục "${moon.title}": ${cleanContent}\n`;
+            });
+            
+            if (planet.transmissions) {
+                text += `Trích dẫn lịch sử gốc:\n`;
+                planet.transmissions.forEach((t, i) => {
+                    text += `  * Trích dẫn #${i+1}: "${t.quote}" (${t.source})\n`;
+                });
+            }
+            text += "\n";
+        });
+        return text;
+    }
+
+    const universeContextText = compileUniverseContext();
+
+    // Check backend Vercel API availability
+    async function checkApiConnection() {
+        try {
+            // Test POST with empty body or metadata to check if /api/chat is 404
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: 'ping_test_connection' })
+            });
+            
+            // If it returns 404, we are running locally (static server)
+            if (response.status === 404) {
+                isVercelApiAvailable = false;
+                setupLocalFallbackState();
+            } else {
+                // It is deployed and running
+                isVercelApiAvailable = true;
+                chatbotStatusIndicator.textContent = "[ TRANSMISSION ONLINE ]";
+                chatbotStatusIndicator.classList.add('online');
+                chatbotConfigPanel.classList.remove('visible');
+            }
+        } catch (e) {
+            // Offline or network error
+            isVercelApiAvailable = false;
+            setupLocalFallbackState();
+        }
+    }
+
+    function setupLocalFallbackState() {
+        chatbotConfigPanel.classList.add('visible');
+        if (localApiKey) {
+            chatbotStatusIndicator.textContent = "[ TRANSMISSION ONLINE // LOCAL KEY ]";
+            chatbotStatusIndicator.classList.add('online');
+            chatbotApiKeyInput.value = "••••••••••••••••••••";
+        } else {
+            chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE // CẦN KEY ]";
+            chatbotStatusIndicator.classList.remove('online');
+        }
+    }
+
+    // Toggle Chatbot panel
+    if (chatbotBubble) {
+        chatbotBubble.addEventListener('click', () => {
+            StellarAudio.playBeep();
+            chatbotPanel.classList.toggle('active');
+            checkApiConnection();
+            
+            if (chatbotPanel.classList.contains('active')) {
+                setTimeout(() => chatbotInput.focus(), 300);
+            }
+        });
+    }
+
+    if (btnCloseChatbot) {
+        btnCloseChatbot.addEventListener('click', () => {
+            StellarAudio.playClose();
+            chatbotPanel.classList.remove('active');
+        });
+    }
+
+    // Save local API key fallback
+    if (btnSaveChatbotKey && chatbotApiKeyInput) {
+        btnSaveChatbotKey.addEventListener('click', () => {
+            const key = chatbotApiKeyInput.value.trim();
+            if (key) {
+                if (key !== "••••••••••••••••••••") {
+                    localApiKey = key;
+                    localStorage.setItem('hcm_gemini_api_key', key);
+                }
+                StellarAudio.playBeep();
+                setupLocalFallbackState();
+                appendSystemMessage("Đã cấu hình API Key thành công. Cổng kết nối sẵn sàng!");
+            } else {
+                localApiKey = '';
+                localStorage.removeItem('hcm_gemini_api_key');
+                setupLocalFallbackState();
+                appendSystemMessage("Đã xóa API Key. Vui lòng cấu hình khóa để tiếp tục.");
+            }
+        });
+    }
+
+    function appendUserMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message user-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        msg.querySelector('.message-text').textContent = text;
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function appendSystemMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message system-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        msg.querySelector('.message-text').textContent = text;
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function appendAiMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message ai-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        
+        // Simple typewriter/typing effect for chatbot response
+        const textContainer = msg.querySelector('.message-text');
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+        
+        let i = 0;
+        textContainer.textContent = "";
+        const speed = 10;
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                textContainer.textContent += text[i];
+                i++;
+                // Keep scrolling down as text prints
+                if (i % 5 === 0) scrollToBottom();
+            } else {
+                clearInterval(interval);
+                scrollToBottom();
+            }
+        }, speed);
+    }
+
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'message ai-message typing-indicator';
+        indicator.id = 'chat-typing-indicator';
+        indicator.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        chatbotMessagesContainer.appendChild(indicator);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const el = document.getElementById('chat-typing-indicator');
+        if (el) el.remove();
+    }
+
+    function scrollToBottom() {
+        chatbotMessagesContainer.scrollTop = chatbotMessagesContainer.scrollHeight;
+    }
+
+    // Call local client-side Gemini if Vercel serverless function returns 404/local server is running
+    async function fetchGeminiDirect(question) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${localApiKey}`;
+        const systemInstruction = `Bạn là trợ lý AI mô phỏng phong cách nói chuyện ấm áp, nhân từ và trí tuệ của Bác Hồ. 
+Hãy xưng 'Bác', gọi người dùng là 'cháu' hoặc 'các cháu'. Trả lời bằng tiếng Việt lịch sự, sâu sắc.
+Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để giải đáp các câu hỏi của các cháu:
+${universeContextText}`;
+
+        const contents = [];
+        chatHistory.forEach(item => {
+            contents.push({
+                role: item.role === 'user' ? 'user' : 'model',
+                parts: [{ text: item.text }]
+            });
+        });
+        contents.push({
+            role: 'user',
+            parts: [{ text: question }]
+        });
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents,
+                systemInstruction: { parts: [{ text: systemInstruction }] },
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 500
+                }
+            })
+        });
+
+        if (response.status === 429) {
+            throw new Error("Băng thông quá tải. Vui lòng chờ 30 giây.");
+        }
+
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.error.message || "Lỗi API");
+        }
+        return data.candidates[0].content.parts[0].text;
+    }
+
+    // Handle form submit
+    if (chatbotForm) {
+        chatbotForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isWaitingForAI) return;
+
+            const text = chatbotInput.value.trim();
+            if (!text) return;
+
+            chatbotInput.value = "";
+            appendUserMessage(text);
+            StellarAudio.playTick();
+
+            isWaitingForAI = true;
+            showTypingIndicator();
+
+            try {
+                let aiReply = "";
+
+                if (isVercelApiAvailable) {
+                    // Fetch via secure Vercel Serverless Function
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            question: text,
+                            history: chatHistory,
+                            context: universeContextText
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.error || "Lỗi kết nối.");
+                    }
+                    aiReply = data.reply;
+                } else {
+                    // Local fallback: call Gemini directly
+                    if (!localApiKey) {
+                        throw new Error("Bạn chưa nhập Gemini API Key ở trạm cấu hình cục bộ.");
+                    }
+                    aiReply = await fetchGeminiDirect(text);
+                }
+
+                removeTypingIndicator();
+                appendAiMessage(aiReply);
+
+                // Update chat history (keep last 6 interactions for token efficiency)
+                chatHistory.push({ role: 'user', text: text });
+                chatHistory.push({ role: 'model', text: aiReply });
+                if (chatHistory.length > 6) {
+                    chatHistory.splice(0, 2);
+                }
+
+            } catch (err) {
+                removeTypingIndicator();
+                appendSystemMessage(`LỖI TRUYỀN TIN // ${err.message}`);
+                console.error(err);
+            } finally {
+                isWaitingForAI = false;
+            }
+        });
+    }
+
+    // ==========================================================================
     // 6. INITIAL LOADING SCREEN PROGRESS SIMULATOR
     // ==========================================================================
     const loader = document.getElementById('loader');
