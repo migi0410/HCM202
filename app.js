@@ -1315,12 +1315,30 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToBottom();
     }
 
+    function parseMarkdown(text) {
+        if (!text) return "";
+        let html = text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+            
+        // Bold
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Italic
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        // Bullet list item
+        html = html.replace(/^(?:\s*[-*]\s+)(.+)$/gm, '<li>$1</li>');
+        // Numbered list item
+        html = html.replace(/^(?:\s*\d+\.\s+)(.+)$/gm, '<li>$1</li>');
+        
+        return html;
+    }
+
     function appendAiMessage(text) {
         const msg = document.createElement('div');
         msg.className = 'message ai-message';
         msg.innerHTML = `<div class="message-text"></div>`;
         
-        // Simple typewriter/typing effect for chatbot response
         const textContainer = msg.querySelector('.message-text');
         chatbotMessagesContainer.appendChild(msg);
         scrollToBottom();
@@ -1332,10 +1350,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i < text.length) {
                 textContainer.textContent += text[i];
                 i++;
-                // Keep scrolling down as text prints
                 if (i % 5 === 0) scrollToBottom();
             } else {
                 clearInterval(interval);
+                // Parse markdown to HTML after typing finishes
+                textContainer.innerHTML = parseMarkdown(text);
                 scrollToBottom();
             }
         }, speed);
