@@ -1390,6 +1390,26 @@ main {
     letter-spacing: 0.5px;
 }
 
+.doc-embed-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-glass);
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    display: block;
+    object-fit: cover;
+    max-height: 320px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doc-embed-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    border-color: var(--neon-gold);
+}
+
 /* Custom Visual Elements mapping based on planet requests */
 .visual-tag-grid {
     display: flex;
