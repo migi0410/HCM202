@@ -1582,6 +1582,30 @@ main {
     margin-bottom: 0;
 }
 
+.apply-proof {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    color: var(--neon-teal);
+    line-height: 1.5;
+}
+
+.apply-proof i {
+    margin-right: 6px;
+    color: var(--neon-teal);
+}
+
+.apply-proof .proof-label {
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
 .doc-footer {
     margin-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.04);

@@ -359,18 +359,34 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="apply-card">
                                 <h5>1. Phát huy sức mạnh toàn dân</h5>
                                 <p>Huy động công nhân, nông dân, trí thức, thanh niên, doanh nhân và kiều bào cùng đóng góp sức lực, tài lực, trí lực phát triển đất nước bền vững.</p>
+                                <div class="apply-proof">
+                                    <span class="proof-label">// Thực tiễn xã hội</span>
+                                    <i class="fas fa-check-circle"></i> Phong trào "Thanh niên lập nghiệp", sự bùng nổ của các startup và hơn 19 tỷ USD lượng kiều hối gửi về xây dựng hạ tầng Tổ quốc mỗi năm.
+                                </div>
                             </div>
                             <div class="apply-card">
                                 <h5>2. Tăng cường đoàn kết dân tộc & tôn giáo</h5>
                                 <p>Tôn trọng tự do tín ngưỡng lành mạnh, bình đẳng thực tế giữa các dân tộc anh em, hỗ trợ đồng bào biên giới phát triển toàn diện.</p>
+                                <div class="apply-proof">
+                                    <span class="proof-label">// Thực tiễn xã hội</span>
+                                    <i class="fas fa-check-circle"></i> Chính sách giao đất giao rừng tại Tây Nguyên, hỗ trợ Tây Bắc và việc duy trì ổn định, bình đẳng giữa các cơ sở thờ tự lương - giáo toàn quốc.
+                                </div>
                             </div>
                             <div class="apply-card">
                                 <h5>3. Giải quyết các vấn đề xã hội</h5>
                                 <p>Cả nước chung lòng ứng phó biến đổi khí hậu, hỗ trợ đồng bào thiên tai lũ lụt, thiện nguyện hiến máu bảo vệ đa dạng môi trường sinh thái.</p>
+                                <div class="apply-proof">
+                                    <span class="proof-label">// Thực tiễn xã hội</span>
+                                    <i class="fas fa-check-circle"></i> Chiến dịch huy động cứu trợ thần tốc toàn quốc trong đại dịch COVID-19 và bão lũ miền Trung (Bão Yagi), giúp giảm nghèo đa chiều dưới 3%.
+                                </div>
                             </div>
                             <div class="apply-card">
                                 <h5>4. Hội nhập kinh tế quốc tế</h5>
                                 <p>Mở rộng hữu nghị đa phương hóa, đón nhận chuyển giao khoa học công nghệ hiện đại quốc tế để số hóa sản xuất nội địa.</p>
+                                <div class="apply-proof">
+                                    <span class="proof-label">// Thực tiễn xã hội</span>
+                                    <i class="fas fa-check-circle"></i> Việt Nam tham gia ký kết 16 hiệp định thương mại tự do (EVFTA, CPTPP, RCEP...), thu hút hơn 36 tỷ USD vốn đầu tư nước ngoài FDI.
+                                </div>
                             </div>
                         </div>
                     `
