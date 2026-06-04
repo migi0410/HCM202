@@ -373,6 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p>Mở rộng hữu nghị đa phương hóa, đón nhận chuyển giao khoa học công nghệ hiện đại quốc tế để số hóa sản xuất nội địa.</p>
                             </div>
                         </div>
+                        <p style="margin-top: 12px; font-size: 0.9rem; line-height: 1.5; color: var(--text-muted);"><strong>Minh chứng hiện thực sinh động:</strong> Lãnh đạo Đảng và Nhà nước luôn bám sát quần chúng nhân dân. Điển hình như Tổng Bí thư Tô Lâm trực tiếp xuống vùng ngập lụt xã Trường Sinh (Tuyên Quang) động viên, trao quà cứu trợ cho bà con bị ảnh hưởng bởi siêu bão Yagi (9/2024); Thủ tướng Chính phủ Phạm Minh Chinh quyết liệt chỉ đạo, trực tiếp thăm hỏi và triển khai phong trào thi đua cả nước chung tay "Xóa nhà tạm, nhà dột nát" hoàn thành vào năm 2025. Về mặt quốc tế, Việt Nam đã tích cực hội nhập kinh tế thế giới khi chính thức gia nhập WTO vào năm 2007 và khẳng định trách nhiệm nhân đạo toàn cầu khi tham gia tích cực vào phái bộ Gìn giữ hòa bình Liên Hợp Quốc từ năm 2014 đến nay tại Nam Sudan và Abyei.</p>
                     `
                 }
             },
