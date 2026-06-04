@@ -374,30 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     `
-                },
-                3: {
-                    title: "Minh chứng thực tiễn xã hội",
-                    content: `
-                        <p>Khối Đại đoàn kết toàn dân tộc theo tư tưởng Hồ Chí Minh ngày nay đã được Đảng và Nhân dân ta cụ thể hóa bằng những thành tựu thực tế lay động lòng người trong đời sống hiện đại:</p>
-                        <div class="card-grid-2x2">
-                            <div class="apply-card">
-                                <h5>1. Đồng lòng vượt đại dịch COVID-19</h5>
-                                <p>Sự tự giác của người dân, hàng vạn chiến sĩ y bác sĩ xung phong ra tuyến đầu, cùng vô vàn mô hình tương trợ tự phát như 'ATM gạo', 'Siêu thị 0 đồng' đã làm sáng ngời sức mạnh đoàn kết toàn dân tộc.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>2. Triệu tấm lòng cứu trợ thiên tai bão lũ</h5>
-                                <p>Khi thiên tai, bão lũ (như siêu bão Yagi) tàn phá, tinh thần 'lá lành đùm lá rách' bùng lên mạnh mẽ. Hàng ngàn đoàn xe cứu trợ, hàng trăm tấn nhu yếu phẩm từ mọi miền Tổ quốc và kiều bào lập tức được gửi đến bà con bị nạn.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>3. Cả nước chung tay vì người nghèo</h5>
-                                <p>Chương trình mục tiêu quốc gia về giảm nghèo bền vững, xây dựng hàng vạn ngôi nhà tình nghĩa đã kéo giảm tỷ lệ hộ nghèo đa chiều cả nước xuống dưới 3%, đảm bảo không ai bị bỏ lại phía sau.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>4. Hội nhập toàn cầu & Nguồn lực Việt Nam</h5>
-                                <p>Việc ký kết 16 hiệp định thương mại tự do thế hệ mới (CPTPP, EVFTA...) kết hợp sức mạnh kiều hối hơn 19 tỷ USD/năm và FDI hơn 36 tỷ USD đã thúc đẩy đất nước vươn tầm, hội nhập quốc tế sâu rộng.</p>
-                            </div>
-                        </div>
-                    `
                 }
             },
             transmissions: [
