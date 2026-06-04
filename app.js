@@ -379,15 +379,15 @@ document.addEventListener('DOMContentLoaded', () => {
             transmissions: [
                 {
                     quote: "Việt Nam muốn làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai.",
-                    source: "Hồ Chí Minh, Tuyên bố với báo chí, 1946"
+                    source: "Hồ Chí Minh, Trả lời nhà báo Mỹ S. Éli Mâysi, 1947"
                 },
                 {
                     quote: "Giúp bạn là tự giúp mình.",
-                    source: "Hồ Chí Minh, Bài phát biểu tại Hội nghị Bandung, 1955"
+                    source: "Hồ Chí Minh, Chỉ thị gửi bộ đội đi làm nhiệm vụ quốc tế ở Lào, 1949"
                 },
                 {
                     quote: "Bốn phương vô sản đều là anh em.",
-                    source: "Hồ Chí Minh, Thơ chúc Tết, 1960"
+                    source: "Hồ Chí Minh, Diễn văn khai mạc Đại hội III của Đảng, 1960"
                 }
             ]
         }
