@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 1: {
                     title: "Truyền thống yêu nước và đoàn kết dân tộc",
                     content: `
-                        <img src="assets/images/nha_rong_1911.png" alt="Bến cảng Nhà Rồng" class="doc-embed-img" />
+                        <img src="assets/images/phan_boi_chau.jpg" alt="Phan Bội Châu" class="doc-embed-img" />
                         <p>Dân tộc Việt Nam có lịch sử hàng nghìn năm dựng nước và giữ nước. Trong suốt quá trình đấu tranh kiên cường đầy gian khổ đó, tinh thần gắn bó, tương trợ và yêu nước đã kết tụ sâu sắc, trở thành giá trị truyền thống tối thượng của đất nước.</p>
                         <div class="doc-quote-block">
                             "Lá lành đùm lá rách"<br>
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 4: {
                     title: "Tổng kết thực tiễn cách mạng",
                     content: `
-                        <img src="assets/images/phan_boi_chau.jpg" alt="Phan Bội Châu" class="doc-embed-img" />
+                        <img src="assets/images/nha_rong_1911.png" alt="Bến cảng Nhà Rồng 1911" class="doc-embed-img" />
                         <p>Tư tưởng Đại đoàn kết dân tộc của Hồ Chí Minh là kết quả của sự kết hợp nhuần nhuyễn giữa lý luận với thực tiễn đấu tranh anh dũng của phong trào cứu nước trong nước và phong trào cách mạng thế giới.</p>
                         <h4>Bài học thực tiễn:</h4>
                         <ul>
@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 1: {
                     title: "Ý nghĩa chiến lược sống còn",
                     content: `
-                        <img src="assets/images/thanh_lap_dang.png" alt="Thành lập Đảng" class="doc-embed-img" />
                         <p>Hồ Chí Minh khẳng định Đại đoàn kết toàn dân tộc là một vấn đề có ý nghĩa chiến lược lâu dài, nhất quán xuyên suốt tiến trình cách mạng Việt Nam.</p>
                         <h4>Các khía cạnh cốt lõi:</h4>
                         <ul>
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 2: {
                     title: "Mục tiêu và nhiệm vụ hàng đầu",
                     content: `
-                        <img src="assets/images/dai_hoi_tours.png" alt="Đại hội Tours" class="doc-embed-img" />
+                        <img src="assets/images/thanh_lap_dang.png" alt="Thành lập Đảng Cộng sản Việt Nam 1930" class="doc-embed-img" />
                         <p>Đại đoàn kết không chỉ là phương thức tập hợp lực lượng mà còn là mục tiêu cao cả, nhiệm vụ chính trị hàng đầu của Đảng Cộng sản và của toàn dân tộc.</p>
                         <h4>Nguyên tắc triển khai:</h4>
                         <ul>
@@ -265,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 1: {
                     title: "Ba phương pháp chính",
                     content: `
-                        <img src="assets/images/ship_latouche.png" alt="Tàu Latouche-Tréville" class="doc-embed-img" />
                         <p>Để củng cố và củng cố khối đại đoàn kết toàn dân vững chắc, Hồ Chí Minh đề ra ba phương pháp cốt lõi mang tính khoa học thực tiễn:</p>
                         <div class="card-grid-3">
                             <div class="card-item">
@@ -289,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 2: {
                     title: "Chi tiết Vận động quần chúng",
                     content: `
-                        <img src="assets/images/phan_van_truong.png" alt="Luật sư Phan Văn Trường" class="doc-embed-img" />
                         <p>Vận động quần chúng đòi hỏi sự tinh tế, tôn trọng và gần gũi thực tiễn đời sống nhân dân:</p>
                         <ul>
                             <li><strong>Giáo dục, tuyên truyền, hướng dẫn:</strong> Giúp nhân dân nhận thức rõ quyền lợi đi đôi với nghĩa vụ công dân đối với tương lai tổ quốc.</li>
@@ -300,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 3: {
                     title: "Chi tiết Đoàn thể & Mặt trận",
                     content: `
-                        <img src="assets/images/borodin.jpg" alt="Mikhail Borodin" class="doc-embed-img" />
                         <p>Đưa nhân dân vào các tổ chức quần chúng có kỷ cương và định hướng thống nhất là bí quyết tạo nên sức mạnh dời non lấp biển:</p>
                         <ul>
                             <li><strong>Đoàn thể quần chúng:</strong> Là nơi sinh hoạt, đoàn kết hỗ trợ lẫn nhau của các giai cấp, vùng miền, giới tính.</li>
@@ -353,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 2: {
                     title: "Vận dụng trong giai đoạn hiện nay",
                     content: `
-                        <img src="assets/images/o_mandenxtam.jpeg" alt="Osip Mandelstam" class="doc-embed-img" />
                         <p>Tư tưởng Hồ Chí Minh về Đại đoàn kết dân tộc là chìa khóa vàng đưa đất nước đi lên phát triển hiện đại và hội nhập:</p>
                         <div class="card-grid-2x2">
                             <div class="apply-card">
