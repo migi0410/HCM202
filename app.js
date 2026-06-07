@@ -270,7 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Web Audio Synthesizer for Retro-Futuristic Hologram SFX
     const StellarAudio = {
         ctx: null,
-        muted: false,
+        get muted() {
+            return typeof GameSFX !== 'undefined' ? GameSFX.isMuted() : false;
+        },
         
         init() {
             if (this.ctx) return;
@@ -278,16 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (AudioContextClass) {
                 this.ctx = new AudioContextClass();
             }
-        },
-        
-        toggleMute() {
-            this.muted = !this.muted;
-            const muteBtn = document.getElementById('btn-mute-hud');
-            if (muteBtn) {
-                muteBtn.innerHTML = this.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-                muteBtn.classList.toggle('muted', this.muted);
-            }
-            return this.muted;
         },
         
         playTick() {
@@ -393,15 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Bind Mute button in UI
-    const btnMuteHud = document.getElementById('btn-mute-hud');
-    if (btnMuteHud) {
-        btnMuteHud.addEventListener('click', (e) => {
-            e.stopPropagation();
-            StellarAudio.toggleMute();
-            StellarAudio.playTick();
-        });
-    }
+    // Note: Mute button binding is handled globally by game_shared.js
 
     // Typewriter Effect - sleek character-by-character typing animation
     function decryptText(element, targetText, speed = 12) {
