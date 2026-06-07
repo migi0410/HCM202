@@ -273,6 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
         get muted() {
             return typeof GameSFX !== 'undefined' ? GameSFX.isMuted() : false;
         },
+        get volume() {
+            if (this.muted) return 0;
+            return typeof GameSFX !== 'undefined' && typeof GameSFX.getVolume === 'function' ? GameSFX.getVolume() : 0.5;
+        },
         
         init() {
             if (this.ctx) return;
@@ -295,7 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(400, this.ctx.currentTime + 0.04);
                 
-                gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
+                const vol = this.volume;
+                gain.gain.setValueAtTime(0.02 * vol, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
                 
                 osc.connect(gain);
@@ -319,7 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.frequency.setValueAtTime(880, this.ctx.currentTime);
                 osc.frequency.setValueAtTime(1760, this.ctx.currentTime + 0.03);
                 
-                gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+                const vol = this.volume;
+                gain.gain.setValueAtTime(0.015 * vol, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
                 
                 osc.connect(gain);
@@ -348,7 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 filter.frequency.setValueAtTime(300, this.ctx.currentTime);
                 filter.frequency.exponentialRampToValueAtTime(2000, this.ctx.currentTime + 0.45);
                 
-                gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+                const vol = this.volume;
+                gain.gain.setValueAtTime(0.04 * vol, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.5);
                 
                 osc.connect(filter);
@@ -373,7 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.frequency.setValueAtTime(440, this.ctx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(55, this.ctx.currentTime + 0.35);
                 
-                gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+                const vol = this.volume;
+                gain.gain.setValueAtTime(0.05 * vol, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.4);
                 
                 osc.connect(gain);

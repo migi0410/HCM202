@@ -2197,7 +2197,15 @@ main {
    V4.9 ADVANCED COSMIC EFFECTS (Star Dust, Sound Toggle, Scan Decryption)
    ========================================================================== */
 
-/* 1. Mute HUD Sound Toggle */
+/* 1. Mute HUD Sound Toggle & Volume Slider */
+.hud-volume-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+    margin-right: 15px;
+}
+
 .hud-sound-toggle {
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(8px);
@@ -2212,7 +2220,7 @@ main {
     align-items: center;
     cursor: pointer;
     font-size: 0.95rem;
-    margin-right: 15px;
+    margin-right: 0;
     transition: var(--transition-smooth);
     box-shadow: 0 0 10px rgba(223, 186, 107, 0.05);
 }
@@ -2235,6 +2243,67 @@ main {
     background: rgba(255, 75, 75, 0.08);
     border-color: var(--neon-crimson);
     box-shadow: 0 0 20px rgba(255, 75, 75, 0.2);
+}
+
+.hud-volume-slider-wrapper {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+}
+
+.hud-volume-container:hover .hud-volume-slider-wrapper,
+.hud-volume-container:focus-within .hud-volume-slider-wrapper {
+    width: 80px;
+    margin-left: 10px;
+}
+
+.hud-volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 4px;
+    background: rgba(223, 186, 107, 0.2);
+    border-radius: 2px;
+    outline: none;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.hud-volume-slider:hover {
+    background: rgba(223, 186, 107, 0.35);
+}
+
+.hud-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--neon-gold, #ffd700);
+    box-shadow: 0 0 6px var(--neon-gold-glow, rgba(255, 215, 0, 0.6));
+    transition: transform 0.1s ease;
+}
+
+.hud-volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.hud-volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--neon-gold, #ffd700);
+    box-shadow: 0 0 6px var(--neon-gold-glow, rgba(255, 215, 0, 0.6));
+    border: none;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+
+.hud-volume-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
 }
 
 /* 2. 3D Stellar Nebula Dust Particles */
@@ -2288,13 +2357,24 @@ main {
     100% { top: 100%; opacity: 0; }
 }
 
-/* Responsiveness for Mute Button on Mobile */
+/* Responsiveness for Mute Button and Volume Slider on Mobile */
 @media (max-width: 768px) {
+    .hud-volume-container {
+        margin-right: 8px;
+    }
     .hud-sound-toggle {
         width: 36px;
         height: 36px;
         font-size: 0.85rem;
-        margin-right: 10px;
+        margin-right: 0;
+    }
+    .hud-volume-container:hover .hud-volume-slider-wrapper,
+    .hud-volume-container:focus-within .hud-volume-slider-wrapper {
+        width: 60px;
+        margin-left: 6px;
+    }
+    .hud-volume-slider {
+        width: 60px;
     }
 }
 

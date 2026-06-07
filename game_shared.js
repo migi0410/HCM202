@@ -897,30 +897,64 @@ const GameSFX = {
         return false;
     },
 
+    getVolume() {
+        if (this.isMuted()) return 0;
+        let savedVolume = localStorage.getItem('hcm_audio_volume');
+        return savedVolume !== null ? parseFloat(savedVolume) : 0.5;
+    },
+
+    setVolume(vol) {
+        localStorage.setItem('hcm_audio_volume', vol);
+        if (vol === 0) {
+            localStorage.setItem('hcm_audio_muted', 'true');
+        } else {
+            localStorage.setItem('hcm_audio_muted', 'false');
+        }
+        
+        if (globalAudio) {
+            globalAudio.volume = vol;
+            globalAudio.muted = (vol === 0);
+        }
+        
+        this.syncMuteUI();
+    },
+
     toggleMute() {
         let currentMute = this.isMuted();
         let nextMute = !currentMute;
         localStorage.setItem('hcm_audio_muted', nextMute ? 'true' : 'false');
         
-        const muteBtn = document.getElementById('btn-mute-hud');
-        if (muteBtn) {
-            muteBtn.innerHTML = nextMute ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-            muteBtn.classList.toggle('muted', nextMute);
-        }
-        if (globalAudio) {
-            globalAudio.muted = nextMute;
-        }
+        this.syncMuteUI();
         return nextMute;
     },
 
     syncMuteUI() {
         const muteBtn = document.getElementById('btn-mute-hud');
+        const volumeSlider = document.getElementById('hud-volume-slider');
         if (muteBtn) {
             let muted = this.isMuted();
-            muteBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-            muteBtn.classList.toggle('muted', muted);
+            let savedVolume = localStorage.getItem('hcm_audio_volume');
+            let vol = savedVolume !== null ? parseFloat(savedVolume) : 0.5;
+            
+            if (volumeSlider) {
+                volumeSlider.value = muted ? 0 : vol;
+            }
+            
+            let iconClass = 'fa-volume-up';
+            if (muted || vol === 0) {
+                iconClass = 'fa-volume-mute';
+            } else if (vol < 0.3) {
+                iconClass = 'fa-volume-off';
+            } else if (vol < 0.7) {
+                iconClass = 'fa-volume-down';
+            }
+            
+            muteBtn.innerHTML = `<i class="fas ${iconClass}"></i>`;
+            muteBtn.classList.toggle('muted', muted || vol === 0);
+            
             if (globalAudio) {
                 globalAudio.muted = muted;
+                globalAudio.volume = muted ? 0 : vol;
             }
         }
     },
@@ -948,7 +982,8 @@ const GameSFX = {
             osc2.frequency.setValueAtTime(392.00, now + 0.2); // G4
             osc2.frequency.setValueAtTime(523.25, now + 0.3); // C5
 
-            gain.gain.setValueAtTime(0.04, now);
+            const vol = this.getVolume();
+            gain.gain.setValueAtTime(0.04 * vol, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
 
             osc1.connect(gain);
@@ -976,7 +1011,8 @@ const GameSFX = {
             osc.frequency.setValueAtTime(180, now);
             osc.frequency.linearRampToValueAtTime(90, now + 0.3);
 
-            gain.gain.setValueAtTime(0.04, now);
+            const vol = this.getVolume();
+            gain.gain.setValueAtTime(0.04 * vol, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
 
             osc.connect(gain);
@@ -1001,7 +1037,8 @@ const GameSFX = {
             osc.frequency.setValueAtTime(1000, now);
             osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
 
-            gain.gain.setValueAtTime(0.02, now);
+            const vol = this.getVolume();
+            gain.gain.setValueAtTime(0.02 * vol, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
 
             osc.connect(gain);
@@ -1020,6 +1057,7 @@ const GameSFX = {
         try {
             const now = this.ctx.currentTime;
             const frequencies = [587.33, 659.25, 880.00, 1174.66, 1318.51, 1760.00];
+            const vol = this.getVolume();
             frequencies.forEach((freq, idx) => {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -1028,7 +1066,7 @@ const GameSFX = {
                 osc.frequency.setValueAtTime(freq, now + idx * 0.07);
                 
                 gain.gain.setValueAtTime(0, now + idx * 0.07);
-                gain.gain.linearRampToValueAtTime(0.02, now + idx * 0.07 + 0.02);
+                gain.gain.linearRampToValueAtTime(0.02 * vol, now + idx * 0.07 + 0.02);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.4);
                 
                 osc.connect(gain);
@@ -1055,7 +1093,8 @@ const GameSFX = {
             osc.frequency.setValueAtTime(293.66, now + 0.08);
             osc.frequency.setValueAtTime(220, now + 0.16);
 
-            gain.gain.setValueAtTime(0.03, now);
+            const vol = this.getVolume();
+            gain.gain.setValueAtTime(0.03 * vol, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
 
             osc.connect(gain);
@@ -1149,14 +1188,45 @@ function initGlobalSharedVisuals() {
         });
     }
 
-    // 3. Mute Toggle Button
+    // 3. Mute Toggle Button & Volume Slider
     const muteBtn = document.getElementById('btn-mute-hud');
     if (muteBtn) {
+        // Wrap muteBtn in a volume container
+        const container = document.createElement('div');
+        container.className = 'hud-volume-container';
+        
+        muteBtn.parentNode.insertBefore(container, muteBtn);
+        container.appendChild(muteBtn);
+        
+        const sliderWrapper = document.createElement('div');
+        sliderWrapper.className = 'hud-volume-slider-wrapper';
+        sliderWrapper.innerHTML = `
+            <input type="range" id="hud-volume-slider" min="0" max="1" step="0.05" value="0.5" class="hud-volume-slider" title="Điều chỉnh âm lượng" />
+        `;
+        container.appendChild(sliderWrapper);
+        
+        const volumeSlider = sliderWrapper.querySelector('#hud-volume-slider');
+        
+        // Load initial volume
+        let savedVolume = localStorage.getItem('hcm_audio_volume');
+        let currentVolume = savedVolume !== null ? parseFloat(savedVolume) : 0.5;
+        volumeSlider.value = currentVolume;
+        
         GameSFX.syncMuteUI();
+        
         muteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             GameSFX.toggleMute();
             GameSFX.playClick();
+        });
+        
+        volumeSlider.addEventListener('input', (e) => {
+            const vol = parseFloat(e.target.value);
+            GameSFX.setVolume(vol);
+        });
+        
+        volumeSlider.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
     }
 }
@@ -1845,8 +1915,10 @@ function initGlobalMusicPlayer() {
         globalAudio.currentTime = savedTime;
         globalAudio.loop = false;
         
-        // Sync initial mute state
+        // Sync initial mute and volume state
         globalAudio.muted = GameSFX.isMuted();
+        let savedVol = localStorage.getItem('hcm_audio_volume');
+        globalAudio.volume = savedVol !== null ? parseFloat(savedVol) : 0.5;
         
         globalAudio.addEventListener('ended', () => {
             playNextTrack();
