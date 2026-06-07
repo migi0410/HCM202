@@ -1826,6 +1826,7 @@ function initGlobalMusicPlayer() {
 
     if (!globalAudio) {
         globalAudio = new Audio();
+        globalAudio.preload = "none";
         
         currentMusicIndex = parseInt(localStorage.getItem('hcm_music_index')) || 0;
         const savedTime = parseFloat(localStorage.getItem('hcm_music_time')) || 0;
