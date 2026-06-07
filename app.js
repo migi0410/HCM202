@@ -660,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trackPlanetDiscovery(planetId);
         activePlanet = planetId;
         activeMoon = moonId;
+        document.body.setAttribute('data-theme-planet', planetId);
         
         const data = UNIVERSE_DATA[planetId];
         const moon = data.moons[moonId];
@@ -739,6 +740,7 @@ document.addEventListener('DOMContentLoaded', () => {
         StellarAudio.playClose();
         activePlanet = null;
         activeMoon = null;
+        document.body.removeAttribute('data-theme-planet');
         
         document.querySelectorAll('.planet-body').forEach(p => {
             p.classList.remove('focused');
