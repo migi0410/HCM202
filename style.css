@@ -260,10 +260,12 @@ main {
     font-weight: 800;
     font-size: 1.35rem;
     letter-spacing: 4px;
+    order: 1;
 }
 
 .logo-white {
     color: #fff;
+    margin-right: 10px;
 }
 
 .logo-neon {
@@ -278,12 +280,19 @@ main {
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+    order: 5;
+}
+
+.nav-menu {
+    order: 2;
+    margin-left: auto;
+    margin-right: 35px;
 }
 
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 30px;
 }
 
 .nav-link {
@@ -2045,6 +2054,15 @@ main {
 @media (max-width: 767px) {
     /* PHONE OPTIMIZATION REDESIGN (CRITICAL) */
     
+    .main-header {
+        padding: 12px 0;
+    }
+    
+    .logo {
+        font-size: 1.15rem;
+        letter-spacing: 2px;
+    }
+    
     .nav-toggle {
         display: block;
     }
@@ -2203,7 +2221,8 @@ main {
     align-items: center;
     position: relative;
     z-index: 1001;
-    margin-right: 15px;
+    margin-right: 0;
+    order: 4;
 }
 
 .hud-sound-toggle {
@@ -2361,6 +2380,7 @@ main {
 @media (max-width: 768px) {
     .hud-volume-container {
         margin-right: 8px;
+        order: 3;
     }
     .hud-sound-toggle {
         width: 36px;
@@ -4612,13 +4632,14 @@ main {
     border: 1px solid var(--neon-gold, #ffd700);
     border-radius: 20px;
     padding: 4px 12px;
-    margin-left: 15px;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 25px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
     height: 34px;
     z-index: 1000;
+    order: 3;
 }
 
 .global-music-widget .music-btn {
@@ -4670,10 +4691,11 @@ main {
 
 @media (max-width: 768px) {
     .global-music-widget {
-        margin-left: 8px;
+        margin-left: auto;
         margin-right: 8px;
         padding: 4px 6px;
         gap: 4px;
+        order: 2;
     }
     .global-music-widget .music-info {
         display: none;
