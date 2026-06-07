@@ -2037,11 +2037,194 @@ function updateMusicUI() {
     }
 }
 
+function initGlobalProjectMetadata() {
+    const footerPanel = document.querySelector('.footer-info-panel');
+    if (!footerPanel) return;
+
+    // 1. Hide/remove the existing footer info panel
+    footerPanel.style.display = 'none';
+
+    // 2. Create the futuristic trigger button and insert it in place of the footer panel
+    const triggerContainer = document.createElement('div');
+    triggerContainer.className = 'project-meta-trigger-container';
+    triggerContainer.innerHTML = `
+        <button id="btn-project-meta" class="btn-outline-neon">
+            <i class="fas fa-info-circle"></i> THÔNG TIN DỰ ÁN (TÁC GIẢ, CÔNG CỤ & TƯ LIỆU)
+        </button>
+    `;
+    footerPanel.parentNode.insertBefore(triggerContainer, footerPanel);
+
+    // 3. Inject the project metadata popup modal html
+    const modal = document.createElement('div');
+    modal.id = 'project-meta-modal';
+    modal.className = 'project-meta-modal';
+    modal.innerHTML = `
+        <div class="meta-modal-content">
+            <button class="meta-modal-close" id="btn-close-meta-modal" aria-label="Close Modal">&times;</button>
+            <div class="meta-modal-header">
+                <h3><i class="fas fa-project-diagram"></i> HỒ SƠ DỰ ÁN // PROJECT ARCHIVES</h3>
+                <p class="sub-header">Hệ tri thức số hóa tương tác 3D - Môn học Tư tưởng Hồ Chí Minh (HCM202)</p>
+            </div>
+            
+            <div class="meta-modal-tabs">
+                <button class="meta-tab active" data-tab="authors"><i class="fas fa-user-astronaut"></i> Tác Giả</button>
+                <button class="meta-tab" data-tab="tools"><i class="fas fa-robot"></i> Công Cụ AI</button>
+                <button class="meta-tab" data-tab="archives"><i class="fas fa-database"></i> Tư Liệu</button>
+            </div>
+            
+            <div class="meta-modal-body">
+                <!-- Tab Content 1: Authors -->
+                <div class="meta-tab-content active" id="meta-content-authors">
+                    <ul class="meta-list">
+                        <li>
+                            <i class="fas fa-id-badge"></i>
+                            <div class="meta-item-info">
+                                <strong>Hoàng Trung Kiên</strong>
+                                <span class="meta-student-id">Mã sinh viên: SS181236</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-id-badge"></i>
+                            <div class="meta-item-info">
+                                <strong>Nguyễn Thị Hồng Yến</strong>
+                                <span class="meta-student-id">Mã sinh viên: SS180610</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-id-badge"></i>
+                            <div class="meta-item-info">
+                                <strong>Hà Minh Dũng</strong>
+                                <span class="meta-student-id">Mã sinh viên: SE183973</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="meta-description-box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Dự án số hóa học thuật sáng tạo kết hợp giữa tinh thần học tập nghiêm túc của sinh viên và công nghệ tương tác 3D hiện đại, nhằm tạo ra trải nghiệm giáo dục thế hệ mới trực quan và sinh động.</p>
+                    </div>
+                </div>
+                
+                <!-- Tab Content 2: AI Tools -->
+                <div class="meta-tab-content" id="meta-content-tools">
+                    <ul class="meta-list">
+                        <li>
+                            <i class="fas fa-code"></i>
+                            <div class="meta-item-info">
+                                <strong>Antigravity AI</strong>
+                                <span class="meta-tool-desc">Lập trình lõi hệ thống, chatbot AI và tối ưu hóa hiệu năng mã nguồn.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-paint-brush"></i>
+                            <div class="meta-item-info">
+                                <strong>Claude AI</strong>
+                                <span class="meta-tool-desc">Hỗ trợ thiết kế thẩm mỹ giao diện UI/UX và hệ thống màu sắc phát sáng Neon.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-pen-fancy"></i>
+                            <div class="meta-item-info">
+                                <strong>Gemini AI</strong>
+                                <span class="meta-tool-desc">Hỗ trợ thu thập tài liệu học thuật và tổng hợp nội dung kiến thức chuyên sâu.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-brain"></i>
+                            <div class="meta-item-info">
+                                <strong>ChatGPT</strong>
+                                <span class="meta-tool-desc">Hỗ trợ nghiên cứu học liệu và biên soạn nội dung tài liệu ôn tập.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Tab Content 3: Sources -->
+                <div class="meta-tab-content" id="meta-content-archives">
+                    <ul class="meta-list">
+                        <li>
+                            <i class="fas fa-book"></i>
+                            <div class="meta-item-info">
+                                <strong>Giáo trình Tư tưởng Hồ Chí Minh</strong>
+                                <span class="meta-source-desc">Nhà xuất bản Chính trị quốc gia Sự thật - Bộ Giáo dục và Đào tạo.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-monument"></i>
+                            <div class="meta-item-info">
+                                <strong>Bảo tàng Hồ Chí Minh</strong>
+                                <span class="meta-source-desc">Tư liệu lịch sử chính thống về cuộc đời và sự nghiệp của Người.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <div class="meta-item-info">
+                                <strong>Cổng thông tin điện tử Đảng Cộng sản Việt Nam</strong>
+                                <span class="meta-source-desc">Hệ thống văn kiện chính thống và các bài nghiên cứu lý luận.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="meta-modal-footer">
+                <span class="system-code">// SECURE ACCESS // PROJECT ARCHIVES</span>
+                <span>VER. 8.6</span>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const btnOpen = document.getElementById('btn-project-meta');
+    const btnClose = document.getElementById('btn-close-meta-modal');
+    
+    btnOpen.addEventListener('click', () => {
+        if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+        else if (typeof StellarAudio !== 'undefined') StellarAudio.playTick();
+        modal.classList.add('active');
+    });
+
+    btnClose.addEventListener('click', () => {
+        if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+        else if (typeof StellarAudio !== 'undefined') StellarAudio.playClose();
+        modal.classList.remove('active');
+    });
+
+    // Close modal when clicking outside content
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+            else if (typeof StellarAudio !== 'undefined') StellarAudio.playClose();
+            modal.classList.remove('active');
+        }
+    });
+
+    // Tab switching logic
+    const tabs = modal.querySelectorAll('.meta-tab');
+    const contents = modal.querySelectorAll('.meta-tab-content');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+            else if (typeof StellarAudio !== 'undefined') StellarAudio.playTick();
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            const targetId = `meta-content-${tab.dataset.tab}`;
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) targetContent.classList.add('active');
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     checkAndEnforcePasscode();
     initGlobalSharedVisuals();
     checkAndEnforceStudyDeckLock();
     initGlobalChatbot();
     initGlobalMusicPlayer();
+    initGlobalProjectMetadata();
 });
+
 

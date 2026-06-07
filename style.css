@@ -4885,3 +4885,269 @@ body[data-theme-planet="5"] {
 .apply-proof i {
     color: var(--theme-color) !important;
 }
+
+/* ==========================================================================
+   14. PROJECT METADATA MODAL (TABBED POPUP)
+   ========================================================================== */
+.project-meta-trigger-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 30px;
+    width: 100%;
+}
+
+.btn-outline-neon {
+    background: rgba(255, 215, 0, 0.02);
+    border: 1px solid var(--theme-color, #ffd700);
+    color: var(--theme-color, #ffd700);
+    padding: 10px 24px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--theme-color-glow);
+}
+
+.btn-outline-neon:hover {
+    background: var(--theme-color-glow);
+    color: #fff;
+    box-shadow: 0 0 20px var(--theme-color);
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px var(--theme-color);
+}
+
+/* Modal wrapper */
+.project-meta-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 2, 5, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.project-meta-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.meta-modal-content {
+    background: rgba(10, 8, 15, 0.96);
+    border: 1px solid var(--theme-color, #ffd700);
+    border-top: 4px solid var(--theme-color, #ffd700);
+    border-radius: 6px;
+    width: 520px;
+    max-width: 90%;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--theme-color-glow);
+    position: relative;
+    padding: 35px 30px;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+.project-meta-modal.active .meta-modal-content {
+    transform: scale(1);
+}
+
+.meta-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.meta-modal-close:hover {
+    color: var(--theme-color, #ffd700);
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.meta-modal-header {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.meta-modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meta-modal-header h3 i {
+    color: var(--theme-color, #ffd700);
+}
+
+.meta-modal-header .sub-header {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Tabs */
+.meta-modal-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.meta-tab {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.meta-tab i {
+    font-size: 0.8rem;
+}
+
+.meta-tab:hover {
+    border-color: var(--theme-color, #ffd700);
+    color: #fff;
+}
+
+.meta-tab.active {
+    background: var(--theme-color-glow);
+    border-color: var(--theme-color, #ffd700);
+    color: var(--theme-color, #ffd700);
+    box-shadow: 0 0 10px var(--theme-color-glow);
+    font-weight: bold;
+}
+
+/* Modal Body / Lists */
+.meta-modal-body {
+    min-height: 220px;
+}
+
+.meta-tab-content {
+    display: none;
+    animation: fadeInMeta 0.4s ease;
+}
+
+.meta-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInMeta {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.meta-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 12px 14px;
+    border-radius: 4px;
+}
+
+.meta-list li i {
+    color: var(--theme-color, #ffd700);
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.meta-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-item-info strong {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.meta-student-id {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--theme-color, #ffd700);
+}
+
+.meta-tool-desc, .meta-source-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+.meta-description-box {
+    margin-top: 20px;
+    padding: 12px;
+    border-left: 2px solid var(--theme-color, #ffd700);
+    background: rgba(var(--theme-color-rgb), 0.02);
+    display: flex;
+    gap: 10px;
+}
+
+.meta-description-box i {
+    color: var(--theme-color, #ffd700);
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.meta-description-box p {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.meta-modal-footer {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
