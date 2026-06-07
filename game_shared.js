@@ -1883,15 +1883,15 @@ function initGlobalChatbot() {
 const MUSIC_PLAYLIST = [
     {
         title: "Dấu Chân Phía Trước",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src: "https://mp3.bcdcnt.net/7d/31/34/7d31343c27b2d050f1cb0e7704e5f05a.mp3"
     },
     {
         title: "Ai Yêu Bác Hồ Chí Minh Hơn Thiếu Niên Nhi Đồng",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        src: "https://mp3.bcdcnt.net/b4/04/fc/b404fc48d0eba7d9154ff9a805b29ede.mp3"
     },
     {
         title: "Tiếng hát giữa rừng Pác Bó",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        src: "https://mp3.bcdcnt.net/31/9a/dd/319addf43dc6763cc39593e1c5567a43.mp3"
     }
 ];
 
@@ -2033,7 +2033,7 @@ function updateMusicUI() {
         playBtn.innerHTML = isMusicPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
     }
     if (trackTitle) {
-        trackTitle.innerHTML = `<span>Hòa tấu — ${MUSIC_PLAYLIST[currentMusicIndex].title}</span>`;
+        trackTitle.innerHTML = `<span>${MUSIC_PLAYLIST[currentMusicIndex].title}</span>`;
     }
 }
 
