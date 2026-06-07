@@ -614,8 +614,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize progress on load
-    updateProgressUI(JSON.parse(localStorage.getItem('hcm_explored_planets') || '[]').length);
+    // Initialize progress on load (resets every time the page is loaded)
+    localStorage.removeItem('hcm_explored_planets');
+    updateProgressUI(0);
     // --------------------------------------------------------------------------
     // TRANSMISSION RECEIVED FEATURE
     // --------------------------------------------------------------------------
