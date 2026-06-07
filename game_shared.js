@@ -1905,15 +1905,23 @@ function initGlobalMusicPlayer() {
 
     if (!globalAudio) {
         globalAudio = new Audio();
-        globalAudio.preload = "none";
+        globalAudio.preload = "auto";
         
         currentMusicIndex = parseInt(localStorage.getItem('hcm_music_index')) || 0;
         const savedTime = parseFloat(localStorage.getItem('hcm_music_time')) || 0;
         isMusicPlaying = localStorage.getItem('hcm_music_playing') === 'true';
 
         globalAudio.src = MUSIC_PLAYLIST[currentMusicIndex].src;
-        globalAudio.currentTime = savedTime;
         globalAudio.loop = false;
+        
+        // Safely set currentTime when metadata is ready to prevent resetting to 0
+        if (globalAudio.readyState >= 1) {
+            globalAudio.currentTime = savedTime;
+        } else {
+            globalAudio.addEventListener('loadedmetadata', () => {
+                globalAudio.currentTime = savedTime;
+            }, { once: true });
+        }
         
         // Sync initial mute and volume state
         globalAudio.muted = GameSFX.isMuted();
@@ -1922,6 +1930,13 @@ function initGlobalMusicPlayer() {
         
         globalAudio.addEventListener('ended', () => {
             playNextTrack();
+        });
+
+        // Save playback time periodically on timeupdate
+        globalAudio.addEventListener('timeupdate', () => {
+            if (isMusicPlaying && !globalAudio.paused) {
+                localStorage.setItem('hcm_music_time', globalAudio.currentTime);
+            }
         });
     }
 
@@ -1982,8 +1997,20 @@ function initGlobalMusicPlayer() {
         document.removeEventListener('click', resumePlay);
         document.removeEventListener('keydown', resumePlay);
     };
-    document.addEventListener('click', resumePlay);
-    document.addEventListener('keydown', resumePlay);
+
+    // Attempt to play immediately (works if user interacted with previous page on same origin)
+    if (isMusicPlaying) {
+        globalAudio.play().then(() => {
+            updateMusicUI();
+        }).catch(err => {
+            console.log("Autoplay blocked on load, waiting for user gesture.", err);
+            // Fall back to listening for user interaction
+            document.addEventListener('click', resumePlay);
+            document.addEventListener('keydown', resumePlay);
+        });
+    } else {
+        updateMusicUI();
+    }
 
     window.addEventListener('beforeunload', () => {
         localStorage.setItem('hcm_music_index', currentMusicIndex);
