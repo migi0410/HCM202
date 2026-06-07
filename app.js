@@ -4,48 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-                    title: "Vận dụng trong giai đoạn hiện nay",
-                    content: `
-                        <img src="assets/images/dai_hoi_tours.png" alt="Đại hội Tours 1920" class="doc-embed-img" />
-                        <p>Tư tưởng Hồ Chí Minh về Đại đoàn kết dân tộc là chìa khóa vàng đưa đất nước đi lên phát triển hiện đại và hội nhập:</p>
-                        <div class="card-grid-2x2">
-                            <div class="apply-card">
-                                <h5>1. Phát huy sức mạnh toàn dân</h5>
-                                <p>Huy động công nhân, nông dân, trí thức, thanh niên, doanh nhân và kiều bào cùng đóng góp sức lực, tài lực, trí lực phát triển đất nước bền vững.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>2. Tăng cường đoàn kết dân tộc & tôn giáo</h5>
-                                <p>Tôn trọng tự do tín ngưỡng lành mạnh, bình đẳng thực tế giữa các dân tộc anh em, hỗ trợ đồng bào biên giới phát triển toàn diện.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>3. Giải quyết các vấn đề xã hội</h5>
-                                <p>Cả nước chung lòng ứng phó biến đổi khí hậu, hỗ trợ đồng bào thiên tai lũ lụt, thiện nguyện hiến máu bảo vệ đa dạng môi trường sinh thái.</p>
-                            </div>
-                            <div class="apply-card">
-                                <h5>4. Hội nhập kinh tế quốc tế</h5>
-                                <p>Mở rộng hữu nghị đa phương hóa, đón nhận chuyển giao khoa học công nghệ hiện đại quốc tế để số hóa sản xuất nội địa.</p>
-                            </div>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 0.9rem; line-height: 1.5; color: var(--text-muted);"><strong>Minh chứng hiện thực sinh động:</strong> Lãnh đạo Đảng và Nhà nước luôn bám sát quần chúng nhân dân. Điển hình như Tổng Bí thư Tô Lâm trực tiếp xuống vùng ngập lụt xã Trường Sinh (Tuyên Quang) động viên, trao quà cứu trợ cho bà con bị ảnh hưởng bởi siêu bão Yagi (9/2024); Thủ tướng Chính phủ Phạm Minh Chinh quyết liệt chỉ đạo, trực tiếp thăm hỏi và triển khai phong trào thi đua cả nước chung tay "Xóa nhà tạm, nhà dột nát" hoàn thành vào năm 2025. Về mặt quốc tế, Việt Nam đã tích cực hội nhập kinh tế thế giới khi chính thức gia nhập WTO vào năm 2007 và khẳng định trách nhiệm nhân đạo toàn cầu khi tham gia tích cực vào phái bộ Gìn giữ hòa bình Liên Hợp Quốc từ năm 2014 đến nay tại Nam Sudan và Abyei.</p>
-                    `
-                }
-            },
-            transmissions: [
-                {
-                    quote: "Việt Nam muốn làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai.",
-                    source: "Hồ Chí Minh, Trả lời nhà báo Mỹ S. Éli Mâysi, 1947"
-                },
-                {
-                    quote: "Giúp bạn là tự giúp mình.",
-                    source: "Hồ Chí Minh, Chỉ thị gửi bộ đội đi làm nhiệm vụ quốc tế ở Lào, 1949"
-                },
-                {
-                    quote: "Bốn phương vô sản đều là anh em.",
-                    source: "Hồ Chí Minh, Diễn văn khai mạc Đại hội III của Đảng, 1960"
-                }
-            ]
-        }
-    };
+    // Note: UNIVERSE_DATA is now loaded globally from game_shared.js
 
     // ==========================================================================
     // 2. CANVAS STARFIELD ENGINE (60 FPS DEEP SPACE DRIFT)
