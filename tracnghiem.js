@@ -229,6 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
             state.tokens++;
             state.score++;
             
+            if (typeof window.triggerConfetti === 'function') {
+                window.triggerConfetti(1500);
+            }
+            
             correctLabel.classList.add('pulse-success');
             
             feedbackPane.innerHTML = `
@@ -327,6 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalCompletion.classList.add('active');
                 document.documentElement.classList.add('console-open');
                 document.body.classList.add('console-open');
+                
+                // Trigger major completion confetti!
+                if (typeof window.triggerConfetti === 'function') {
+                    window.triggerConfetti(4500);
+                }
             }
         }
     }

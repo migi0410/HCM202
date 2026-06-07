@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="lixi-back">
                         <div class="prize-sparkles"></div>
                         <div class="prize-content ${isOpen ? (prize ? prize.type : '') : ''}">
-                            <div class="prize-icon">${isOpen ? (prize.type === 'cash' ? '💸' : '🥨') : ''}</div>
-                            <div class="prize-title">${isOpen ? (prize.type === 'cash' ? 'TIỀN MẶT' : 'BÁNH OSHI') : ''}</div>
+                            <div class="prize-icon">${isOpen ? (prize.type === 'cash' ? '💸' : (prize.type === 'parking' ? '🏍️' : '🥨')) : ''}</div>
+                            <div class="prize-title">${isOpen ? (prize.type === 'cash' ? 'TIỀN MẶT' : (prize.type === 'parking' ? 'GỬI XE' : 'BÁNH OSHI')) : ''}</div>
                             <div class="prize-value">${isOpen ? prize.value.toUpperCase() : ''}</div>
                             <div class="prize-full-label">${isOpen ? prize.label : ''}</div>
                         </div>
@@ -175,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (prizeContent) {
             prizeContent.className = `prize-content ${prize.type}`;
             prizeContent.innerHTML = `
-                <div class="prize-icon">${prize.type === 'cash' ? '💸' : '🥨'}</div>
-                <div class="prize-title">${prize.type === 'cash' ? 'TIỀN MẶT' : 'BÁNH OSHI'}</div>
+                <div class="prize-icon">${prize.type === 'cash' ? '💸' : (prize.type === 'parking' ? '🏍️' : '🥨')}</div>
+                <div class="prize-title">${prize.type === 'cash' ? 'TIỀN MẶT' : (prize.type === 'parking' ? 'GỬI XE' : 'BÁNH OSHI')}</div>
                 <div class="prize-value">${prize.value.toUpperCase()}</div>
                 <div class="prize-full-label">${prize.label}</div>
             `;
@@ -187,8 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         logSystemHUD(`Đã mở bao lì xì #${idx + 1}: Nhận ${prize.label.toUpperCase()}!`, "success");
         
-        if (prize.type === 'cash') {
+        if (prize.type === 'cash' || prize.type === 'parking') {
             triggerSparkleBlast(envelopeElement);
+            if (typeof window.triggerConfetti === 'function') {
+                window.triggerConfetti(2000);
+            }
         }
     }
 

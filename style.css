@@ -2808,6 +2808,10 @@ main {
     color: var(--neon-blue);
     text-shadow: 0 0 15px var(--neon-blue-glow);
 }
+.prize-content.parking .prize-value {
+    color: var(--neon-teal);
+    text-shadow: 0 0 15px var(--neon-teal-glow);
+}
 
 .lixi-card-item.opened .lixi-back {
     border-color: rgba(255,255,255,0.1);
@@ -2986,6 +2990,9 @@ main {
 }
 .inv-item.oshi .inv-label {
     color: var(--neon-blue);
+}
+.inv-item.parking .inv-label {
+    color: var(--neon-teal);
 }
 
 /* Action controls */
@@ -4511,6 +4518,85 @@ main {
         max-width: 100%;
         border-left: 3px solid var(--neon-teal);
         border-right: none;
+    }
+}
+
+/* ==========================================================================
+   12. GLOBAL BACKGROUND MUSIC PLAYER WIDGET
+   ========================================================================== */
+.global-music-widget {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(20, 15, 5, 0.4);
+    border: 1px solid var(--neon-gold, #ffd700);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-left: 15px;
+    margin-right: auto;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+    height: 34px;
+    z-index: 1000;
+}
+
+.global-music-widget .music-btn {
+    background: none;
+    border: none;
+    color: var(--neon-gold, #ffd700);
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.global-music-widget .music-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    color: #fff;
+    text-shadow: 0 0 5px #ffd700;
+}
+
+.global-music-widget .music-info {
+    width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    font-size: 0.72rem;
+    color: #ecefff;
+    margin-left: 4px;
+    border-left: 1px solid rgba(255, 215, 0, 0.3);
+    padding-left: 8px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.global-music-widget .music-info span {
+    display: inline-block;
+    animation: musicMarquee 12s linear infinite;
+    padding-left: 100%;
+}
+
+@keyframes musicMarquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .global-music-widget {
+        margin-left: 8px;
+        margin-right: 8px;
+        padding: 4px 6px;
+        gap: 4px;
+    }
+    .global-music-widget .music-info {
+        display: none;
     }
 }
 

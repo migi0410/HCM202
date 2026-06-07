@@ -2,7 +2,395 @@
    HCM UNIVERSE - SHARED GAME DATA & LOCALSTORAGE CONTROLLER (HCM202)
    ========================================================================== */
 
-// 1. QUESTION DATABASE (VIETNAMESE STUDIES FOR HCM202)
+// 1. ACADEMIC COURSE CONTENT DATABASE (5 PLANETS & LESSONS IN VIETNAMESE)
+const UNIVERSE_DATA = {
+    1: {
+        title: "Cơ Sở Hình Thành",
+        sector: "SECTOR // 01 // FOUNDATIONS",
+        coords: "1890 - 1920 // BẢN ĐỊA & PHƯƠNG ĐÔNG",
+        colorClass: "preview-p1",
+        hudClass: "hud-p1",
+        academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Cơ sở hình thành khối Đại đoàn kết dân tộc.",
+        moons: {
+            1: {
+                title: "Truyền thống yêu nước và đoàn kết dân tộc",
+                content: `
+                    <img src="assets/images/phan_boi_chau.jpg" alt="Phan Bội Châu" class="doc-embed-img" />
+                    <p>Dân tộc Việt Nam có lịch sử hàng nghìn năm dựng nước và giữ nước. Trong suốt quá trình đấu tranh kiên cường đầy gian khổ đó, tinh thần gắn bó, tương trợ và yêu nước đã kết tụ sâu sắc, trở thành giá trị truyền thống tối thượng của đất nước.</p>
+                    <div class="doc-quote-block">
+                        "Lá lành đùm lá rách"<br>
+                        "Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao"
+                        <span class="doc-quote-author">— Khái quát ý chí quần chúng qua ca dao tục ngữ</span>
+                    </div>
+                    <h4>Các đặc trưng tiêu biểu:</h4>
+                    <ul>
+                        <li><strong>Tinh thần tương thân tương ái:</strong> Sự gắn bó chặt chẽ, đùm bọc mật thiết trong đời sống sinh hoạt nông nghiệp tại làng bản, dòng họ.</li>
+                        <li><strong>Đoàn kết chống ngoại xâm:</strong> Mỗi khi bờ cõi bị đe dọa, tinh thần đoàn kết lập tức bùng cháy mãnh liệt thành làn sóng nhấn chìm bè lũ cướp nước.</li>
+                        <li><strong>Gắn kết giữa các dân tộc:</strong> Các dân tộc anh em sống hòa hợp trên dải đất hình chữ S, chung sức chung lòng giữ gìn biên cương non sông.</li>
+                    </ul>
+                    <p>Hồ Chí Minh đã kế thừa trọn vẹn giá trị tinh thần này, phát triển và chuyển hóa từ tự phát thành lý luận khoa học, làm bệ đỡ vững chắc cho cách mạng.</p>
+                `
+            },
+            2: {
+                title: "Chủ nghĩa Mác – Lênin về vai trò quần chúng nhân dân",
+                content: `
+                    <img src="assets/images/vi_lenin.jpg" alt="V.I. Lenin" class="doc-embed-img" />
+                    <p>Chủ nghĩa Mác – Lênin là cơ sở lý luận trực tiếp và quyết định bản chất cách mạng của Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc.</p>
+                    <h4>Nội dung cốt lõi:</h4>
+                    <ul>
+                        <li><strong>Quần chúng nhân dân là người sáng tạo ra lịch sử:</strong> Nhân dân chính là chủ thể chân chính thúc đẩy sự phát triển bền vững của xã hội, là lực lượng sản xuất vật chất và tinh thần to lớn.</li>
+                        <li><strong>Cách mạng là sự nghiệp của quần chúng:</strong> Sự nghiệp giải phóng dân tộc, giải phóng giai cấp phải do chính quần chúng thực hiện dưới sự lãnh đạo của Đảng tiên phong.</li>
+                        <li><strong>Muốn cách mạng thành công phải tập hợp lực lượng:</strong> Muốn có lực lượng mạnh mẽ phải tập hợp quần chúng đông đảo, đoàn kết thống nhất chặt chẽ.</li>
+                    </ul>
+                    <p>Người chỉ rõ: <em>"Cách mạng là sự nghiệp của quần chúng nhân dân chứ không phải của cá nhân anh hùng nào. Muốn cách mạng thành công thì phải tập hợp quần chúng thành một khối đại đoàn kết thống nhất."</em></p>
+                `
+            },
+            3: {
+                title: "Tiếp thu tinh hoa văn hóa nhân loại",
+                content: `
+                    <img src="assets/images/yeu_sach_1919.png" alt="Bản Yêu Sách 1919" class="doc-embed-img" />
+                    <p>Trải qua 30 năm bôn ba khắp các đại lục, Nguyễn Ái Quốc đã tiếp thu có chọn lọc những tư tưởng tiến bộ của nhân loại để làm giàu cho học thuyết đoàn kết toàn dân.</p>
+                    <h4>Các nguồn văn hóa tinh hoa:</h4>
+                    <ul>
+                        <li><strong>Tư tưởng nhân văn phương Đông:</strong> Tiếp thu tinh thần hòa mục, nhân nghĩa của Nho giáo; lòng từ bi hỷ xả, cứu khổ cứu nạn của Phật giáo để áp dụng vào đạo đức cách mạng dân tộc.</li>
+                        <li><strong>Tinh thần dân chủ phương Tây:</strong> Tiếp thu lý luận tự do, bình đẳng, bác ái từ Cách mạng Pháp và Tuyên ngôn Độc lập Mỹ nhằm hướng tới quyền tự quyết của các dân tộc.</li>
+                        <li><strong>Tự do và bình đẳng:</strong> Hướng tới xây dựng một xã hội tự do, bình đẳng giữa con người với con người, giữa các giai cấp và quốc gia trên thế giới.</li>
+                    </ul>
+                `
+            },
+            4: {
+                title: "Tổng kết thực tiễn cách mạng",
+                content: `
+                    <img src="assets/images/nha_rong_1911.png" alt="Bến cảng Nhà Rồng 1911" class="doc-embed-img" />
+                    <p>Tư tưởng Đại đoàn kết dân tộc của Hồ Chí Minh là kết quả của sự kết hợp nhuần nhuyễn giữa lý luận với thực tiễn đấu tranh anh dũng của phong trào cứu nước trong nước và phong trào cách mạng thế giới.</p>
+                    <h4>Bài học thực tiễn:</h4>
+                    <ul>
+                        <li><strong>Thất bại của các phong trào trước:</strong> Phong trào Cần Vương, Đông Du hay khởi nghĩa Yên Thế thất bại do chưa quy tụ được toàn dân, thiếu lực lượng lãnh đạo và khối đoàn kết thống nhất bền vững.</li>
+                        <li><strong>Thắng lợi rực rỡ cách mạng:</strong> Cách mạng Tháng Tám (1945), kháng chiến chống thực dân Pháp và đế quốc Mỹ thắng lợi nhờ tập hợp đông đảo quần chúng toàn dân tộc chung sức chung lòng đấu tranh.</li>
+                    </ul>
+                    <div class="doc-quote-block">
+                        "Đoàn kết là sức mạnh, là then chốt của thành công."
+                        <span class="doc-quote-author">— Hồ Chí Minh</span>
+                    </div>
+                `
+            }
+        },
+        transmissions: [
+            {
+                quote: "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.",
+                source: "Hồ Chí Minh, Báo cáo tại Đại hội II của Đảng, 1951"
+            },
+            {
+                quote: "Dân ta có một lòng nồng nàn yêu nước. Đó là một truyền thống quý báu của ta.",
+                source: "Hồ Chí Minh, Tinh thần yêu nước của nhân dân ta, 1951"
+            },
+            {
+                quote: "Non sông Việt Nam có trở nên tươi đẹp hay không... chính là nhờ một phần lớn ở công học tập của các em.",
+                source: "Hồ Chí Minh, Thư gửi học sinh, 1945"
+            }
+        ]
+    },
+    2: {
+        title: "Vai Trò Chiến Lược",
+        sector: "SECTOR // 02 // STRATEGIC ROLE",
+        coords: "1930 - 1945 // CHIẾN LƯỢC CÁCH MẠNG",
+        colorClass: "preview-p2",
+        hudClass: "hud-p2",
+        academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Vai trò chiến lược của Đại đoàn kết dân tộc.",
+        moons: {
+            1: {
+                title: "Ý nghĩa chiến lược sống còn",
+                content: `
+                    <img src="assets/images/luan_cuong_1920.png" alt="Luận cương Lênin 1920" class="doc-embed-img" />
+                    <p>Hồ Chí Minh khẳng định Đại đoàn kết toàn dân tộc là một vấn đề có ý nghĩa chiến lược lâu dài, nhất quán xuyên suốt tiến trình cách mạng Việt Nam.</p>
+                    <h4>Các khía cạnh cốt lõi:</h4>
+                    <ul>
+                        <li><strong>Chiến lược lâu dài, nhất quán:</strong> Không phải là một thủ đoạn chính trị nhất thời hay mị dân tạm bợ, mà là kim chỉ nam trong mọi thời kỳ lịch sử.</li>
+                        <li><strong>Vấn đề mang tính sống còn:</strong> Quyết định trực tiếp sự thành bại của cách mạng dân tộc dân chủ nhân dân và cách mạng xã hội chủ nghĩa.</li>
+                    </ul>
+                    <div class="doc-quote-block">
+                        "Đoàn kết là sức mạnh của chúng ta"<br><br>
+                        "Đoàn kết, đoàn kết, đại đoàn kết;<br>
+                        Thành công, thành công, đại thành công"
+                        <span class="doc-quote-author">— Chân lý lịch sử bất hủ của Hồ Chí Minh</span>
+                    </div>
+                `
+            },
+            2: {
+                title: "Mục tiêu và nhiệm vụ hàng đầu",
+                content: `
+                    <img src="assets/images/thanh_lap_dang.png" alt="Thành lập Đảng Cộng sản Việt Nam 1930" class="doc-embed-img" />
+                    <p>Đại đoàn kết không chỉ là phương thức tập hợp lực lượng mà còn là mục tiêu cao cả, nhiệm vụ chính trị hàng đầu của Đảng Cộng sản và của toàn dân tộc.</p>
+                    <h4>Nguyên tắc triển khai:</h4>
+                    <ul>
+                        <li><strong>Nhiệm vụ hàng đầu của Đảng:</strong> Phải được quán triệt sâu sắc trong mọi lĩnh vực, từ cương lĩnh, đường lối đến các chính sách kinh tế - xã hội.</li>
+                        <li><strong>Sự nghiệp của quần chúng:</strong> Cách mạng là do quần chúng, vì quần chúng. Đảng chỉ đóng vai trò giáo dục, định hướng để nhân dân tự giác đoàn kết đấu tranh tự giải phóng.</li>
+                        <li><strong>Đoàn kết chính là nguyện vọng thiết tha nhất của nhân dân trong cuộc đấu tranh giành lại tự do, hòa bình.</strong></li>
+                    </ul>
+                `
+            }
+        },
+        transmissions: [
+            {
+                quote: "Đoàn kết là sức mạnh, là then chốt của thành công.",
+                source: "Hồ Chí Minh, Lời kêu gọi toàn quốc kháng chiến, 1946"
+            },
+            {
+                quote: "Đoàn kết là điểm mẹ. Điểm này mà thực hiện tốt thì đẻ ra con cháu đều tốt.",
+                source: "Hồ Chí Minh, Bài nói chuyện tại Hội nghị cán bộ, 1962"
+            },
+            {
+                quote: "Nước lấy dân làm gốc... Gốc có vững cây mới bền, xây lầu thắng lợi trên nền nhân dân.",
+                source: "Hồ Chí Minh, Rễ của dân chủ, 1945"
+            }
+        ]
+    },
+    3: {
+        title: "Lực Lượng Quy Tụ",
+        sector: "SECTOR // 03 // FORCES & FRONT",
+        coords: "1941 - 1954 // MẶT TRẬN TOÀN DÂN",
+        colorClass: "preview-p3",
+        hudClass: "hud-p3",
+        academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Lực lượng và hình thức tổ chức Mặt trận.",
+        moons: {
+            1: {
+                title: "Chủ thể của khối đại đoàn kết",
+                content: `
+                    <img src="assets/images/nhan_dan_cao_bang.jpg" alt="Nhân dân Cao Bằng" class="doc-embed-img" />
+                    <p>Hồ Chí Minh có quan điểm hết sức rộng mở và bao dung về lực lượng tham gia cách mạng. Người quy tụ mọi lực lượng yêu nước Việt Nam:</p>
+                    <div class="visual-tag-grid">
+                        <div class="visual-tag"><i class="fas fa-users"></i> Toàn thể nhân dân</div>
+                        <div class="visual-tag"><i class="fas fa-heart"></i> Người VN yêu nước</div>
+                        <div class="visual-tag"><i class="fas fa-briefcase"></i> Các giai cấp xã hội</div>
+                        <div class="visual-tag"><i class="fas fa-user-friends"></i> Các tầng lớp, giới</div>
+                        <div class="visual-tag"><i class="fas fa-baby-carriage"></i> Mọi lứa tuổi</div>
+                        <div class="visual-tag"><i class="fas fa-globe-asia"></i> Các dân tộc</div>
+                        <div class="visual-tag"><i class="fas fa-church"></i> Đồng bào tôn giáo</div>
+                        <div class="visual-tag"><i class="fas fa-flag"></i> Các đảng phái dân tộc</div>
+                        <div class="visual-tag"><i class="fas fa-passport"></i> Kiều bào nước ngoài</div>
+                    </div>
+                    <p>Bao gồm toàn thể nhân dân Việt Nam, bất kỳ ai mang dòng máu Lạc Hồng và mong muốn bảo vệ tổ quốc, không phân biệt giai cấp, giới tính, tôn giáo hay tuổi tác.</p>
+                `
+            },
+            2: {
+                title: "Đặc điểm khối đại đoàn kết",
+                content: `
+                    <p>Khối đại đoàn kết toàn dân tộc mang các tính chất khoa học, cấu trúc bền vững và bền chặt:</p>
+                    <div class="badge-row">
+                        <div class="characteristic-badge">Rộng Rãi</div>
+                        <div class="characteristic-badge">Lâu Dài</div>
+                        <div class="characteristic-badge">Bền Vững</div>
+                        <div class="characteristic-badge">Có Tổ Chức</div>
+                    </div>
+                    <p>Khối đoàn kết toàn dân được gắn kết chặt chẽ thông qua Mặt trận thống nhất, hoạt động tự giác dưới sự lãnh đạo của Đảng và tự nguyện cống hiến vì đất nước.</p>
+                `
+            },
+            3: {
+                title: "Mặt trận qua các thời kỳ",
+                content: `
+                    <img src="assets/images/pac_bo_1941.png" alt="Hang Pác Bó" class="doc-embed-img" />
+                    <p>Hệ thống Mặt trận dân tộc thống nhất được thành lập để cụ thể hóa sức mạnh đoàn kết toàn dân qua từng thời kỳ lịch sử đấu tranh cứu nước:</p>
+                    <div class="timeline-flow">
+                        <div class="timeline-step">
+                            <span class="timeline-year">1930</span>
+                            <div class="timeline-desc">Hội Phản đế đồng minh — Mặt trận đầu tiên tập hợp nhân dân chống đế quốc</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1936</span>
+                            <div class="timeline-desc">Mặt trận dân chủ Đông Dương — Đấu tranh đòi tự do, dân sinh dân chủ</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1939</span>
+                            <div class="timeline-desc">Mặt trận nhân dân phản đế — Chống chiến tranh, ách thống trị thực dân</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1941</span>
+                            <div class="timeline-desc">Mặt trận Việt Minh — Giành chính quyền trong Cách mạng Tháng Tám hào hùng</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1951</span>
+                            <div class="timeline-desc">Mặt trận Liên Việt — Hợp nhất Việt Minh đẩy mạnh kháng chiến chống Pháp</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1955/1976</span>
+                            <div class="timeline-desc">Mặt trận Tổ quốc Việt Nam — Đưa cả nước xây dựng XHCN & bảo vệ độc lập</div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="timeline-year">1960</span>
+                            <div class="timeline-desc">Mặt trận dân tộc giải phóng miền Nam VN — Đấu tranh thống nhất non sông</div>
+                        </div>
+                    </div>
+                `
+            },
+            4: {
+                title: "Nguyên tắc xây dựng Mặt trận",
+                content: `
+                    <img src="assets/images/vo_nguyen_giap.jpg" alt="Đại tướng Võ Nguyên Giáp" class="doc-embed-img" />
+                    <p>Việc xây dựng Mặt trận dân tộc thống nhất phải dựa trên các nguyên tắc bất di bất dịch:</p>
+                    <ul>
+                        <li><strong>Nền tảng liên minh vững chắc:</strong> Phải dựa trên khối liên minh Công nhân – Nông dân – Trí thức làm gốc vững chắc của khối đoàn kết.</li>
+                        <li><strong>Dưới sự lãnh đạo của Đảng:</strong> Đảng là hạt nhân lãnh đạo Mặt trận bằng uy tín, sự gương mẫu của đảng viên và đường lối chính sách đúng đắn.</li>
+                        <li><strong>Lấy mục tiêu tối cao vì độc lập dân tộc:</strong> Giải quyết hài hòa lợi ích cá nhân, giai tầng vì sự sống còn của đất nước.</li>
+                    </ul>
+                `
+            }
+        },
+        transmissions: [
+            {
+                quote: "Trong bầu trời không gì quý bằng nhân dân. Trong thế giới không gì mạnh bằng lực lượng đoàn kết của nhân dân.",
+                source: "Hồ Chí Minh, Tuyên ngôn Độc lập, 1945"
+            },
+            {
+                quote: "Công nông là gốc cách mệnh; còn học trò, nhà buôn nhỏ, điền chủ nhỏ... là bầu bạn cách mệnh của công nông.",
+                source: "Hồ Chí Minh, Đường Kách mệnh, 1927"
+            },
+            {
+                quote: "Đồng bào Kinh hay Tày, Mường hay Mán... đều là con Rồng cháu Tiên, đều là anh em ruột thịt.",
+                source: "Hồ Chí Minh, Thư gửi Đại hội các dân tộc thiểu số, 1946"
+            }
+        ]
+    },
+    4: {
+        title: "Phương Pháp Củng Cố",
+        sector: "SECTOR // 04 // METHODS OF UNITY",
+        coords: "1954 - 1975 // ĐOÀN THỂ & HIỆP THƯƠNG",
+        colorClass: "preview-p4",
+        hudClass: "hud-p4",
+        academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Phương pháp củng cố và xây dựng Mặt trận.",
+        moons: {
+            1: {
+                title: "Ba phương pháp chính",
+                content: `
+                    <img src="assets/images/phan_van_truong.png" alt="Luật sư Phan Văn Trường" class="doc-embed-img" />
+                    <p>Để củng cố và củng cố khối đại đoàn kết toàn dân vững chắc, Hồ Chí Minh đề ra ba phương pháp cốt lõi mang tính khoa học thực tiễn:</p>
+                    <div class="card-grid-3">
+                        <div class="card-item">
+                            <span class="card-num">①</span>
+                            <h4 class="card-title">Vận động quần chúng</h4>
+                            <p class="card-desc">Tuyên truyền, giáo dục, hướng dẫn giúp đỡ quần chúng hiểu rõ quyền lợi và nghĩa vụ. Phù hợp tâm lý, văn hóa địa phương.</p>
+                        </div>
+                        <div class="card-item">
+                            <span class="card-num">②</span>
+                            <h4 class="card-title">Thành lập đoàn thể</h4>
+                            <p class="card-desc">Tổ chức quần chúng vào các hội đoàn phù hợp giới tính, lứa tuổi: Công đoàn, Hội Nông dân, Hội Phụ nữ, Đoàn Thanh niên...</p>
+                        </div>
+                        <div class="card-item">
+                            <span class="card-num">③</span>
+                            <h4 class="card-title">Mặt trận thống nhất</h4>
+                            <p class="card-desc">Tập hợp các đoàn thể nhân dân dưới sự định hướng, hoạt động có tổ chức và phối hợp nhịp nhàng vì mục tiêu chung.</p>
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                title: "Chi tiết Vận động quần chúng",
+                content: `
+                    <img src="assets/images/o_mandenxtam.jpeg" alt="Osip Mandelstam" class="doc-embed-img" />
+                    <p>Vận động quần chúng đòi hỏi sự tinh tế, tôn trọng và gần gũi thực tiễn đời sống nhân dân:</p>
+                    <ul>
+                        <li><strong>Giáo dục, tuyên truyền, hướng dẫn:</strong> Giúp nhân dân nhận thức rõ quyền lợi đi đôi với nghĩa vụ công dân đối với tương lai tổ quốc.</li>
+                        <li><strong>Phù hợp tâm tư trình độ:</strong> Tuyên truyền phải xuất phát từ thực tế, tôn trọng phong tục tập quán lành mạnh và văn hóa đa dạng của từng giai tầng xã hội.</li>
+                    </ul>
+                `
+            },
+            3: {
+                title: "Chi tiết Đoàn thể & Mặt trận",
+                content: `
+                    <img src="assets/images/borodin.jpg" alt="Mikhail Borodin" class="doc-embed-img" />
+                    <p>Đưa nhân dân vào các tổ chức quần chúng có kỷ cương và định hướng thống nhất là bí quyết tạo nên sức mạnh dời non lấp biển:</p>
+                    <ul>
+                        <li><strong>Đoàn thể quần chúng:</strong> Là nơi sinh hoạt, đoàn kết hỗ trợ lẫn nhau của các giai cấp, vùng miền, giới tính.</li>
+                        <li><strong>Chỉ đạo thống nhất:</strong> Các tổ chức tuy độc lập nhưng liên kết chặt chẽ trong Mặt trận dân tộc dưới định hướng khoa học để ngăn chặn sự rời rạc, cát cứ.</li>
+                    </ul>
+                `
+            }
+        },
+        transmissions: [
+            {
+                quote: "Phải đặt lợi ích của Đảng, của Tổ quốc, của nhân dân lên trên hết, trước hết.",
+                source: "Hồ Chí Minh, Di chúc, 1969"
+            },
+            {
+                quote: "Muốn đoàn kết thực sự phải có lòng thương yêu nhau, giúp đỡ nhau như anh em trong một nhà.",
+                source: "Hồ Chí Minh, Bài nói tại Đại hội Mặt trận, 1955"
+            },
+            {
+                quote: "Cán bộ là cái gốc của mọi công việc... Muôn việc thành công hoặc thất bại, đều do cán bộ tốt hoặc kém.",
+                source: "Hồ Chí Minh, Sửa đổi lối làm việc, 1947"
+            }
+        ]
+    },
+    5: {
+        title: "Kết Nối Thời Đại",
+        sector: "SECTOR // 05 // CONNECTIONS & TODAY",
+        coords: "1975 - NAY // ĐOÀN KẾT QUỐC TẾ",
+        colorClass: "preview-p5",
+        hudClass: "hud-p5",
+        academicFooter: "Giáo trình Tư tưởng Hồ Chí Minh - Chương V: Đoàn kết dân tộc kết hợp đoàn kết quốc tế.",
+        moons: {
+            1: {
+                title: "Quan hệ với đoàn kết quốc tế",
+                content: `
+                    <img src="assets/images/tong_khanh_linh.jpg" alt="Tống Khánh Linh" class="doc-embed-img" />
+                    <p>Đại đoàn kết dân tộc và đoàn kết quốc tế có mối quan hệ biện chứng chặt chẽ, tạo nên sức mạnh vĩ đại của cách mạng:</p>
+                    <ul>
+                        <li><strong>Nội lực là nền tảng:</strong> Đại đoàn kết dân tộc là cơ sở cho đoàn kết quốc tế. Ta có đoàn kết đấu tranh tự lập tự cường thì thế giới mới trân quý và ủng hộ.</li>
+                    </ul>
+                    <div class="doc-quote-block">
+                        "Muốn người ta giúp cho, thì trước hết mình phải tự giúp lấy mình"
+                        <span class="doc-quote-author">— Hồ Chí Minh nhấn mạnh độc lập tự chủ</span>
+                    </div>
+                    <ul>
+                        <li><strong>Các lực lượng quốc tế cần đoàn kết:</strong> Giai cấp công nhân quốc tế, các dân tộc bị áp bức và lực lượng tiến bộ yêu chuộng hòa bình.</li>
+                        <li><strong>Sức mạnh tổng hợp:</strong> Kết hợp hài hòa sức mạnh yêu nước nội sinh của dân tộc với sức mạnh thời đại tiến bộ thế giới.</li>
+                    </ul>
+                `
+            },
+            2: {
+                title: "Vận dụng trong giai đoạn hiện nay",
+                content: `
+                    <img src="assets/images/dai_hoi_tours.png" alt="Đại hội Tours 1920" class="doc-embed-img" />
+                    <p>Tư tưởng Hồ Chí Minh về Đại đoàn kết dân tộc là chìa khóa vàng đưa đất nước đi lên phát triển hiện đại và hội nhập:</p>
+                    <div class="card-grid-2x2">
+                        <div class="apply-card">
+                            <h5>1. Phát huy sức mạnh toàn dân</h5>
+                            <p>Huy động công nhân, nông dân, trí thức, thanh niên, doanh nhân và kiều bào cùng đóng góp sức lực, tài lực, trí lực phát triển đất nước bền vững.</p>
+                        </div>
+                        <div class="apply-card">
+                            <h5>2. Tăng cường đoàn kết dân tộc & tôn giáo</h5>
+                            <p>Tôn trọng tự do tín ngưỡng lành mạnh, bình đẳng thực tế giữa các dân tộc anh em, hỗ trợ đồng bào biên giới phát triển toàn diện.</p>
+                        </div>
+                        <div class="apply-card">
+                            <h5>3. Giải quyết các vấn đề xã hội</h5>
+                            <p>Cả nước chung lòng ứng phó biến đổi khí hậu, hỗ trợ đồng bào thiên tai lũ lụt, thiện nguyện hiến máu bảo vệ đa dạng môi trường sinh thái.</p>
+                        </div>
+                        <div class="apply-card">
+                            <h5>4. Hội nhập kinh tế quốc tế</h5>
+                            <p>Mở rộng hữu nghị đa phương hóa, đón nhận chuyển giao khoa học công nghệ hiện đại quốc tế để số hóa sản xuất nội địa.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 0.9rem; line-height: 1.5; color: var(--text-muted);"><strong>Minh chứng hiện thực sinh động:</strong> Lãnh đạo Đảng và Nhà nước luôn bám sát quần chúng nhân dân. Điển hình như Tổng Bí thư Tô Lâm trực tiếp xuống vùng ngập lụt xã Trường Sinh (Tuyên Quang) động viên, trao quà cứu trợ cho bà con bị ảnh hưởng bởi siêu bão Yagi (9/2024); Thủ tướng Chính phủ Phạm Minh Chinh quyết liệt chỉ đạo, trực tiếp thăm hỏi và triển khai phong trào thi đua cả nước chung tay "Xóa nhà tạm, nhà dột nát" hoàn thành vào năm 2025. Về mặt quốc tế, Việt Nam đã tích cực hội nhập kinh tế thế giới khi chính thức gia nhập WTO vào năm 2007 và khẳng định trách nhiệm nhân đạo toàn cầu khi tham gia tích cực vào phái bộ Gìn giữ hòa bình Liên Hợp Quốc từ năm 2014 đến nay tại Nam Sudan và Abyei.</p>
+                `
+            }
+        },
+        transmissions: [
+            {
+                quote: "Việt Nam muốn làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai.",
+                source: "Hồ Chí Minh, Trả lời nhà báo Mỹ S. Éli Mâysi, 1947"
+            },
+            {
+                quote: "Giúp bạn là tự giúp mình.",
+                source: "Hồ Chí Minh, Chỉ thị gửi bộ đội đi làm nhiệm vụ quốc tế ở Lào, 1949"
+            },
+            {
+                quote: "Bốn phương vô sản đều là anh em.",
+                source: "Hồ Chí Minh, Diễn văn khai mạc Đại hội III của Đảng, 1960"
+            }
+        ]
+    }
+};
+
+// 2. QUESTION DATABASE (VIETNAMESE STUDIES FOR HCM202)
 const QUESTIONS_DATA = [
     {
         id: 1,
@@ -367,8 +755,8 @@ const QUESTIONS_DATA = [
 
 // 2. GUARANTEED REWARD POOL FOR 9 CELLS
 const ORIGINAL_PRIZES = [
-    { type: 'cash', value: '4k', label: 'Lì Xì 4.000đ 💸' },
-    { type: 'cash', value: '4k', label: 'Lì Xì 4.000đ 💸' },
+    { type: 'parking', value: '1 lượt', label: 'Miễn phí 1 lượt gửi xe 🏍️' },
+    { type: 'parking', value: '1 lượt', label: 'Miễn phí 1 lượt gửi xe 🏍️' },
     { type: 'cash', value: '8k', label: 'Lì Xì 8.000đ 💰' },
     { type: 'cash', value: '8k', label: 'Lì Xì 8.000đ 💰' },
     { type: 'cash', value: '12k', label: 'Lì Xì Cực Đỉnh 12.000đ 👑' },
@@ -422,6 +810,30 @@ function loadGameState() {
             const shuffledIndices = shuffleArray(allIndices);
             parsed.selectedQuestionIndices = shuffledIndices.slice(0, 9);
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parsed));
+        }
+        
+        // Auto-migration: Upgrade any old '4k' prizes to 'parking'
+        if (parsed.shuffledPrizes) {
+            let migrated = false;
+            parsed.shuffledPrizes = parsed.shuffledPrizes.map(p => {
+                if (p && p.value === '4k') {
+                    migrated = true;
+                    return { type: 'parking', value: '1 lượt', label: 'Miễn phí 1 lượt gửi xe 🏍️' };
+                }
+                return p;
+            });
+            if (parsed.claimedPrizes) {
+                parsed.claimedPrizes = parsed.claimedPrizes.map(p => {
+                    if (p && p.value === '4k') {
+                        migrated = true;
+                        return { type: 'parking', value: '1 lượt', label: 'Miễn phí 1 lượt gửi xe 🏍️' };
+                    }
+                    return p;
+                });
+            }
+            if (migrated) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parsed));
+            }
         }
         return parsed;
     } catch (e) {
@@ -652,7 +1064,8 @@ const GameSFX = {
 function initGlobalSharedVisuals() {
     // 1. Starfield Canvas
     const canvas = document.getElementById('starfield-canvas');
-    if (canvas) {
+    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+    if (canvas && !isHomePage) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
@@ -773,6 +1186,9 @@ function checkAndEnforceStudyDeckLock() {
 }
 
 // Expose globally
+window.UNIVERSE_DATA = UNIVERSE_DATA;
+window.QUESTIONS_DATA = QUESTIONS_DATA;
+window.ORIGINAL_PRIZES = ORIGINAL_PRIZES;
 window.checkAndEnforceStudyDeckLock = checkAndEnforceStudyDeckLock;
 
 // 10. FUTURISTIC SCI-FI CUSTOM CONFIRM POPUP (REPLACES NATIVE CONFIRM)
@@ -856,6 +1272,12 @@ window.showCustomConfirm = showCustomConfirm;
 function checkAndEnforcePasscode() {
     const isUnlocked = sessionStorage.getItem('hcm_universe_unlocked') === 'true';
     if (isUnlocked) return;
+
+    // Bypass passcode lock for Home page and Minh chứng thực tiễn page
+    const pathname = window.location.pathname;
+    const isHome = pathname === '/' || pathname.endsWith('index.html') || pathname === '';
+    const isThucTien = pathname.includes('thuctien');
+    if (isHome || isThucTien) return;
 
     // Build the Passcode Lock Overlay HTML
     const overlay = document.createElement('div');
@@ -953,8 +1375,588 @@ function checkAndEnforcePasscode() {
     }
 }
 
+// 12. GLOBAL CONFETTI ENGINE
+window.triggerConfetti = function(durationMs = 2500) {
+    let canvas = document.getElementById('global-confetti-canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'global-confetti-canvas';
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100vw';
+        canvas.style.height = '100vh';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '999999';
+        document.body.appendChild(canvas);
+    }
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const colors = [
+        '#FFD700', // Gold
+        '#FFA500', // Orange
+        '#FF4500', // Red-Orange
+        '#00CED1', // Neon Teal
+        '#00FF7F', // Spring Green
+        '#FF69B4', // Pink
+        '#9400D3'  // Dark Violet
+    ];
+
+    let particles = [];
+    let active = true;
+
+    class Particle {
+        constructor(x, y, direction) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 8 + 6;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const angle = direction === 'left' 
+                ? (Math.random() * 30 + 120) * Math.PI / 180 
+                : direction === 'right'
+                ? (Math.random() * 30 + 30) * Math.PI / 180  
+                : (Math.random() * 180 + 180) * Math.PI / 180; 
+                
+            const speed = Math.random() * 15 + 10;
+            this.vx = Math.cos(angle) * speed;
+            this.vy = -Math.sin(angle) * speed;
+            
+            this.gravity = 0.4;
+            this.drag = 0.98;
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 10 - 5;
+            this.opacity = 1;
+        }
+
+        update() {
+            this.vx *= this.drag;
+            this.vy *= this.drag;
+            this.vy += this.gravity;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.rotation += this.rotationSpeed;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = this.opacity;
+            ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+            ctx.restore();
+        }
+    }
+
+    function burst(x, y, direction, count = 50) {
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle(x, y, direction));
+        }
+    }
+
+    burst(0, height, 'right', 60);
+    burst(width, height, 'left', 60);
+
+    const flowInterval = setInterval(() => {
+        if (!active) {
+            clearInterval(flowInterval);
+            return;
+        }
+        burst(0, height, 'right', 3);
+        burst(width, height, 'left', 3);
+    }, 100);
+
+    let animationFrameId;
+    function render() {
+        if (!active && particles.length === 0) {
+            ctx.clearRect(0, 0, width, height);
+            canvas.remove();
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.update();
+            p.draw();
+
+            if (p.y > height || p.x < 0 || p.x > width) {
+                particles.splice(i, 1);
+            } else if (!active) {
+                p.opacity -= 0.02;
+                if (p.opacity <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+        }
+
+        animationFrameId = requestAnimationFrame(render);
+    }
+
+    render();
+
+    const handleResize = () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
+
+    setTimeout(() => {
+        active = false;
+        clearInterval(flowInterval);
+        setTimeout(() => {
+            window.removeEventListener('resize', handleResize);
+        }, 1000);
+    }, durationMs);
+};
+
+// 13. GLOBAL AI CHATBOT DYNAMIC INJECTION
+function initGlobalChatbot() {
+    if (document.getElementById('chatbot-bubble')) return;
+
+    // Create HTML elements
+    const bubble = document.createElement('div');
+    bubble.id = 'chatbot-bubble';
+    bubble.className = 'chatbot-bubble';
+    bubble.setAttribute('aria-label', 'Hỏi Bác Hồ AI');
+    bubble.setAttribute('title', 'Hỏi Bác Hồ AI Portal');
+    bubble.innerHTML = `
+        <div class="bubble-glow"></div>
+        <div class="bubble-inner">
+            <i class="fas fa-robot"></i>
+        </div>
+        <span class="bubble-tooltip">HỎI BÁC HỒ AI</span>
+    `;
+
+    const panel = document.createElement('div');
+    panel.id = 'chatbot-panel';
+    panel.className = 'chatbot-panel';
+    panel.innerHTML = `
+        <div class="chatbot-header">
+            <div class="chatbot-title-group">
+                <span class="chatbot-status" id="chatbot-status-indicator">[ TRANSMISSION OFFLINE ]</span>
+                <h3 class="chatbot-title"><i class="fas fa-broadcast-tower"></i> CỔNG TRUYỀN TIN AI</h3>
+            </div>
+            <button class="chatbot-close-btn" id="btn-close-chatbot" aria-label="Close Chatbot"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbot-messages-container">
+            <div class="message system-message">
+                <div class="message-text">Chào cháu! Bác là trợ lý AI mô phỏng học liệu HCM Universe. Cháu có thể hỏi Bác bất kỳ câu hỏi nào về Tư tưởng Hồ Chí Minh hoặc tài liệu học tập của các hành tinh.</div>
+            </div>
+        </div>
+
+        <form class="chatbot-input-area" id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Nhập câu hỏi tại đây..." required autocomplete="off" />
+            <button type="submit" id="btn-send-chat" aria-label="Gửi tin nhắn"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    `;
+
+    document.body.appendChild(bubble);
+    document.body.appendChild(panel);
+
+    const chatbotBubble = document.getElementById('chatbot-bubble');
+    const chatbotPanel = document.getElementById('chatbot-panel');
+    const btnCloseChatbot = document.getElementById('btn-close-chatbot');
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotMessagesContainer = document.getElementById('chatbot-messages-container');
+    const chatbotStatusIndicator = document.getElementById('chatbot-status-indicator');
+
+    let chatHistory = [];
+    let isWaitingForAI = false;
+
+    function tokenize(text) {
+        if (!text) return [];
+        return text
+            .toLowerCase()
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"']/g, " ")
+            .split(/\s+/)
+            .filter(w => w.length > 1);
+    }
+
+    function findRelevantContext(question, limit = 2) {
+        const docs = [];
+        if (typeof UNIVERSE_DATA === 'undefined') return "";
+        
+        Object.keys(UNIVERSE_DATA).forEach(planetId => {
+            const planet = UNIVERSE_DATA[planetId];
+            Object.keys(planet.moons).forEach(moonId => {
+                const moon = planet.moons[moonId];
+                const cleanContent = moon.content.replace(/<\/?[^>]+(>|$)/g, " ").replace(/\s+/g, " ").trim();
+                docs.push({
+                    title: `Hành tinh ${planetId} (${planet.title}) - Phân mục "${moon.title}"`,
+                    content: cleanContent,
+                    keywords: `hành tinh ${planetId} ${planet.title} ${moon.title} ${cleanContent}`
+                });
+            });
+            if (planet.transmissions) {
+                planet.transmissions.forEach((t, i) => {
+                    docs.push({
+                        title: `Hành tinh ${planetId} (${planet.title}) - Trích dẫn gốc #${i+1}`,
+                        content: `"${t.quote}" (${t.source})`,
+                        keywords: `hành tinh ${planetId} ${planet.title} trích dẫn ${t.quote} ${t.source}`
+                    });
+                });
+            }
+        });
+
+        const queryTokens = tokenize(question);
+        if (queryTokens.length === 0) {
+            return "CƠ SỞ DỮ LIỆU HỌC TẬP (HCM202):\n\n" + docs.slice(0, limit).map(d => `[NGUỒN: ${d.title}]\n${d.content}`).join("\n\n");
+        }
+
+        const scoredDocs = docs.map(doc => {
+            const docTokens = tokenize(doc.keywords);
+            let score = 0;
+            queryTokens.forEach(token => {
+                if (docTokens.includes(token)) score += 1;
+            });
+            return { doc, score };
+        });
+
+        scoredDocs.sort((a, b) => b.score - a.score);
+        let relevant = scoredDocs.filter(item => item.score > 0).slice(0, limit).map(item => item.doc);
+        if (relevant.length === 0) {
+            relevant = [scoredDocs[0].doc];
+        }
+
+        let contextText = "CƠ SỞ DỮ LIỆU HỌC TẬP HCM202 (TRÍCH XUẤT PHÙ HỢP):\n\n";
+        relevant.forEach(doc => {
+            contextText += `[NGUỒN: ${doc.title}]\nNội dung: ${doc.content}\n\n`;
+        });
+        return contextText;
+    }
+
+    async function checkApiConnection() {
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: 'ping_test_connection' })
+            });
+            if (response.ok) {
+                chatbotStatusIndicator.textContent = "[ TRANSMISSION ONLINE ]";
+                chatbotStatusIndicator.classList.add('online');
+            } else {
+                chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE ]";
+                chatbotStatusIndicator.classList.remove('online');
+            }
+        } catch (e) {
+            chatbotStatusIndicator.textContent = "[ TRANSMISSION OFFLINE ]";
+            chatbotStatusIndicator.classList.remove('online');
+        }
+    }
+
+    checkApiConnection();
+
+    if (chatbotBubble) {
+        chatbotBubble.addEventListener('click', () => {
+            if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+            chatbotPanel.classList.toggle('active');
+            checkApiConnection();
+            if (chatbotPanel.classList.contains('active')) {
+                setTimeout(() => chatbotInput.focus(), 300);
+            }
+        });
+    }
+
+    if (btnCloseChatbot) {
+        btnCloseChatbot.addEventListener('click', () => {
+            if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+            chatbotPanel.classList.remove('active');
+        });
+    }
+
+    function appendUserMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message user-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        msg.querySelector('.message-text').textContent = text;
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function appendSystemMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message system-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        msg.querySelector('.message-text').textContent = text;
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function parseMarkdown(text) {
+        if (!text) return "";
+        let html = text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        html = html.replace(/^(?:\s*[-*]\s+)(.+)$/gm, '<li>$1</li>');
+        html = html.replace(/^(?:\s*\d+\.\s+)(.+)$/gm, '<li>$1</li>');
+        return html;
+    }
+
+    function appendAiMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'message ai-message';
+        msg.innerHTML = `<div class="message-text"></div>`;
+        const textContainer = msg.querySelector('.message-text');
+        chatbotMessagesContainer.appendChild(msg);
+        scrollToBottom();
+        
+        let i = 0;
+        textContainer.textContent = "";
+        const speed = 10;
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                textContainer.textContent += text[i];
+                i++;
+                if (i % 5 === 0) scrollToBottom();
+            } else {
+                clearInterval(interval);
+                textContainer.innerHTML = parseMarkdown(text);
+                scrollToBottom();
+            }
+        }, speed);
+    }
+
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'message ai-message typing-indicator';
+        indicator.id = 'chat-typing-indicator';
+        indicator.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        chatbotMessagesContainer.appendChild(indicator);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const el = document.getElementById('chat-typing-indicator');
+        if (el) el.remove();
+    }
+
+    function scrollToBottom() {
+        chatbotMessagesContainer.scrollTop = chatbotMessagesContainer.scrollHeight;
+    }
+
+    if (chatbotForm) {
+        chatbotForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isWaitingForAI) return;
+
+            const text = chatbotInput.value.trim();
+            if (!text) return;
+
+            chatbotInput.value = "";
+            appendUserMessage(text);
+            if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+
+            isWaitingForAI = true;
+            showTypingIndicator();
+
+            try {
+                let aiReply = "";
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question: text,
+                        history: chatHistory,
+                        context: findRelevantContext(text, 2)
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Không phản hồi hoặc cổng dịch vụ ngoại tuyến.");
+                }
+                const data = await response.json();
+                aiReply = data.reply;
+
+                removeTypingIndicator();
+                appendAiMessage(aiReply);
+
+                chatHistory.push({ role: 'user', text: text });
+                chatHistory.push({ role: 'model', text: aiReply });
+                if (chatHistory.length > 6) {
+                    chatHistory.splice(0, 2);
+                }
+            } catch (err) {
+                removeTypingIndicator();
+                appendSystemMessage(`LỖI TRUYỀN TIN // ${err.message}`);
+                console.error(err);
+            } finally {
+                isWaitingForAI = false;
+            }
+        });
+    }
+}
+
+// 14. GLOBAL BACKGROUND MUSIC WIDGET
+const MUSIC_PLAYLIST = [
+    {
+        title: "Dấu Chân Phía Trước",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+        title: "Ai Yêu Bác Hồ Chí Minh Hơn Thiếu Niên Nhi Đồng",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+        title: "Tiếng hát giữa rừng Pác Bó",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    }
+];
+
+let globalAudio = null;
+let currentMusicIndex = 0;
+let isMusicPlaying = false;
+
+function initGlobalMusicPlayer() {
+    const headerContainer = document.querySelector('.header-container');
+    if (!headerContainer) return;
+
+    if (!globalAudio) {
+        globalAudio = new Audio();
+        
+        currentMusicIndex = parseInt(localStorage.getItem('hcm_music_index')) || 0;
+        const savedTime = parseFloat(localStorage.getItem('hcm_music_time')) || 0;
+        isMusicPlaying = localStorage.getItem('hcm_music_playing') === 'true';
+
+        globalAudio.src = MUSIC_PLAYLIST[currentMusicIndex].src;
+        globalAudio.currentTime = savedTime;
+        globalAudio.loop = false;
+        
+        globalAudio.addEventListener('ended', () => {
+            playNextTrack();
+        });
+    }
+
+    const widget = document.createElement('div');
+    widget.className = 'global-music-widget';
+    widget.innerHTML = `
+        <button class="music-btn" id="btn-music-prev" title="Bài trước"><i class="fas fa-step-backward"></i></button>
+        <button class="music-btn" id="btn-music-play" title="Phát/Tạm dừng"><i class="fas fa-play"></i></button>
+        <button class="music-btn" id="btn-music-next" title="Bài tiếp"><i class="fas fa-step-forward"></i></button>
+        <div class="music-info">
+            <span id="music-track-title">Đang tải...</span>
+        </div>
+    `;
+
+    const muteBtn = document.getElementById('btn-mute-hud');
+    if (muteBtn) {
+        headerContainer.insertBefore(widget, muteBtn);
+    } else {
+        headerContainer.appendChild(widget);
+    }
+
+    const playBtn = document.getElementById('btn-music-play');
+    const prevBtn = document.getElementById('btn-music-prev');
+    const nextBtn = document.getElementById('btn-music-next');
+
+    playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+        if (isMusicPlaying) {
+            pauseMusic();
+        } else {
+            playMusic();
+        }
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+        playPrevTrack();
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (typeof GameSFX !== 'undefined') GameSFX.playClick();
+        playNextTrack();
+    });
+
+    updateMusicUI();
+
+    const resumePlay = () => {
+        if (isMusicPlaying && globalAudio.paused) {
+            globalAudio.play().then(() => {
+                updateMusicUI();
+            }).catch(err => {
+                console.log("Audio play postponed", err);
+            });
+        }
+        document.removeEventListener('click', resumePlay);
+        document.removeEventListener('keydown', resumePlay);
+    };
+    document.addEventListener('click', resumePlay);
+    document.addEventListener('keydown', resumePlay);
+
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem('hcm_music_index', currentMusicIndex);
+        localStorage.setItem('hcm_music_time', globalAudio ? globalAudio.currentTime : 0);
+        localStorage.setItem('hcm_music_playing', isMusicPlaying);
+    });
+}
+
+function playMusic() {
+    isMusicPlaying = true;
+    globalAudio.play().then(() => {
+        updateMusicUI();
+    }).catch(err => {
+        console.log("Autoplay blocked, waiting for user gesture.");
+    });
+    localStorage.setItem('hcm_music_playing', 'true');
+}
+
+function pauseMusic() {
+    isMusicPlaying = false;
+    globalAudio.pause();
+    updateMusicUI();
+    localStorage.setItem('hcm_music_playing', 'false');
+}
+
+function playNextTrack() {
+    const nextIndex = (currentMusicIndex + 1) % MUSIC_PLAYLIST.length;
+    currentMusicIndex = nextIndex;
+    globalAudio.src = MUSIC_PLAYLIST[currentMusicIndex].src;
+    globalAudio.currentTime = 0;
+    playMusic();
+}
+
+function playPrevTrack() {
+    const prevIndex = (currentMusicIndex - 1 + MUSIC_PLAYLIST.length) % MUSIC_PLAYLIST.length;
+    currentMusicIndex = prevIndex;
+    globalAudio.src = MUSIC_PLAYLIST[currentMusicIndex].src;
+    globalAudio.currentTime = 0;
+    playMusic();
+}
+
+function updateMusicUI() {
+    const playBtn = document.getElementById('btn-music-play');
+    const trackTitle = document.getElementById('music-track-title');
+    
+    if (playBtn) {
+        playBtn.innerHTML = isMusicPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+    }
+    if (trackTitle) {
+        trackTitle.innerHTML = `<span>Hòa tấu — ${MUSIC_PLAYLIST[currentMusicIndex].title}</span>`;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     checkAndEnforcePasscode();
     initGlobalSharedVisuals();
     checkAndEnforceStudyDeckLock();
+    initGlobalChatbot();
+    initGlobalMusicPlayer();
 });
+
