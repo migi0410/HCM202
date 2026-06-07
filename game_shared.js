@@ -885,13 +885,16 @@ const GameSFX = {
     },
 
     isMuted() {
-        // Check if there is an active class 'muted' on the local toggle button, or check localStorage for mute config
+        let savedMute = localStorage.getItem('hcm_audio_muted');
+        if (savedMute !== null) {
+            return savedMute === 'true';
+        }
+        // Fallback to DOM class if not in localStorage
         const globalMuteBtn = document.getElementById('btn-mute-hud');
         if (globalMuteBtn) {
             return globalMuteBtn.classList.contains('muted');
         }
-        let savedMute = localStorage.getItem('hcm_audio_muted');
-        return savedMute === 'true';
+        return false;
     },
 
     toggleMute() {
@@ -904,6 +907,9 @@ const GameSFX = {
             muteBtn.innerHTML = nextMute ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
             muteBtn.classList.toggle('muted', nextMute);
         }
+        if (globalAudio) {
+            globalAudio.muted = nextMute;
+        }
         return nextMute;
     },
 
@@ -913,6 +919,9 @@ const GameSFX = {
             let muted = this.isMuted();
             muteBtn.innerHTML = muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
             muteBtn.classList.toggle('muted', muted);
+            if (globalAudio) {
+                globalAudio.muted = muted;
+            }
         }
     },
 
@@ -1835,6 +1844,9 @@ function initGlobalMusicPlayer() {
         globalAudio.src = MUSIC_PLAYLIST[currentMusicIndex].src;
         globalAudio.currentTime = savedTime;
         globalAudio.loop = false;
+        
+        // Sync initial mute state
+        globalAudio.muted = GameSFX.isMuted();
         
         globalAudio.addEventListener('ended', () => {
             playNextTrack();
