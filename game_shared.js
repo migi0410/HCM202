@@ -1936,9 +1936,9 @@ function initGlobalMusicPlayer() {
         </div>
     `;
 
-    const muteBtn = document.getElementById('btn-mute-hud');
-    if (muteBtn) {
-        headerContainer.insertBefore(widget, muteBtn);
+    const insertBeforeEl = document.querySelector('.hud-volume-container') || document.getElementById('btn-mute-hud');
+    if (insertBeforeEl && insertBeforeEl.parentNode === headerContainer) {
+        headerContainer.insertBefore(widget, insertBeforeEl);
     } else {
         headerContainer.appendChild(widget);
     }
