@@ -2156,6 +2156,7 @@ main {
         padding: 70px 20px 20px;
         border-left: none;
         border-top: 1px solid var(--border-glass);
+        z-index: 1005; /* Cover the main-header to make close button clickable */
     }
     
     .console-layout {
@@ -2165,6 +2166,7 @@ main {
     }
     
     .console-sidebar {
+        width: 100%; /* Reset fixed 280px width from desktop */
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding-bottom: 20px;
     }
