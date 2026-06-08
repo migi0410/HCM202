@@ -186,17 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNavToggle = document.getElementById('btn-nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
-    if (btnNavToggle && navMenu) {
-        btnNavToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = btnNavToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
-        });
-    }
+    // Note: btnNavToggle event listener is handled globally in game_shared.js
 
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
