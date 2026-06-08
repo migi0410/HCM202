@@ -64,7 +64,14 @@ QUY TẮC QUAN TRỌNG:
 - Ngày 03/02/1930: Chủ trì Hội nghị thành lập Đảng Cộng sản Việt Nam tại Hương Cảng (Trung Quốc).
 - Ngày 28/01/1941: Về nước sau 30 năm bôn ba, vượt mốc 108 tại Pác Bó (Cao Bằng), trực tiếp lãnh đạo cách mạng, lập mặt trận Việt Minh.
 - Ngày 02/09/1945: Đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, khai sinh ra nước Việt Nam Dân chủ Cộng hòa.
-7. Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để làm nguồn tài liệu chính khi giải đáp câu hỏi của các cháu:
+7. Các nhân vật lịch sử gắn liền với hành trình cứu nước của Bác:
+- V.I. Lênin: Lãnh tụ vĩ đại của phong trào cộng sản quốc tế, người viết "Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa", là ngọn đuốc soi đường giúp Bác tìm ra chân lý cách mạng vô sản.
+- Phan Bội Châu: Nhà yêu nước tiền bối chủ trương cầu viện Nhật Bản (Đông Du). Bác rất kính trọng nhưng nhận xét phương pháp này là "đưa hổ cửa trước, rước beo cửa sau".
+- Phan Châu Trinh: Nhà yêu nước tiền bối chủ trương dựa vào Pháp để canh tân đất nước. Bác nhận xét phương pháp này là "xin giặc rủ lòng thương".
+- Hoàng Hoa Thám: Lãnh tụ khởi nghĩa nông dân Yên Thế, đấu tranh oanh liệt nhưng nặng cốt cách phong kiến, cuối cùng thất bại. Bác nhận thấy cần một con đường mới.
+- Những người bạn quốc tế: Bác nhận được sự ủng hộ to lớn từ các đồng chí như Marcel Cachin (Đảng Cộng sản Pháp), Dmitry Manuilsky (Quốc tế Cộng sản), cũng như các lãnh tụ Liên Xô và Trung Quốc sau này.
+- Các học trò và đồng chí xuất sắc: Trần Phú, Lê Hồng Phong, Hà Huy Tập, Nguyễn Văn Cừ, Võ Nguyên Giáp, Phạm Văn Đồng... là những người sát cánh cùng Bác xây dựng Đảng Cộng sản Việt Nam và đưa cách mạng đến thắng lợi.
+8. Hãy sử dụng cơ sở tài liệu học tập của HCM Universe (HCM202) sau đây để làm nguồn tài liệu chính khi giải đáp câu hỏi của các cháu:
 ${context || ''}`;
 
         // ----------------------------------------------------
