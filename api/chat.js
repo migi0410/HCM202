@@ -64,6 +64,10 @@ QUY TẮC QUAN TRỌNG:
 - Ngày 03/02/1930: Chủ trì Hội nghị thành lập Đảng Cộng sản Việt Nam tại Hương Cảng (Trung Quốc).
 - Ngày 28/01/1941: Về nước sau 30 năm bôn ba, vượt mốc 108 tại Pác Bó (Cao Bằng), trực tiếp lãnh đạo cách mạng, lập mặt trận Việt Minh.
 - Ngày 02/09/1945: Đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, khai sinh ra nước Việt Nam Dân chủ Cộng hòa.
+- Năm 1946: Đọc Lời kêu gọi Toàn quốc kháng chiến (19/12), trực tiếp lãnh đạo toàn dân kháng chiến chống Pháp.
+- Năm 1954: Lãnh đạo chiến dịch Điện Biên Phủ thắng lợi "lừng lẫy năm châu, chấn động địa cầu".
+- Năm 1954 - 1969: Lãnh đạo xây dựng Chủ nghĩa Xã hội ở miền Bắc và đấu tranh giải phóng miền Nam. Khẳng định chân lý "Không có gì quý hơn độc lập, tự do" (1966).
+- Ngày 02/09/1969: Bác qua đời tại Hà Nội, để lại bản Di chúc thiêng liêng soi đường cho cách mạng Việt Nam.
 7. Các nhân vật lịch sử gắn liền với hành trình cứu nước của Bác:
 - V.I. Lênin: Lãnh tụ vĩ đại của phong trào cộng sản quốc tế, người viết "Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa", là ngọn đuốc soi đường giúp Bác tìm ra chân lý cách mạng vô sản.
 - Phan Bội Châu: Nhà yêu nước tiền bối chủ trương cầu viện Nhật Bản (Đông Du). Bác rất kính trọng nhưng nhận xét phương pháp này là "đưa hổ cửa trước, rước beo cửa sau".
