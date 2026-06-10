@@ -16,6 +16,7 @@ const UNIVERSE_DATA = {
                 title: "Truyền thống yêu nước và đoàn kết dân tộc",
                 content: `
                     <img src="assets/images/phan_boi_chau.jpg" alt="Phan Bội Châu" class="doc-embed-img" />
+                    <div class="img-caption">Phan Bội Châu</div>
                     <p>Dân tộc Việt Nam có lịch sử hàng nghìn năm dựng nước và giữ nước. Trong suốt quá trình đấu tranh kiên cường đầy gian khổ đó, tinh thần gắn bó, tương trợ và yêu nước đã kết tụ sâu sắc, trở thành giá trị truyền thống tối thượng của đất nước.</p>
                     <div class="doc-quote-block">
                         "Lá lành đùm lá rách"<br>
@@ -35,6 +36,7 @@ const UNIVERSE_DATA = {
                 title: "Chủ nghĩa Mác – Lênin về vai trò quần chúng nhân dân",
                 content: `
                     <img src="assets/images/vi_lenin.jpg" alt="V.I. Lenin" class="doc-embed-img" />
+                    <div class="img-caption">V.I. Lênin</div>
                     <p>Chủ nghĩa Mác – Lênin là cơ sở lý luận trực tiếp và quyết định bản chất cách mạng của Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc.</p>
                     <h4>Nội dung cốt lõi:</h4>
                     <ul>
@@ -226,6 +228,7 @@ const UNIVERSE_DATA = {
                 title: "Nguyên tắc xây dựng Mặt trận",
                 content: `
                     <img src="assets/images/vo_nguyen_giap.jpg" alt="Đại tướng Võ Nguyên Giáp" class="doc-embed-img" />
+                    <div class="img-caption">Đại tướng Võ Nguyên Giáp</div>
                     <p>Việc xây dựng Mặt trận dân tộc thống nhất phải dựa trên các nguyên tắc bất di bất dịch:</p>
                     <ul>
                         <li><strong>Nền tảng liên minh vững chắc:</strong> Phải dựa trên khối liên minh Công nhân – Nông dân – Trí thức làm gốc vững chắc của khối đoàn kết.</li>
@@ -261,7 +264,7 @@ const UNIVERSE_DATA = {
             1: {
                 title: "Ba phương pháp chính",
                 content: `
-                    <img src="assets/images/phan_van_truong.png" alt="Luật sư Phan Văn Trường" class="doc-embed-img" />
+
                     <p>Để củng cố và củng cố khối đại đoàn kết toàn dân vững chắc, Hồ Chí Minh đề ra ba phương pháp cốt lõi mang tính khoa học thực tiễn:</p>
                     <div class="card-grid-3">
                         <div class="card-item">
@@ -285,7 +288,7 @@ const UNIVERSE_DATA = {
             2: {
                 title: "Chi tiết Vận động quần chúng",
                 content: `
-                    <img src="assets/images/o_mandenxtam.jpeg" alt="Osip Mandelstam" class="doc-embed-img" />
+
                     <p>Vận động quần chúng đòi hỏi sự tinh tế, tôn trọng và gần gũi thực tiễn đời sống nhân dân:</p>
                     <ul>
                         <li><strong>Giáo dục, tuyên truyền, hướng dẫn:</strong> Giúp nhân dân nhận thức rõ quyền lợi đi đôi với nghĩa vụ công dân đối với tương lai tổ quốc.</li>
@@ -296,7 +299,7 @@ const UNIVERSE_DATA = {
             3: {
                 title: "Chi tiết Đoàn thể & Mặt trận",
                 content: `
-                    <img src="assets/images/borodin.jpg" alt="Mikhail Borodin" class="doc-embed-img" />
+
                     <p>Đưa nhân dân vào các tổ chức quần chúng có kỷ cương và định hướng thống nhất là bí quyết tạo nên sức mạnh dời non lấp biển:</p>
                     <ul>
                         <li><strong>Đoàn thể quần chúng:</strong> Là nơi sinh hoạt, đoàn kết hỗ trợ lẫn nhau của các giai cấp, vùng miền, giới tính.</li>
@@ -332,6 +335,7 @@ const UNIVERSE_DATA = {
                 title: "Quan hệ với đoàn kết quốc tế",
                 content: `
                     <img src="assets/images/tong_khanh_linh.jpg" alt="Tống Khánh Linh" class="doc-embed-img" />
+                    <div class="img-caption">Tống Khánh Linh</div>
                     <p>Đại đoàn kết dân tộc và đoàn kết quốc tế có mối quan hệ biện chứng chặt chẽ, tạo nên sức mạnh vĩ đại của cách mạng:</p>
                     <ul>
                         <li><strong>Nội lực là nền tảng:</strong> Đại đoàn kết dân tộc là cơ sở cho đoàn kết quốc tế. Ta có đoàn kết đấu tranh tự lập tự cường thì thế giới mới trân quý và ủng hộ.</li>
